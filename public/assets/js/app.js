@@ -97,8 +97,28 @@ $('#confirm-delete').on('click', function (event) {
 
 $('#register').on('click', function (event) {
   event.preventDefault();
+  const fileInput = document.getElementById('file-input');
+  fileInput.addEventListener('change', (e) =>
+    addTreePhoto(e.target.files));
   window.location.href = '/register';
 });
+
+const output = document.getElementById('output');
+
+function addTreePhoto (fileList) {
+  let file = null;
+
+  for (let i = 0; i < fileList.length; i++) {
+    if (fileList[i].type.match(/^image\//)) {
+      file = fileList[i];
+      break;
+    }
+  }
+
+  if (file !== null) {
+    output.src = URL.createObjectURL(file);
+  }
+}
 
 $('#login-modal').on('click', function (event) {
   event.preventDefault();
