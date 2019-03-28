@@ -212,3 +212,10 @@
   float:left;
   width:300px;
 }
+
+.textcolor{
+  font-weight: bold;
+  color: rgb(0, 56, 209);
+  font-size: 24px;
+  background-color: aliceblue;
+}

@@ -1,16 +1,11 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="/">
-    AppName
+    <p class="imageclass"><img src="assets/images/tree-icon.png" alt="Tree menu-icon" height="60" width="60">Go Tree Yourself</p>&nbsp;
   </a>
   
   <!-- Links -->
   <ul class="nav navbar-nav ml-auto">
-
-    {{!-- <li class="nav-item">
-      <a class="nav-link" href="/some-feature">Menu item here</a>
-    </li> --}}
-
     {{#if isloggedin}}
       <li class="nav-item">
         <a class="nav-link" href="/profile">My Profile</a>
@@ -20,10 +15,21 @@
       </li>
     {{else}}
       <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">How It Works</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#" id="login-modal">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/register" data-register={{register}}>Register</a>
+      </li>
+      <li class="nav-item"> 
+        <!-- Could use this button for a drop down of check boxes to change the user view to see only their trees, 
+            all trees, certain types of trees, etc. -->
+        <button type="button" class="button hollow topbar-responsive-button">Categories</button>
       </li>
     {{/if}}
   </ul>
