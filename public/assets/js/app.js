@@ -5,7 +5,8 @@ $('#add-user').on('click', function (event) {
     firstName: $('#inputFirst').val().trim(),
     lastName: $('#inputLast').val().trim(),
     email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim()
+    password: $('#inputPassword').val().trim(),
+
   };
 
   if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.password.length > 0 && newAccount.lastName.length > 0 && newAccount.firstName.length > 0) {
@@ -32,7 +33,8 @@ $('#update-user').on('click', function (event) {
     firstName: $('#inputFirst').val().trim(),
     lastName: $('#inputLast').val().trim(),
     email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim()
+    password: $('#inputPassword').val().trim(),
+    photo: output
   };
   $('#err-msg').empty('');
   // $('#change-user-modal').modal('show');
@@ -97,8 +99,28 @@ $('#confirm-delete').on('click', function (event) {
 
 $('#register').on('click', function (event) {
   event.preventDefault();
+  const fileInput = document.getElementById('file-input');
+  fileInput.addEventListener('change', (e) =>
+    captureImages(e.target.files));
   window.location.href = '/register';
 });
+
+const output = document.getElementById('output');
+
+function captureImages (fileList) {
+  let file = null;
+
+  for (let i = 0; i < fileList.length; i++) {
+    if (fileList[i].type.match(/^image\//)) {
+      file = fileList[i];
+      break;
+    }
+  }
+
+  if (file !== null) {
+    output.src = URL.createObjectURL(file);
+  }
+}
 
 $('#login-modal').on('click', function (event) {
   event.preventDefault();
