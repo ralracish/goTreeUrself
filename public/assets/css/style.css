@@ -246,3 +246,180 @@
   background-color: rgb(255, 255, 204);
   padding: 10px 10px 10px 10px;
 }
+
+/* Begin CSS for Login form */
+.translucent-form-overlay {
+  max-width: 500px;
+  width: 100%;
+  background-color: rgba(54, 54, 54, 0.8);
+  padding: 20px;
+  color: #fefefe;
+}
+
+.translucent-form-overlay .columns.row {
+  display: block;
+}
+
+.translucent-form-overlay h3, .translucent-form-overlay label {
+  color: #fefefe;
+}
+
+.translucent-form-overlay input, .translucent-form-overlay select {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::-webkit-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input:-ms-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::placeholder {
+  color: #8a8a8a;
+}
+
+.show-password {
+  width: 100%;
+
+  label {
+    position: absolute;
+    left:-9999px;
+    text-indent: -9999px;
+  }
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password + .unmask {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-indent: -9999px;
+  width: 25px;
+  height: 25px;
+  background: #aaa;
+  border-radius: 50%;
+  cursor:pointer;
+  border: none;
+  -webkit-appearance:none;
+}
+
+.password + .unmask:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 17px;
+  height: 17px;
+  background: #e3e3e3;
+  z-index:1;
+  border-radius: 50%;
+}
+
+.password[type="text"] + .unmask:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 13px;
+  height: 13px;
+  background: #aaa;
+  z-index: 2;
+  border-radius: 50%;
+}
+/* End CSS for Login form */
+
+.floated-label-wrapper {
+  position: relative;
+
+  label {
+    background: $white;
+    color: $primary-color;
+    font-size: 0.75rem;
+    font-weight: 600;
+    left: 0.75rem;
+    opacity: 0;
+    padding: 0 0.25rem;
+    position: absolute;
+    top: 2rem;
+    transition: all 0.15s ease-in;
+    z-index: -1;
+
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+      border-radius: 4px;
+      font-size: 1.75em;
+      padding: 0.5em;
+    }
+
+    &.show {
+      opacity: 1;
+      top: -0.85rem;
+      z-index: 1;
+      transition: all 0.15s ease-in;
+    }
+  }
+}
+
+/* For testing REgistration form */
+
+.translucent-form-overlay {
+  max-width: 500px;
+  width: 100%;
+  background-color: rgba(54, 54, 54, 0.8);
+  padding: 20px;
+  color: #fefefe;
+}
+
+.translucent-form-overlay .columns.row {
+  display: block;
+}
+
+.translucent-form-overlay h3, .translucent-form-overlay label {
+  color: #fefefe;
+}
+
+.translucent-form-overlay input, .translucent-form-overlay select {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::-webkit-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input:-ms-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::placeholder {
+  color: #8a8a8a;
+}
+
+
+form .form-icons {
+  text-align: center;
+}
+
+form .form-icons h4 {
+  margin-bottom: 1rem;
+}
+
+form .form-icons .input-group-label {
+  background-color: #1779ba;
+  border-color: #1779ba;
+}
+
+form .form-icons .input-group-field {
+  border-color: #1779ba;
+}
+
+form .form-icons .fa {
+  color: white;
+  width: 1rem;
+}

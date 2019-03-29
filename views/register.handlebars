@@ -1,15 +1,95 @@
-{{> nav/nav-block user=false register=true}}
+<div class="hero-full-screen overlay">         
+  <div class="top-content-section">
+    {{> nav/nav-block user=false register=true}}
+    {{!-- For XY grid row becomes grid-x and columns become cells --}}
+    <div class="grid-x grid-margin-x">
+      <div class="cell">
+        <div class="translucent-form-overlay" style="margin: 0 auto;">
+          <form>
+            <h3>Create Your Account</h3>
+            <div class="row columns">
+              <div class="input-group">
+              {{!-- <label for="inputFirst">First Name</label> --}}
+                <span class="input-group-label">
+                  <i class="fa fa-user"></i>
+                </span>
+                <input type="text" class="form-control input-group-field" id="inputFirst" placeholder="First Name">
+              </div>
+            </div>
+            <div class="row columns">
+              <div class="input-group">
+                {{!-- <label for="inputLast">Last Name</label> --}}
+                <span class="input-group-label">
+                  <i class="fa fa-user"></i>
+                </span>
+                <input type="text" class="form-control input-group-field" id="inputLast" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="row columns">
+              <div class="input-group">
+                {{!-- <label for="inputEmail">Email</label> --}}
+                <span class="input-group-label">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+              </div>
+            </div>
+            <div class="row columns">
+              <div class="input-group">
+                {{!-- <label for="inputPassword">Password</label> --}}
+                <span class="input-group-label">
+                  <i class="fa fa-key"></i>
+                </span>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+            <button type="button" id="add-user" class="primary button expanded search-button">
+              Submit
+            </button>
+        </form>
+        </div>
+      </div>
+    </div>
 
-<div class="container">
+  </div>
+</div>
+
+
+{{!-- 
+<form>
+  <div class="form-icons">
+    <h4>Register for an account</h4>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <input class="input-group-field" type="text" placeholder="Full name">
+    </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <input class="input-group-field" type="text" placeholder="Email">
+    </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+      <input class="input-group-field" type="text" placeholder="Password">
+    </div>
+  </div>
+  <button class="button expanded">Sign Up</button>
+</form> --}}
+
+
+{{!-- <div class="container">
   <div class="row">
     <div class="col col-md-12">
       <header class="create-user-wrap header-wrap" align="center">
         <h1>Create Your Account</h1>
         <h3 id="create-err-msg"></h3>
       </header>
-
       <h3 id="err-msg"></h3>
-
       <form id= "create-form">
         <div class="form-row">
           <div class="form-group col-md-12">
@@ -17,41 +97,35 @@
             <input type="text" class="form-control" id="inputFirst" placeholder="John">
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="inputLast">Last Name</label>
             <input type="text" class="form-control" id="inputLast" placeholder="Doe">
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="inputEmail">Email</label>
             <input type="email" class="form-control" id="inputEmail" placeholder="Email">
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="inputPassword">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="inputPhoto">Tree Photo</label><br>
             <input type="file" accept="image/*" id="file-input">
           </div>
         </div>
-
         <div>
           <h2 id="message"></h2>
         </div>
-
         <button type="submit" id="add-user" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>
-</div>
+</div> --}}
