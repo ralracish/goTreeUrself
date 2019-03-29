@@ -9,6 +9,7 @@ const helmet = require('helmet');
 const PORT = process.argv[2] || process.env.PORT || 3333;
 const app = express();
 const db = require('./models');
+// eslint-disable-next-line no-unused-vars
 const client = require('filestack-js').init(process.env.FIRESTACK_KEY);
 
 app.use(cookieParser());
