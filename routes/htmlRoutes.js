@@ -63,5 +63,14 @@ module.exports = (db) => {
     });
   });
 
+  // new route for about
+  router.get('/about', (req, res) => {
+    res.render('about');
+  });
+
+  router.get('/portfolio', (req, res) => {
+    res.render('portfolio');
+  });
+
   return router;
 };
