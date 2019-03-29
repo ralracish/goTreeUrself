@@ -5,16 +5,9 @@
 </head>
 
 <body>
-    <!-- <input type='file' />
-    <div class='controls'>
-        <button id='cancel'>Cancel</button>
-        <button id='pause'>Pause</button>
-        <button id='resume'>Resume</button>
-    </div>
-    <div>Progress: <span id='progress'></span></div> -->
     <button id='upload'>Upload</button>
-    <!-- <script src='https://static.filestackapi.com/filestack-js/2.x.x/filestack.min.js'></script> -->
-
+    <div id='response'></div>
+    <div id='content'></div>
     <script>
         window.addEventListener('DOMContentLoaded', function () {
             const apikey = 'ALu7LkiIIR3moIv9EV6sRz';
@@ -22,15 +15,31 @@
             const options = {
                 maxFiles: 1,
                 uploadInBackground: false,
+                // imageMax resizes image to a maximum size
                 imageMax: [800, 600],
                 imageMin: [40, 30],
+                // maxSize is set to limit the file upload to 10MB
                 maxSize: 10 * 1024 * 1024,
+                // onOpen could be used if we want to know that the modal is opened
                 // onOpen: () => console.log('opened!'),
-                onUploadDone: (res) => console.log(res),
+                // onUploadDone gives us the uploaded image handle to put in our db
+                onUploadDone: (res) => {
+                    let theHandle = res.filesUploaded[0].handle;
+                    console.log('image uploaded to: ' + theHandle);
+                    client.retrieve(theHandle).then((blob) => {
+                        const urlCreator = window.URL || window.webkitURL;
+                        const img = document.createElement('img');
+                        // we set the width *or* height as we wish for different contexts
+                        // img.width = 720;
+                        img.height = 200;
+                        img.src = urlCreator.createObjectURL(blob);
+                        document.getElementById('content').appendChild(img)
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                }
             };
-
             document.getElementById('upload').onclick = function () { client.picker(options).open(); };
-
         });
     </script>
 </body>
