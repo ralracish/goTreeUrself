@@ -1,52 +1,38 @@
 <html>
 
-<head></head>
+<head>
+    <script src='https://static.filestackapi.com/filestack-js/2.x.x/filestack.min.js'></script>
+</head>
 
 <body>
-    <input type='file' />
+    <!-- <input type='file' />
     <div class='controls'>
         <button id='cancel'>Cancel</button>
         <button id='pause'>Pause</button>
         <button id='resume'>Resume</button>
     </div>
-    <div>Progress: <span id='progress'></span></div>
-    <script src='https://static.filestackapi.com/filestack-js/2.x.x/filestack.min.js'></script>
-    <!-- <script src='https://static.filestackapi.com/filestack-js/1.x.x/filestack.min.js'></script> -->
+    <div>Progress: <span id='progress'></span></div> -->
+    <button id='upload'>Upload</button>
+    <!-- <script src='https://static.filestackapi.com/filestack-js/2.x.x/filestack.min.js'></script> -->
 
-<script>
-    window.addEventListener('DOMContentLoaded', function () {
-        const apikey = 'ALu7LkiIIR3moIv9EV6sRz';
-        const client = filestack.init(apikey);
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const apikey = 'ALu7LkiIIR3moIv9EV6sRz';
+            const client = filestack.init(apikey);
+            const options = {
+                maxFiles: 1,
+                uploadInBackground: false,
+                imageMax: [800, 600],
+                imageMin: [40, 30],
+                maxSize: 10 * 1024 * 1024,
+                // onOpen: () => console.log('opened!'),
+                onUploadDone: (res) => console.log(res),
+            };
 
-        const onProgress = (evt) => {
-            document.getElementById('progress').innerHTML = `${evt.totalPercent}%`;
-        };
+            document.getElementById('upload').onclick = function () { client.picker(options).open(); };
 
-        document.querySelector('input').addEventListener('change', (event) => {
-            const files = event.target.files;
-            const file = files.item(0);
-            const token = {};
-            const cancel = document.getElementById('cancel');
-            const pause = document.getElementById('pause');
-            const resume = document.getElementById('resume');
-
-            [cancel, resume, pause].forEach((btn) => {
-                const id = btn.id;
-                btn.addEventListener('click', () => {
-                    token[id]();
-                });
-            });
-
-            client.upload(file, { onProgress }, {}, token)
-                .then(res => {
-                    console.log('success: ', res)
-                })
-                .catch(err => {
-                    console.log(err)
-                });
         });
-    });
-</script>
+    </script>
 </body>
 
 </html>
