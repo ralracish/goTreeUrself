@@ -4,8 +4,10 @@ module.exports = (db) => {
   router.get('/register', (req, res) => {
     if (req.isAuthenticated()) {
       res.redirect('/profile');
-    } else {
+    } else if (req.path === '/register') {
       res.render('register');
+    } else {
+      console.log(' testing ');
     }
   });
 
@@ -65,15 +67,39 @@ module.exports = (db) => {
 
   // new route for about
   router.get('/about', (req, res) => {
-    res.render('about');
-  });
-
-  router.get('/portfolio', (req, res) => {
-    res.render('portfolio');
+    if (req.isAuthenticated()) {
+      const user = {
+        user: req.session.passport.user,
+        isloggedin: req.isAuthenticated()
+      };
+      res.render('about', user);
+    } else {
+      res.render('about');
+    }
   });
 
   router.get('/howitworks', (req, res) => {
-    res.render('howitworks');
+    if (req.isAuthenticated()) {
+      const user = {
+        user: req.session.passport.user,
+        isloggedin: req.isAuthenticated()
+      };
+      res.render('howitworks', user);
+    } else {
+      res.render('howitworks');
+    }
+  });
+
+  router.get('/portfolio', (req, res) => {
+    if (req.isAuthenticated()) {
+      const user = {
+        user: req.session.passport.user,
+        isloggedin: req.isAuthenticated()
+      };
+      res.render('portfolio', user);
+    } else {
+      res.render('portfolio');
+    }
   });
 
   return router;

@@ -5,10 +5,14 @@ $('#add-user').on('click', function (event) {
     firstName: $('#inputFirst').val().trim(),
     lastName: $('#inputLast').val().trim(),
     email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim()
+    password: $('#inputPassword').val().trim(),
+    dob: $('#inputDOB').val().trim(),
+    city: $('#inputCity').val().trim(),
+    state: $('#inputState').val().trim(),
+    country: $('#inputCountry').val().trim()
   };
 
-  if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.password.length > 0 && newAccount.lastName.length > 0 && newAccount.firstName.length > 0) {
+  if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.lastName.length > 0 && newAccount.firstName.length > 0) {
     $.ajax({
       type: 'POST',
       url: '/api/register',
@@ -32,13 +36,17 @@ $('#update-user').on('click', function (event) {
     firstName: $('#inputFirst').val().trim(),
     lastName: $('#inputLast').val().trim(),
     email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim()
+    password: $('#inputPassword').val().trim(),
+    dob: $('#inputDOB').val().trim(),
+    city: $('#inputCity').val().trim(),
+    state: $('#inputState').val().trim(),
+    country: $('#inputCountry').val().trim()
   };
   $('#err-msg').empty('');
   // $('#change-user-modal').modal('show');
   console.log(changeUser);
 
-  if (changeUser.password.length > 0 && changeUser.email.length > 0 && changeUser.password.length > 0 && changeUser.lastName.length > 0 && changeUser.firstName.length > 0) {
+  if (changeUser.password.length > 0 && changeUser.email.length > 0 && changeUser.lastName.length > 0 && changeUser.firstName.length > 0) {
     $.ajax({
       type: 'PUT',
       url: `/api/user/${id}`,
@@ -97,28 +105,8 @@ $('#confirm-delete').on('click', function (event) {
 
 $('#register').on('click', function (event) {
   event.preventDefault();
-  const fileInput = document.getElementById('file-input');
-  fileInput.addEventListener('change', (e) =>
-    addTreePhoto(e.target.files));
   window.location.href = '/register';
 });
-
-const output = document.getElementById('output');
-
-function addTreePhoto (fileList) {
-  let file = null;
-
-  for (let i = 0; i < fileList.length; i++) {
-    if (fileList[i].type.match(/^image\//)) {
-      file = fileList[i];
-      break;
-    }
-  }
-
-  if (file !== null) {
-    output.src = URL.createObjectURL(file);
-  }
-}
 
 $('#login-modal').on('click', function (event) {
   event.preventDefault();
