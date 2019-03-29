@@ -1,4 +1,81 @@
-<div class="modal" id="user-info" tabindex="-1" role="dialog">
+<div class="hero-full-screen overlay">         
+  <div class="top-content-section">
+    {{!-- {{> nav/nav-block user=true register=false}} --}}
+    <div class="grid-x grid-margin-x">
+      <div class="cell">
+        <div class="translucent-form-overlay" id="user-info" style="margin: 0 auto;">
+          <form>
+            <h3>Login</h3>
+            <div class="row columns">
+              <div class="input-group">
+                {{!-- <label for="inputEmail">Email</label> --}}
+                <span class="input-group-label">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+              </div>
+            </div>
+            <div class="row columns">
+              <div class="input-group">
+                {{!-- <label for="inputPassword">Password</label> --}}
+                <span class="input-group-label">
+                  <i class="fa fa-key"></i>
+                </span>
+                <input type="password" class="form-control" id="pass" name="password input" placeholder="Password">
+                {{!-- <input type="password" class="form-control" id="inputPassword" placeholder="Password"> --}}
+              </div>
+            </div>
+            {{!-- <button type="button" id="add-user" class="primary button expanded search-button">
+              Submit
+            </button> --}}
+            <input class="button expanded" type="submit" value="Login">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- <div class="reveal" id="user-info" tabindex="-1" data-reveal>
+  {{!-- <div class="modal-dialog" role="document"> --}}
+<form class="callout text-center">
+  <h2>Login</h2>
+  <div class="floated-label-wrapper">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email input" placeholder="Email">
+  </div>
+  <div class="floated-label-wrapper">
+    <label for="pass">Password</label>
+    <input type="password" id="pass" name="password input" placeholder="Password">
+  </div>
+  <input class="button expanded" type="submit" value="Sign up">
+</form>
+{{!-- </div> --}}
+</div> --}}
+
+
+{{!-- <div class="reveal" id="user-info" tabindex="-1" data-reveal>
+  <div class="translucent-form-overlay"></div>
+    <form>
+      <h3>Login</h3>
+      <div class="row columns">
+        <label for="username">Your login</label>
+        <input type="text" value="" placeholder="Enter Email" id="email">
+        <div class="password-wrapper">
+          <label for="password">Your password</label>
+          <input type="password" value="" placeholder="Enter Password" id="user_password">
+          <button class="unmask" type="button" title="Mask/Unmask password to check content"></button>
+        </div>
+      </div>
+      <button type="button" class="primary button expanded search-button">
+        Login
+      </button>
+    </form>
+  </div>
+</div> --}}
+
+
+{{!-- <div class="modal" id="user-info" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -27,4 +104,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}

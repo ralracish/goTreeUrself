@@ -1,38 +1,45 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<div class="top-content-section">
+  <nav class="top-bar topbar-responsive">
   <!-- Brand/logo -->
-  <a class="navbar-brand" href="/">
-    <p class="imageclass"><img src="assets/images/tree-icon.png" alt="Tree menu-icon" height="60" width="60">Go Tree Yourself</p>&nbsp;
-  </a>
+    <div class="top-bar-title">
+      <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
+      <!-- <button class="menu-icon" type="button" data-toggle></button> -->
+      </span>
+      <p class="imageclass"><img src="assets/images/tree-icon.png" alt="Tree menu-icon" height="60" width="60"></p>&nbsp;
+      <ul class="menu simple vertical medium-horizontal">
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Go Tree Yourself</a></li>
+      </ul>
+    </div>
   
   <!-- Links -->
-  <ul class="nav navbar-nav ml-auto">
     {{#if isloggedin}}
-      <li class="nav-item">
-        <a class="nav-link" href="/profile">My Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
+          <div id="topbar-responsive" class="topbar-responsive-links">
+        <div class="top-bar-right">
+            <ul class="menu simple vertical medium-horizontal">
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li> 
+                    <!-- Could use this button for a drop down of check boxes to change the user view to see only their trees, 
+                        all trees, certain types of trees, etc. -->
+                    <button type="button" class="button hollow topbar-responsive-button">Categories</button>
+                </li>
+            </ul>
+        </div>
+    </div>
     {{else}}
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">How It Works</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" id="login-modal">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register" data-register={{register}}>Register</a>
-      </li>
-      <li class="nav-item"> 
-        <!-- Could use this button for a drop down of check boxes to change the user view to see only their trees, 
-            all trees, certain types of trees, etc. -->
-        <button type="button" class="button hollow topbar-responsive-button">Categories</button>
-      </li>
+      <div id="topbar-responsive" class="topbar-responsive-links">
+        <div class="top-bar-right">
+            <ul class="menu simple vertical medium-horizontal">
+                <li><a href="#">About</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="/login" id="login-modal">Login</a></li>
+                <li><a href="/register" data-register={{register}}>Register</a></li>
+            </ul>
+        </div>
+      </div>
     {{/if}}
-  </ul>
-</nav>
 
-{{> modal/login-block}}
+  </nav>
+</div>
+
+{{!-- {{> modal/login-block}} --}}

@@ -132,7 +132,6 @@ $('#go-home').on('click', function (event) {
 
 $('#login').on('click', function (event) {
   event.preventDefault();
-
   const user = {
     email: $('#email').val().trim(),
     password: $('#user_password').val().trim()
