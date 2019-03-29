@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     dob: {
-      type: DataTypes.STRING
+      type: DataTypes.DATEONLY
     },
     city: {
       type: DataTypes.STRING
