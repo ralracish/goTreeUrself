@@ -423,3 +423,29 @@ form .form-icons .fa {
   color: white;
   width: 1rem;
 }
+/* Profile Page CSS */
+.profile-container {
+  margin-left: 75px;
+}
+#my-info {
+  margin-top:120px;
+}
+#profile-info{
+  margin-left:30px;
+  padding: 5px, 5px, 5px, 5px;
+  margin-bottom:30px;
+}
+.large-up-4 .column p {
+  color:white;
+}
+#tree-header {
+  text-align: center;
+  color: #fefefe;
+  background: rgba(0, 0, 0, 0.5);
+}
+#contact-me {
+  color:white;
+}
+#image-button {
+  align-items: center;
+}
