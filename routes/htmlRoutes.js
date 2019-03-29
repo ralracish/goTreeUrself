@@ -72,5 +72,9 @@ module.exports = (db) => {
     res.render('portfolio');
   });
 
+  router.get('/howitworks', (req, res) => {
+    res.render('howitworks');
+  });
+
   return router;
 };
