@@ -1,25 +1,27 @@
-{{> nav/nav-block}}
-
-<div class="hero-full-screen overlay">         
+<div class="hero-full-screen overlay">
   <div class="top-content-section">
-    <div class="layer"></div>
+    {{> nav/nav-block user=false register=true}}
   </div>
-        
-  <div class="middle-content-section">
-    <div class="text-box"></div>
+  <div class="middle-content-section" id="about-middle">
+    <div class="container">
     <h1>How It Works</h1>
     <br>
-        <p>To join the effort at goTreeUrself, first register with your name, email, and a photo of the tree you have planted.  Our system
-            will obtain the geotag information from your tree image and grab the latitude and longitude of the tree. You tree then gets pinned
+        <p>To join the effort at goTreeUrself, first register with your information. Then login, and our system
+            will take you to your profile page. There you can upload a profile picture if you so choose, and then 
+            start uploading photos of the trees you've planted. We will obtain the geotag information from your 
+            tree image and grab the latitude and longitude of the tree. You tree then gets pinned
             on the World Map on the home page.  It's just that easy!
         </p>
 
-        <p>After that, when you log in you will be directed to your profile page where you can upload your profile photo, and the trees you 
-            have planted will be logged and shown on your below your information. 
+        <p>On your profile page, you will be able to see all the trees you have planted.  You may also communicate with other
+          tree planters.
         </p>
-  </div>
+      </div>
+    </div>
 
   <div class="bottom-content-section" data-magellan data-threshold="0">
   <!-- <a href="#main-content-section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"/></svg></a> -->
   </div>    
 </div>
+
+{{> modal/login-block}}

@@ -6,27 +6,30 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true
     },
     longitude: {
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING
     },
     latitude: {
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING
     },
     date_planted: {
       type: DataTypes.INTEGER
     },
     tree_image_link: {
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING
+    },
+    users_tree_name: {
+      type: DataTypes.STRING
+    },
+    treename: {
+      type: DataTypes.STRING
+    },
+    treetype: {
+      type: DataTypes.STRING
     }
   });
 
   Usertrees.associate = (models) => {
     Usertrees.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-
-    Usertrees.belongsTo(models.Trees, {
       foreignKey: {
         allowNull: false
       }
