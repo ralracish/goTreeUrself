@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     date_planted: {
-      type: DataTypes.INTEGER
+      type: DataTypes.DATEONLY
     },
     tree_image_link: {
       type: DataTypes.STRING

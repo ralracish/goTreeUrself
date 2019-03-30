@@ -7,11 +7,10 @@ $('#add-user').on('click', function (event) {
     firstName: $('#inputFirst').val().trim(),
     lastName: $('#inputLast').val().trim(),
     email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim()
-    // dob: $('#inputDOB').val().trim(),
-    // city: $('#inputCity').val().trim(),
-    // state: $('#inputState').val().trim(),
-    // country: $('#inputCountry').val().trim()
+    password: $('#inputPassword').val().trim(),
+    city: $('#inputCity').val().trim(),
+    state: $('#inputState').val().trim(),
+    country: $('#inputCountry').val().trim()
   };
 
   if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.lastName.length > 0 && newAccount.firstName.length > 0) {
@@ -38,11 +37,10 @@ $('#update-user').on('click', function (event) {
     firstName: $('#inputFirst').val().trim(),
     lastName: $('#inputLast').val().trim(),
     email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim()
-    // dob: $('#inputDOB').val().trim(),
-    // city: $('#inputCity').val().trim(),
-    // state: $('#inputState').val().trim(),
-    // country: $('#inputCountry').val().trim()
+    password: $('#inputPassword').val().trim(),
+    city: $('#inputCity').val().trim(),
+    state: $('#inputState').val().trim(),
+    country: $('#inputCountry').val().trim()
   };
   $('#err-msg').empty('');
   // $('#change-user-modal').modal('show');
@@ -274,6 +272,7 @@ window.addEventListener('DOMContentLoaded', function () {
           };
           // put theHandle into our database, that's the image
           // the user uploaded
+          // put longitude into database
           $.ajax({
             type: 'POST',
             url: '/api/usertrees',
@@ -282,8 +281,8 @@ window.addEventListener('DOMContentLoaded', function () {
             // window.location.href = '/';
             console.log(result);
           });
-          // put longitude into database
 
+          // grab all the tree data from db
           placeMarker(latitude, longitude);
         })
         .catch((err) => {

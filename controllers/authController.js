@@ -10,7 +10,10 @@ module.exports = (passport, db) => {
           email: req.body.email,
           password: req.body.password,
           firstName: req.body.firstName,
-          lastName: req.body.lastName
+          lastName: req.body.lastName,
+          city: req.body.city,
+          state: req.body.state,
+          country: req.body.country
         };
 
         return db.User.create(newUser).then(() => {
@@ -49,12 +52,14 @@ module.exports = (passport, db) => {
       });
     },
     updateUser: (req, res) => {
-      // console.log('req.body:', req.body);
       db.User.update({
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        password: req.body.password
+        password: req.body.password,
+        city: req.body.city,
+        state: req.body.state,
+        country: req.body.country
       }, {
         where: { id: req.params.id }
       }).then(result => {
