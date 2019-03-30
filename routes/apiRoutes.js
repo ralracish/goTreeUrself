@@ -12,7 +12,7 @@ module.exports = (passport, db) => {
   router.put('/user/:id', ensureAuthenticated, AuthController.updateUser);
   router.delete('/user/:id', ensureAuthenticated, AuthController.deleteUser);
   router.post('/user/confirm', AuthController.confirmAuth);
-  // treelink
+  // push treelink
   router.post('/usertrees', AuthController.userTrees);
 
   // App
