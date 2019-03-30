@@ -1,7 +1,7 @@
 {{> nav/nav-block user=true register=false}}
 
 <div class="hero-full-screen overlay">  
-<div class="container">
+<div class="container profiletxt">
   <header align="center" class="header-wrap">
     <h1>View or update your user</h1>
     <div class="userId">
@@ -11,25 +11,34 @@
     <h3 id="update-err-msg"></h3>
   </header>
 
+  <div align="center">
+    <p>Upload the picture of your tree to begin</p>
+    <button id="upload" data-id="{{userInfo.id}}" class="btn btn-primary">Upload</button>
+    <div id='response' data-id="{{userInfo.id}}" ></div>
+    <div id='content' data-id="{{userInfo.id}}" ></div>
+    <div id="map"></div>
+  </div>
+
+
   <form id="user-form">
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputFirst">First Name</label>
+        <label for="inputFirst" class="profiletxt">First Name</label>
         <input type="text" class="form-control" id="inputFirst" value="{{userInfo.firstName}}" placeholder="John">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputLast">Last Name</label>
+        <label for="inputLast" class="profiletxt">Last Name</label>
         <input type="text" class="form-control" id="inputLast" value="{{userInfo.lastName}}" placeholder="Doe">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputPassword">Email</label>
+        <label for="inputPassword" class="profiletxt">Email</label>
         <input type="text" class="form-control" id="inputEmail" value="{{userInfo.email}}">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputPassword">Password</label>
+        <label for="inputPassword" class="profiletxt">Password</label>
         <input type="password" class="form-control" id="inputPassword" value="{{userInfo.password}}">
       </div>
     </div>
