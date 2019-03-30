@@ -89,18 +89,18 @@
                     icon: iconBase + 'kml/shapes/caution.png'
                 }
             };
-            let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
-            $.get(oceanCheckUrl, function (response, status) {
-                console.log(response);
-                if (!Object.keys(response).includes('ocean')) {
-                    var userLatLong = { lat: latitude, lng: longitude };
-                    var marker = new google.maps.Marker({
-                        position: userLatLong,
-                        map: map,
-                        icon: icons.tree.icon,
-                    });
-                }
+            // let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
+            // $.get(oceanCheckUrl, function (response, status) {
+            //     console.log(response);
+            //     if (!Object.keys(response).includes('ocean')) {
+            var userLatLong = { lat: latitude, lng: longitude };
+            var marker = new google.maps.Marker({
+                position: userLatLong,
+                map: map,
+                icon: icons.tree.icon,
             });
+            // }
+            // });
         };
 
         window.addEventListener('DOMContentLoaded', function () {

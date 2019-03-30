@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple Markers</title>
+    <script src='https://code.jquery.com/jquery.js'></script>
+</head>
+
+<body>
+    <script>
+        const googleSearchAPI = 'AIzaSyAj5ERWlVlw7l8uxhZ-HKjws9kmFJz0bh4';
+        const usersArray = [];
+        const treesArray = [];
+        const treeImagesArray = ['oxtXNfamTiyTIfkfqj3L', 'njzaDu11QwivwUO7CDmm', 'C5Tn3psQV6LA90D8j2S0', 'ejHDgqcBT2u5b1EVBtmZ', 'QWpkx20JT7S4gjmAFd1D', 'Rgy81DcYS7KpBmePpKBZ', 'uEZsxP4TNed8qvZSHHIr', 'PZNFWs0mS9WUhP3K7JOt', '5lC3awBtSUS7OsYiTh7h', 'VOuToVfQaCP30IxTDMmw', 'Qym55AknSAS6cWkNUGSS', 'frxFzEzlSMuRgrFlHV9Q', 'yx97LvuT5ewpqfeCORGh', 'sauZBfSWT4qvHvhvrrON', 'edDzlpSQhKN8I7p8iodt'];
+        const femaleImagesArray = ['ZVlSGdjIQZqxs3cAAF1R', 'p6UijAZmSNScEB9B0NFD', 'hDr5x3SMRvmFL7xhG6JE', 'VA035lASdqZr7iaZqIUw', 'QlQewMGvSRmBdQJnmSOx', 'dFELuocqT06mIdFYDvN0', 'u1hvrLI0RYmhcywmWy1B', 'TLKgfaCXT3mLsK2m7uvT', 'XinxENDTRSIlGPRwlEWl', '71jrDQQ8WNy2F562pQEw', '6ThZkdvCSNqqNuxZAgVx', '3CIepxfvTHGSfNQNZdbu', 'DN5G88gSQn0XedJjevvv', 'eciyL7vKQ27o4ClWY3qA', 'TweJu8KnTSOotLYYNXAd']
+        let queryURL;
+        var breakFlag = false;
+
+        let newUser = {};
+        let newTree = {};
+        let theCount = 0;
+
+        function createRandomUsers() {
+            if (theCount < 10) {
+                if (theCount % 2 === 0) { // if it's an even number we'll get a random female
+                    queryURL = 'https://randomuser.me/api/?gender=female'
+                } else {
+                    queryURL = 'https://randomuser.me/api/?gender=male'
+                };
+                $.get(queryURL, function (response, status) {
+                    let firstName = response.results[0].name.first;
+                    let firstNameCapitalized = firstName.charAt(0).toUpperCase() + firstName.substring(1);
+                    let lastName = response.results[0].name.last;
+                    let lastNameCapitalized = lastName.charAt(0).toUpperCase() + lastName.substring(1);
+                    let dob = (response.results[0].dob.date).substring(0, 10);
+                    let street = response.results[0].location.street;
+                    let city = response.results[0].location.city;
+                    let state = response.results[0].location.state;
+                    let country = response.results[0].nat;
+                    let age = Math.floor(Math.random() * (56 - 20)) + 10;
+                    let profile_image_link = response.results[0].picture.large;
+                    let email = response.results[0].email;
+                    let password = response.results[0].login.password;
+                    let latitude = parseFloat(response.results[0].location.coordinates.latitude);
+                    let longitude = parseFloat(response.results[0].location.coordinates.longitude);
+                    let tree_image_link = treeImagesArray[theCount];
+                    let date_planted = (response.results[0].registered.date).substring(0, 10);
+
+                    newUser = {
+                        firstName: firstNameCapitalized,
+                        lastName: lastNameCapitalized,
+                        dob: dob,
+                        street: street,
+                        city: city,
+                        state: state,
+                        country: country,
+                        age: age,
+                        profile_image_link: profile_image_link,
+                        email: email,
+                        password: password
+                    };
+                    newTree = {
+                        latitude: latitude,
+                        longitude: longitude,
+                        //TODO:
+                        tree_image_link: tree_image_link,
+                        date_planted: date_planted,
+                        name_of_tree: lastNameCapitalized,
+                        users_tree_name: firstNameCapitalized,
+                        UserId: theCount,
+                    };
+                    let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
+                    $.get(oceanCheckUrl, function (response, status) {
+                        if (!Object.keys(response).includes('ocean')) {
+                            console.log(`insert into usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId) values ('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${lastNameCapitalized}', '${firstNameCapitalized}', ${theCount});`);
+                            console.log(`insert into users (firstName, lastName, dob, city, state, country, profile_image_link, email, password) values ('${firstName}', '${lastName}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${email}', '${password}');`);
+
+                            theCount++;
+                            usersArray.push(newUser);
+                            treesArray.push(newTree);
+                        }
+                        createRandomUsers();
+                    });
+                })
+            };
+            // console.log(usersArray);
+            // console.log(treesArray);
+        };
+
+        createRandomUsers();
+    </script>
+</body>
+
+</html>
