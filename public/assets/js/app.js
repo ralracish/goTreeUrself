@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-vars */
 $('#add-user').on('click', function (event) {
   event.preventDefault();
 
@@ -142,12 +144,13 @@ var userLatitude;
 var userLongitude;
 var initMapLatLong;
 var map;
-var request;
+// var request;
 
 function getLocation () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
+    // eslint-disable-next-line no-undef
     geolocationStatusField.text('Geolocation is not supported by this browser');
   }
 };
@@ -155,7 +158,8 @@ function getLocation () {
 function showPosition (position) {
   userLatitude = parseFloat(position.coords.latitude);
   userLongitude = parseFloat(position.coords.longitude);
-  if (initMapLatLong != userLatitude, userLongitude) {
+  // eslint-disable-next-line no-sequences
+  if (initMapLatLong !== userLatitude, userLongitude) {
     console.log('redoing initMap: ' + initMapLatLong + ' / ' + userLatitude, userLongitude);
     initMap();
   } else {
@@ -165,12 +169,16 @@ function showPosition (position) {
 
 function initMap () {
   console.log('init map: ' + userLatitude, userLongitude);
+  // eslint-disable-next-line no-unused-expressions
+  // eslint-disable-next-line no-sequences
   initMapLatLong = userLatitude, userLongitude;
   var userLatLong = { lat: userLatitude, lng: userLongitude };
+  // eslint-disable-next-line no-undef
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
     center: userLatLong
   });
+  // eslint-disable-next-line no-undef
   var marker = new google.maps.Marker({
     position: userLatLong,
     map: map,
@@ -194,6 +202,7 @@ function placeMarker (latitude, longitude) {
     console.log(response);
     if (!Object.keys(response).includes('ocean')) {
       var userLatLong = { lat: latitude, lng: longitude };
+      // eslint-disable-next-line no-undef
       var marker = new google.maps.Marker({
         position: userLatLong,
         map: map,
@@ -215,6 +224,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   };
 
+  // eslint-disable-next-line no-undef
   const client = filestack.init(apikey, clientOptions);
 
   const options = {
