@@ -86,6 +86,23 @@ module.exports = (passport, db) => {
       }).catch(() => {
         res.json(false);
       });
+    },
+    userTrees: (req, res) => {
+      db.Usertrees.sync().then(() => {
+        const newUsertrees = {
+          UserId: req.body.UserId,
+          tree_image_link: req.body.tree_image_link,
+          longitude: req.body.longitude,
+          latitude: req.body.latitude
+        };
+
+        return db.Usertrees.create(newUsertrees).then(() => {
+          res.status(200).json({ message: 'Tree Registered successfully.' });
+        });
+      }).catch((err) => {
+        console.log(err);
+        res.status(403).json(err);
+      });
     }
   };
 };

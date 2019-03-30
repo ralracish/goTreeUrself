@@ -449,3 +449,8 @@ form .form-icons .fa {
 #image-button {
   align-items: center;
 }
+
+.profiletxt{
+  color:white;
+  font-weight: bold;
+}
