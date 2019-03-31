@@ -108,6 +108,17 @@ module.exports = (passport, db) => {
         console.log(err);
         res.status(403).json(err);
       });
+    },
+
+    grabTrees: (req, res) => {
+      db.Usertrees.findAll({}).then(trees => {
+        trees.forEach(element => {
+          console.log(JSON.stringify(element));
+        });
+        // console.log(JSON.stringify(trees[0]));
+        console.log('we have tree data!');
+        return (trees);
+      });
     }
   };
 };

@@ -17,6 +17,8 @@ CREATE TABLE usertrees
     (255),
    users_tree_name varchar
     (255),
+    treename varchar (255),
+    treetype varchar (255),
    UserId int,
    primary key
     (id)

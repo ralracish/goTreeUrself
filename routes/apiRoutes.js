@@ -13,8 +13,10 @@ module.exports = (passport, db) => {
   router.delete('/user/:id', ensureAuthenticated, AuthController.deleteUser);
   router.post('/user/confirm', AuthController.confirmAuth);
   // push treelink
-  router.post('/usertrees', AuthController.userTrees);
-
+  router.post('/usertrees', AuthController.userTrees, function (req, res) {
+    console.log('did post usertrees');
+  });
+  router.get('/usertrees', AuthController.grabTrees);
   // App
   router.get('/data', ensureAuthenticated, AppController.getData);
 
