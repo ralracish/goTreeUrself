@@ -138,11 +138,10 @@ $('#login').on('click', function (event) {
 });
 
 // inserting filestack
-var userLatitude;
-var userLongitude;
+var userLatitude = 35.8235; // for testing purposes
+var userLongitude = -78.8256; // until we're actually getting lat/long
 var initMapLatLong;
 var map;
-// var request;
 
 function getLocation () {
   if (navigator.geolocation) {
@@ -195,18 +194,12 @@ function placeMarker (latitude, longitude) {
       icon: iconBase + 'kml/shapes/caution.png'
     }
   };
-  let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`;
-  $.get(oceanCheckUrl, function (response, status) {
-    console.log(response);
-    if (!Object.keys(response).includes('ocean')) {
-      var userLatLong = { lat: latitude, lng: longitude };
-      // eslint-disable-next-line no-undef
-      var marker = new google.maps.Marker({
-        position: userLatLong,
-        map: map,
-        icon: icons.tree.icon
-      });
-    }
+  var userLatLong = { lat: latitude, lng: longitude };
+  // eslint-disable-next-line no-undef
+  var marker = new google.maps.Marker({
+    position: userLatLong,
+    map: map,
+    icon: icons.tree.icon
   });
 };
 
@@ -312,5 +305,9 @@ window.addEventListener('DOMContentLoaded', function () {
     return dd;
   };
 
-  document.getElementById('upload').onclick = function () { client.picker(options).open(); };
+  // use the following line in a function or
+  // button click or whatever to open the
+  // picture upload modal:
+
+  // client.picker(options).open();
 });
