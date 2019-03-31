@@ -117,6 +117,7 @@ module.exports = (passport, db) => {
         });
         // console.log(JSON.stringify(trees[0]));
         console.log('we have tree data!');
+        res.json(trees);
         return (trees);
       });
     }
