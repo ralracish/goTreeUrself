@@ -287,7 +287,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const urlCreator = window.URL || window.webkitURL;
         const img = document.createElement('img');
         // we set the width *or* height as we wish for different contexts
-        // img.width = 720;
+        img.width = 200;
         img.height = 200;
         img.src = urlCreator.createObjectURL(blob);
         document.getElementById('content').appendChild(img);
@@ -310,4 +310,5 @@ window.addEventListener('DOMContentLoaded', function () {
   // picture upload modal:
 
   // client.picker(options).open();
+  document.getElementById('upload-tree').onclick = function () { client.picker(options).open(); };
 });

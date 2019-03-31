@@ -111,13 +111,23 @@ module.exports = (passport, db) => {
     },
 
     grabTrees: (req, res) => {
-      db.Usertrees.findAll({}).then(trees => {
-        trees.forEach(element => {
-          console.log(JSON.stringify(element));
-        });
-        // console.log(JSON.stringify(trees[0]));
-        console.log('we have tree data!');
-        return (trees);
+      var usertrees = [];
+      db.Usertrees.findAll({
+        include: [{
+          model: db.User,
+          required: true
+        }]
+      }).then(trees => {
+        for (var i = 0; i < trees.length; i++) {
+          const tr = {
+            firstName: trees[i].User.firstName,
+            lastName: trees[i].User.lastName,
+            latitude: trees[i].latitude,
+            longitude: trees[i].longitude
+          };
+          usertrees.push(tr);
+        }
+        res.json(usertrees);
       });
     }
   };
