@@ -127,7 +127,7 @@ module.exports = (passport, db) => {
           };
           usertrees.push(tr);
         }
-        res.json(usertrees);
+        res.send(usertrees);
       });
     }
   };
