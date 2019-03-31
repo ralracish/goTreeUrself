@@ -143,7 +143,7 @@ var userLongitude = -78.8256; // until we're actually getting lat/long
 var initMapLatLong;
 var map;
 
-function getLocation () {
+function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
@@ -152,7 +152,7 @@ function getLocation () {
   }
 };
 
-function showPosition (position) {
+function showPosition(position) {
   userLatitude = parseFloat(position.coords.latitude);
   userLongitude = parseFloat(position.coords.longitude);
   // eslint-disable-next-line no-sequences
@@ -164,7 +164,7 @@ function showPosition (position) {
   }
 };
 
-function initMap () {
+function initMap() {
   console.log('init map: ' + userLatitude, userLongitude);
   // eslint-disable-next-line no-unused-expressions
   // eslint-disable-next-line no-sequences
@@ -183,9 +183,9 @@ function initMap () {
   });
 };
 
-function placeMarker (latitude, longitude) {
+function placeMarker(latitude, longitude) {
   var iconBase =
-                'http://maps.google.com/mapfiles/';
+    'http://maps.google.com/mapfiles/';
   var icons = {
     tree: {
       icon: 'parks_small.png'
@@ -256,48 +256,58 @@ window.addEventListener('DOMContentLoaded', function () {
           console.log('image handle: ' + theHandle);
           console.log('image url: ' + theUrl);
 
-          var subid = $('#content').attr('data-id');
-          const treeData =
-          { UserId: subid,
-            tree_image_link: theUrl,
-            latitude: latitude,
-            longitude: longitude
-          };
-          // put theHandle into our database, that's the image
-          // the user uploaded
-          // put longitude into database
-          $.ajax({
-            type: 'POST',
-            url: '/api/usertrees',
-            data: treeData
-          }).then((result) => {
-            // window.location.href = '/';
-            console.log(result);
+          let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
+          $.get(oceanCheckUrl, function (response, status) {
+            if (!Object.keys(response).includes('ocean')) {
+              // then the latitude/longitude is on land and we can go ahead
+              // otherwise we need to ask the user for info
+              var subid = $('#content').attr('data-id');
+              const treeData =
+              {
+                UserId: subid,
+                tree_image_link: theUrl,
+                latitude: latitude,
+                longitude: longitude
+              };
+              // put theHandle into our database, that's the image
+              // the user uploaded
+              // put longitude into database
+              $.ajax({
+                type: 'POST',
+                url: '/api/usertrees',
+                data: treeData
+              }).then((result) => {
+                // window.location.href = '/';
+                console.log(result);
+              });
+
+              // grab all the tree data from db
+              placeMarker(latitude, longitude);
+
+              // the following block retrieves the image
+              client.retrieve(theHandle).then((blob) => {
+                const urlCreator = window.URL || window.webkitURL;
+                const img = document.createElement('img');
+                // we set the width *or* height as we wish for different contexts
+                // img.width = 720;
+                img.height = 200;
+                img.src = urlCreator.createObjectURL(blob);
+                document.getElementById('content').appendChild(img);
+              }).catch((error) => {
+                console.error(error);
+              });
+            } else {
+              // the lat/long is in water and we need
+              // to ask the user for location
+            }
+          }).catch((err) => {
+            console.log(err);
           });
-
-          // grab all the tree data from db
-          placeMarker(latitude, longitude);
-        })
-        .catch((err) => {
-          console.log(err);
         });
-
-      // the following block retrieves the image
-      client.retrieve(theHandle).then((blob) => {
-        const urlCreator = window.URL || window.webkitURL;
-        const img = document.createElement('img');
-        // we set the width *or* height as we wish for different contexts
-        // img.width = 720;
-        img.height = 200;
-        img.src = urlCreator.createObjectURL(blob);
-        document.getElementById('content').appendChild(img);
-      }).catch((error) => {
-        console.error(error);
-      });
     }
   };
 
-  function convertDMSToDD (degrees, minutes, seconds, direction) {
+  function convertDMSToDD(degrees, minutes, seconds, direction) {
     var dd = parseInt(degrees) + minutes / 60 + seconds / 3600;
     if (direction === 'S' || direction === 'W') {
       dd = dd * -1;
