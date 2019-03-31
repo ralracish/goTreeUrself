@@ -112,7 +112,10 @@ module.exports = (passport, db) => {
 
     grabTrees: (req, res) => {
       db.Usertrees.findAll({}).then(trees => {
-        console.table(trees);
+        trees.forEach(element => {
+          console.log(JSON.stringify(element));
+        });
+        // console.log(JSON.stringify(trees[0]));
         console.log('we have tree data!');
         return (trees);
       });
