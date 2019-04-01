@@ -130,7 +130,7 @@ module.exports = (passport, db) => {
           };
           usertrees.push(tr);
         }
-        res.send(usertrees);
+        res.json(usertrees);
         // res.json(usertrees);
       });
     }
