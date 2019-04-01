@@ -36,8 +36,9 @@
                 // onOpen: () => console.log('opened!'),
                 onUploadDone: (res) => {
                     let theHandle = res.filesUploaded[0].handle;
-                    console.log('image handle: ' + theHandle);
-                    console.log('image url: ' + res.filesUploaded[0].url);
+                    console.log(theHandle);
+                    // console.log('image handle: ' + theHandle);
+                    // console.log('image url: ' + res.filesUploaded[0].url);
                     // put theHandle into our database, that's the image
                     // the user uploaded
 
