@@ -13,16 +13,24 @@ module.exports = (db) => {
 
   router.get('/profile', (req, res) => {
     if (req.isAuthenticated()) {
-      db.User.findOne({
+      db.User.findAll({
         where: {
           id: req.session.passport.user.id
-        }
-      }).then(() => {
+        },
+        include: [
+          { model: db.Usertrees,
+            required: false
+          }
+        ]
+      }).then(result => {
         const user = {
           userInfo: req.session.passport.user,
-          isloggedin: req.isAuthenticated()
+          isloggedin: req.isAuthenticated(),
+          treeInfo: result[0].Usertrees
         };
-        // console.log(user);
+        (user.treeInfo).forEach(function (element) {
+          console.log('/profile', JSON.stringify(element.id));
+        });
         res.render('profile', user);
       });
     } else {
