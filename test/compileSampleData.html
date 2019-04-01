@@ -29,7 +29,8 @@
 
         function createRandomUsers() {
             let zeroToFourteen = 0;
-            if (theCount < 501) {
+            let zeroToFourteen2 = 0;
+            if (theCount < 11) {
                 if (zeroToFourteen > 14) { zeroToFourteen = 0 };
                 if (theCount % 2 === 0) { // if it's an even number we'll get a random female
                     queryURL = 'https://randomuser.me/api/?gender=female'
@@ -83,13 +84,16 @@
                         treename: treeTypeNamesArray[zeroToFourteen],
                         UserId: theCount, // starts at 1
                     };
+                    zeroToFourteen++;
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
                         if (!Object.keys(response).includes('ocean')) {
-                            $('#output').append(`insert into Usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId) values ('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${name_of_tree[zeroToFourteen]}', '${users_tree_name[zeroToFourteen]}', '${treeTypeNamesArray[zeroToFourteen]}', '', ${theCount});<br>insert into Users (firstName, lastName, dob, city, state, country, profile_image_link, email, password) values ('${firstName}', '${lastName}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${email}', '${password}');<br>`);
+                            zeroToFourteen2++;
+                            console.log(zeroToFourteen2);
+                            if (zeroToFourteen2 > 14) { zeroToFourteen2 = 0 };
+                            $('#output').append(`insert into Usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId) values ('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${name_of_tree[zeroToFourteen2]}', '${users_tree_name[zeroToFourteen2]}', '${treeTypeNamesArray[zeroToFourteen2]}', '', ${theCount});<br>insert into Users (firstName, lastName, dob, city, state, country, profile_image_link, email, password) values ('${firstName}', '${lastName}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${email}', '${password}');<br>`);
 
                             theCount++;
-                            zeroToFourteen++;
                             usersArray.push(newUser);
                             treesArray.push(newTree);
                         }
