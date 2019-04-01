@@ -125,7 +125,8 @@ module.exports = (passport, db) => {
             latitude: trees[i].latitude,
             longitude: trees[i].longitude,
             date_planted: trees[i].date_planted,
-            users_tree_name: trees[i].users_tree_name
+            users_tree_name: trees[i].users_tree_name,
+            tree_image_link: trees[i].tree_image_link
           };
           usertrees.push(tr);
         }

@@ -8,6 +8,10 @@
 			font-weight: bold;
 		}
 
+		.infowindow-picture {
+			height: 100px;
+		}
+
 		#upload {
 			font-size: 1.75em;
 			padding: 5px;
