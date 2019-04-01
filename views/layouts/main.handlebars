@@ -55,6 +55,8 @@
 			}
 		};
 
+		getLocation();
+
 		function showPosition(position) {
 			userLatitude = parseFloat(position.coords.latitude);
 			userLongitude = parseFloat(position.coords.longitude);
@@ -74,7 +76,23 @@
 				zoom: 2,
 				center: userLatLong
 			});
-			placeMarker(userLatitude, userLongitude, 'You are here')
+			placeMarker(userLatitude, userLongitude, 'You are here');
+			setTimeout(function () {
+				$.ajax({
+					url: '/api/userTrees',
+					type: 'GET',
+					data: '',
+					success: function (result) {
+						result.forEach(element => {
+							let name = element.firstName + ' ' + element.lastName;
+							placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name, element.date_planted, element.users_tree_name);
+						});
+					},
+					error: function (response) {
+						console.log(response);
+					}
+				});
+			}, 1500);
 		};
 
 		function placeMarker(latitude, longitude, name, date_planted, users_tree_name) {
@@ -120,23 +138,6 @@
 			});
 
 		};
-
-		setTimeout(function () {
-			$.ajax({
-				url: '/api/userTrees',
-				type: 'GET',
-				data: '',
-				success: function (result) {
-					result.forEach(element => {
-						let name = element.firstName + ' ' + element.lastName;
-						placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name, element.date_planted, element.users_tree_name);
-					});
-				},
-				error: function (response) {
-					console.log(response);
-				}
-			});
-		}, 1500);
 
 		window.addEventListener('DOMContentLoaded', function () {
 			// we will hide this key and the security.policy and
