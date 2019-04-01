@@ -85,8 +85,8 @@
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
                         if (!Object.keys(response).includes('ocean')) {
-                            console.log(`insert into usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId) values ('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${name_of_tree[zeroToFourteen]}', '${users_tree_name[zeroToFourteen]}', '${treeTypeNamesArray[zeroToFourteen]}', '', ${theCount});`);
-                            console.log(`insert into users (firstName, lastName, dob, city, state, country, profile_image_link, email, password) values ('${firstName}', '${lastName}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${email}', '${password}');`);
+                            console.log(`insert into Usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId) values ('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${name_of_tree[zeroToFourteen]}', '${users_tree_name[zeroToFourteen]}', '${treeTypeNamesArray[zeroToFourteen]}', '', ${theCount});`);
+                            console.log(`insert into Users (firstName, lastName, dob, city, state, country, profile_image_link, email, password) values ('${firstName}', '${lastName}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${email}', '${password}');`);
 
                             theCount++;
                             zeroToFourteen++;
