@@ -58,82 +58,83 @@ updatedAt TIMESTAMP,
 );
 
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('-86.0576', '91.463', 'oxtXNfamTiyTIfkfqj3L', '2013-11-12', 'Jackson', 'Patsy', 0);
+            ('-89.0325', '62.9604', 'oxtXNfamTiyTIfkfqj3L', '2013-08-23', 'Almond', 'Hope', 'Almond', '', 1);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('patsy', 'jackson', '1994-04-10', 'wollongong', 'south australia', 'AU', 'https://randomuser.me/api/portraits/women/41.jpg', 'patsy.jackson@example.com', 'scorpio');
+            ('marshall', 'mills', '1970-01-13', 'orange', 'new south wales', 'AU', 'exuA6PZVSVqbcoiRqAbF', 'marshall.mills@example.com', 'fantasy');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('8.4832', '18.3695', 'njzaDu11QwivwUO7CDmm', '2009-07-06', 'Turner', 'Justin', 1);
+            ('4.5721', '-77.1734', 'oxtXNfamTiyTIfkfqj3L', '2005-10-11', 'Almond', 'Hope', 'Almond', '', 2);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('justin', 'turner', '1978-07-02', 'stoke-on-trent', 'lothian', 'GB', 'https://randomuser.me/api/portraits/men/19.jpg', 'justin.turner@example.com', 'butcher');
+            ('eloane', 'rolland', '1969-07-26', 'boulogne-billancourt', 'creuse', 'FR', 'ZVlSGdjIQZqxs3cAAF1R', 'eloane.rolland@example.com', 'bulldog1');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('-75.5697', '30.2099', 'C5Tn3psQV6LA90D8j2S0', '2017-01-21', 'Farias', 'Lois', 2);
+            ('-25.5119', '24.3552', 'oxtXNfamTiyTIfkfqj3L', '2005-11-02', 'Almond', 'Hope', 'Almond', '', 3);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('lois', 'farias', '1985-07-24', 'luziânia', 'espírito santo', 'BR', 'https://randomuser.me/api/portraits/women/81.jpg', 'lois.farias@example.com', 'thewho');
+            ('joaquin', 'duran', '1952-11-03', 'talavera de la reina', 'islas baleares', 'ES', 'exuA6PZVSVqbcoiRqAbF', 'joaquin.duran@example.com', 'sanity72');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('27.3741', '39.1247', 'ejHDgqcBT2u5b1EVBtmZ', '2009-01-28', 'نجاتی', 'علی', 3);
+            ('75.1212', '-32.6642', 'oxtXNfamTiyTIfkfqj3L', '2003-05-06', 'Almond', 'Hope', 'Almond', '', 4);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('علی', 'نجاتی', '1958-07-25', 'گرگان', 'اصفهان', 'IR', 'https://randomuser.me/api/portraits/men/24.jpg', 'علی.نجاتی@example.com', 'gordo');
+            ('ece', 'öztürk', '1966-12-26', 'bilecik', 'aydın', 'TR', 'ZVlSGdjIQZqxs3cAAF1R', 'ece.öztürk@example.com', 'penguin1');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('-27.0045', '131.1135', 'QWpkx20JT7S4gjmAFd1D', '2017-05-11', 'Pedersen', 'Silje', 4);
+            ('-84.3849', '-40.9', 'oxtXNfamTiyTIfkfqj3L', '2010-12-02', 'Almond', 'Hope', 'Almond', '', 5);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('silje', 'pedersen', '1980-02-18', 'saltum', 'hovedstaden', 'DK', 'https://randomuser.me/api/portraits/women/17.jpg', 'silje.pedersen@example.com', 'bobafett');
+            ('gilbert', 'lawrence', '1955-04-01', 'port macquarie', 'northern territory', 'AU', 'exuA6PZVSVqbcoiRqAbF', 'gilbert.lawrence@example.com', 'pumper');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('-80.5675', '-119.1342', 'Rgy81DcYS7KpBmePpKBZ', '2015-05-16', 'Wallace', 'Chris', 5);
+            ('7.4478', '41.9969', 'oxtXNfamTiyTIfkfqj3L', '2005-04-01', 'Almond', 'Hope', 'Almond', '', 6);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('chris', 'wallace', '1995-03-31', 'traralgon', 'tasmania', 'AU', 'https://randomuser.me/api/portraits/men/33.jpg', 'chris.wallace@example.com', 'bathing');
+            ('lily', 'ramos', '1982-05-20', 'lichfield', 'somerset', 'GB', 'ZVlSGdjIQZqxs3cAAF1R', 'lily.ramos@example.com', 'wood');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('25.775', '108.9262', 'uEZsxP4TNed8qvZSHHIr', '2014-12-15', 'Snyder', 'Rebecca', 6);
+            ('-83.2608', '-45.2814', 'oxtXNfamTiyTIfkfqj3L', '2018-03-08', 'Almond', 'Hope', 'Almond', '', 7);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('rebecca', 'snyder', '1971-09-02', 'portlaoise', 'mayo', 'IE', 'https://randomuser.me/api/portraits/women/63.jpg', 'rebecca.snyder@example.com', 'caligula');
+            ('gavin', 'robertson', '1971-06-02', 'wollongong', 'western australia', 'AU', 'exuA6PZVSVqbcoiRqAbF', 'gavin.robertson@example.com', 'coltrane');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('35.535', '98.7944', 'PZNFWs0mS9WUhP3K7JOt', '2015-09-10', 'یاسمی', 'محمدطاها', 7);
+            ('-78.7699', '-82.0588', 'oxtXNfamTiyTIfkfqj3L', '2013-02-24', 'Almond', 'Hope', 'Almond', '', 8);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('محمدطاها', 'یاسمی', '1957-01-16', 'خوی', 'آذربایجان غربی', 'IR', 'https://randomuser.me/api/portraits/men/8.jpg', 'محمدطاها.یاسمی@example.com', 'kahuna');
+            ('eleonara', 'rezende', '1982-12-28', 'sinop', 'distrito federal', 'BR', 'ZVlSGdjIQZqxs3cAAF1R', 'eleonara.rezende@example.com', 'matty');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('69.0146', '-93.6413', '5lC3awBtSUS7OsYiTh7h', '2016-01-17', 'Yıldızoğlu', 'Ceylan', 8);
+            ('70.3', '146.7248', 'oxtXNfamTiyTIfkfqj3L', '2005-12-23', 'Almond', 'Hope', 'Almond', '', 9);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('ceylan', 'yıldızoğlu', '1982-05-23', 'konya', 'tekirdağ', 'TR', 'https://randomuser.me/api/portraits/women/61.jpg', 'ceylan.yıldızoğlu@example.com', 'mustang');
+            ('umut', 'adıvar', '1956-12-20', 'tunceli', 'nevşehir', 'TR', 'exuA6PZVSVqbcoiRqAbF', 'umut.adıvar@example.com', 'bernard');
         insert into usertrees
-            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId)
+            (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
-            ('-30.9152', '-69.0438', 'VOuToVfQaCP30IxTDMmw', '2009-07-28', 'Christensen', 'Frederik', 9);
+            ('-9.183', '-57.4836', 'oxtXNfamTiyTIfkfqj3L', '2010-01-10', 'Almond', 'Hope', 'Almond', '', 10);
         insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, email, password)
         values
-            ('frederik', 'christensen', '1976-02-19', 'askeby', 'sjælland', 'DK', 'https://randomuser.me/api/portraits/men/86.jpg', 'frederik.christensen@example.com', 'global');
+            ('iina', 'ylitalo', '1951-12-26', 'laukaa', 'central finland', 'FI', 'ZVlSGdjIQZqxs3cAAF1R', 'iina.ylitalo@example.com', 'fester');
+    
