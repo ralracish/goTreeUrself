@@ -85,6 +85,7 @@
 					type: 'GET',
 					data: '',
 					success: function (result) {
+						console.log('got result from get usertrees');
 						result.forEach(element => {
 							console.log('pinning user tree: ' + element.firstName);
 							let name = element.firstName + ' ' + element.lastName;
