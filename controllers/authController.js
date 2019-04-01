@@ -93,6 +93,7 @@ module.exports = (passport, db) => {
       });
     },
     userTrees: (req, res) => {
+      console.log('here at user trees');
       db.Usertrees.sync().then(() => {
         const newUsertrees = {
           UserId: req.body.UserId,
