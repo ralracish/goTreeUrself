@@ -55,6 +55,8 @@
 			}
 		};
 
+		getLocation();
+
 		function showPosition(position) {
 			userLatitude = parseFloat(position.coords.latitude);
 			userLongitude = parseFloat(position.coords.longitude);
@@ -74,14 +76,26 @@
 				zoom: 2,
 				center: userLatLong
 			});
-			var marker = new google.maps.Marker({
-				position: userLatLong,
-				map: map,
-				title: 'You are here'
-			});
+			placeMarker(userLatitude, userLongitude, 'You are here');
+			setTimeout(function () {
+				$.ajax({
+					url: '/api/userTrees',
+					type: 'GET',
+					data: '',
+					success: function (result) {
+						result.forEach(element => {
+							let name = element.firstName + ' ' + element.lastName;
+							placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name, element.date_planted, element.users_tree_name, element.tree_image_link);
+						});
+					},
+					error: function (response) {
+						console.log(response);
+					}
+				});
+			}, 1500);
 		};
 
-		function placeMarker(latitude, longitude, name) {
+		function placeMarker(latitude, longitude, name, date_planted, users_tree_name, tree_image_link) {
 			var iconBase =
 				'http://maps.google.com/mapfiles/';
 			var icons = {
@@ -93,29 +107,37 @@
 				}
 			};
 			var userLatLong = { lat: latitude, lng: longitude };
+			if (name === 'You are here') {
+				var contentString = `<div class='infoWindow'>You are here.<br><br>Double-click the red pointer icon to re-center the map and zoom in!</div>`;
+				icon = '';
+			} else {
+				var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br><img src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/${tree_image_link}' alt='' class='infowindow-picture'><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+				icon = icons.tree.icon;
+			}
+
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString,
+				maxWidth: 200
+			});
 			var marker = new google.maps.Marker({
 				position: userLatLong,
 				map: map,
 				title: name,
-				icon: icons.tree.icon,
+				icon: icon,
+				animation: google.maps.Animation.DROP,
 			});
+			marker.addListener('click', function () {
+				infowindow.open(map, marker);
+				//map.setZoom(map.getZoom() + 4);
+				//map.setCenter(marker.getPosition());
+			});
+			marker.addListener('dblclick', function () {
+				infowindow.close(map, marker);
+				map.setZoom(map.getZoom() + 4);
+				map.setCenter(marker.getPosition());
+			});
+
 		};
-
-		$.ajax({
-			url: '/api/userTrees',
-			type: 'GET',
-			data: '',
-			success: function (result) {
-				result.forEach(element => {
-					let name = element.firstName + ' ' + element.lastName;
-					placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name);
-				});
-			},
-			error: function (response) {
-				console.log(response);
-			}
-		});
-
 
 		window.addEventListener('DOMContentLoaded', function () {
 			// we will hide this key and the security.policy and
@@ -144,6 +166,7 @@
 				// onOpen: () => console.log('opened!'),
 				onUploadDone: (res) => {
 					let theHandle = res.filesUploaded[0].handle;
+					let theUrl = res.filesUploaded[0].url;
 					console.log('image handle: ' + theHandle);
 					console.log('image url: ' + res.filesUploaded[0].url);
 					// put theHandle into our database, that's the image
@@ -170,7 +193,28 @@
 							let longitude = convertDMSToDD(longitudeArray[0], longitudeArray[1], (longitudeArray[2].split('/')[0] / longitudeArray[2].split('/')[1]), longitudeRef);
 							console.log('longitude: ' + longitude);
 							// put longitude into database
+							var subid = $('#upload-tree').attr('data-id');
+							const treeData =
+							{
+								UserId: subid,
+								tree_image_link: theUrl,
+								latitude: latitude,
+								longitude: longitude
+							};
+							// put theHandle into our database, that's the image
+							// the user uploaded
+							// put longitude into database
+							console.log('right before ajax');
+							$.ajax({
+								type: 'POST',
+								url: '/api/usertrees',
+								data: treeData
+							}).then((result) => {
+								// window.location.href = '/';
+								console.log(result);
+							});
 
+							// grab all the tree data from db
 							placeMarker(latitude, longitude);
 						})
 						.catch((err) => {
@@ -200,7 +244,7 @@
 				return dd;
 			};
 
-			document.getElementById('upload').onclick = function () { client.picker(options).open(); };
+			document.getElementById('upload-tree').onclick = function () { client.picker(options).open(); };
 		});
 
 	</script>
