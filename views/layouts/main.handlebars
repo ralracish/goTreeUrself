@@ -44,22 +44,25 @@
 	<script>
 		var userLatitude = 35.8235;
 		var userLongitude = -78.8256;
-		var initMapLatLong;
+		var initMapLatLong = userLatitude, userLongitude;
 		var map;
 		function getLocation() {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(showPosition);
 			} else {
-				geolocationStatusField.text('Geolocation is not supported by this browser');
+				console.log('Geolocation is not supported by this browser');
 			}
 		};
 		getLocation();
 		function showPosition(position) {
 			userLatitude = parseFloat(position.coords.latitude);
 			userLongitude = parseFloat(position.coords.longitude);
+
 			if (initMapLatLong != userLatitude, userLongitude) {
-				console.log('redoing initMap: ' + initMapLatLong + ' / ' + userLatitude, userLongitude);
-				initMap();
+				console.log('changing position: ' + initMapLatLong + ' / ' + userLatitude, userLongitude);
+				initMapLatLong = userLatitude, userLongitude;
+				map.setCenter(initMapLatLong);
+				placeMarker(userLatitude, userLongitude, 'You are here');
 			} else {
 				console.log('show position: ' + userLatitude, userLongitude);
 			}
@@ -72,7 +75,6 @@
 				zoom: 2,
 				center: userLatLong
 			});
-			placeMarker(userLatitude, userLongitude, 'You are here');
 			setTimeout(function () {
 				$.ajax({
 					url: '/api/userTrees',
