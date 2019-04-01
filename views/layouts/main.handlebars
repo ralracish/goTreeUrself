@@ -74,6 +74,7 @@
 				zoom: 2,
 				center: userLatLong
 			});
+
 			var marker = new google.maps.Marker({
 				position: userLatLong,
 				map: map,
@@ -81,7 +82,7 @@
 			});
 		};
 
-		function placeMarker(latitude, longitude, name) {
+		function placeMarker(latitude, longitude, name, date_planted, users_tree_name) {
 			var iconBase =
 				'http://maps.google.com/mapfiles/';
 			var icons = {
@@ -93,12 +94,30 @@
 				}
 			};
 			var userLatLong = { lat: latitude, lng: longitude };
+			var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString,
+				maxWidth: 200
+			});
 			var marker = new google.maps.Marker({
 				position: userLatLong,
 				map: map,
 				title: name,
 				icon: icons.tree.icon,
+				//animation: google.maps.Animation.DROP,
 			});
+			marker.addListener('click', function () {
+				infowindow.open(map, marker);
+				//map.setZoom(map.getZoom() + 4);
+				//map.setCenter(marker.getPosition());
+			});
+			marker.addListener('dblclick', function () {
+				infowindow.close(map, marker);
+				map.setZoom(map.getZoom() + 4);
+				map.setCenter(marker.getPosition());
+			});
+
 		};
 
 		$.ajax({
@@ -108,7 +127,7 @@
 			success: function (result) {
 				result.forEach(element => {
 					let name = element.firstName + ' ' + element.lastName;
-					placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name);
+					placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name, element.date_planted, element.users_tree_name);
 				});
 			},
 			error: function (response) {
@@ -192,7 +211,7 @@
 								console.log(result);
 							});
 
-          // grab all the tree data from db
+							// grab all the tree data from db
 							placeMarker(latitude, longitude);
 						})
 						.catch((err) => {
