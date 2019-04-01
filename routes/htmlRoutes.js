@@ -31,15 +31,15 @@ module.exports = (db) => {
   });
 
   router.get('/', (req, res) => {
-    if (req.isAuthenticated()) {
+    /* if (req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('dashboard', user);
-    } else {
-      res.render('dashboard');
-    }
+    } else { */
+    res.render('dashboard');
+    // }
   });
 
   router.get('/dashboard', (req, res) => {
