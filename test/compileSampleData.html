@@ -14,16 +14,22 @@
         const usersArray = [];
         const treesArray = [];
         const treeImagesArray = ['oxtXNfamTiyTIfkfqj3L', 'njzaDu11QwivwUO7CDmm', 'C5Tn3psQV6LA90D8j2S0', 'ejHDgqcBT2u5b1EVBtmZ', 'QWpkx20JT7S4gjmAFd1D', 'Rgy81DcYS7KpBmePpKBZ', 'uEZsxP4TNed8qvZSHHIr', 'PZNFWs0mS9WUhP3K7JOt', '5lC3awBtSUS7OsYiTh7h', 'VOuToVfQaCP30IxTDMmw', 'Qym55AknSAS6cWkNUGSS', 'frxFzEzlSMuRgrFlHV9Q', 'yx97LvuT5ewpqfeCORGh', 'sauZBfSWT4qvHvhvrrON', 'edDzlpSQhKN8I7p8iodt'];
-        const femaleImagesArray = ['ZVlSGdjIQZqxs3cAAF1R', 'p6UijAZmSNScEB9B0NFD', 'hDr5x3SMRvmFL7xhG6JE', 'VA035lASdqZr7iaZqIUw', 'QlQewMGvSRmBdQJnmSOx', 'dFELuocqT06mIdFYDvN0', 'u1hvrLI0RYmhcywmWy1B', 'TLKgfaCXT3mLsK2m7uvT', 'XinxENDTRSIlGPRwlEWl', '71jrDQQ8WNy2F562pQEw', '6ThZkdvCSNqqNuxZAgVx', '3CIepxfvTHGSfNQNZdbu', 'DN5G88gSQn0XedJjevvv', 'eciyL7vKQ27o4ClWY3qA', 'TweJu8KnTSOotLYYNXAd']
+        const femaleImagesArray = ['ZVlSGdjIQZqxs3cAAF1R', 'p6UijAZmSNScEB9B0NFD', 'hDr5x3SMRvmFL7xhG6JE', 'VA035lASdqZr7iaZqIUw', 'QlQewMGvSRmBdQJnmSOx', 'dFELuocqT06mIdFYDvN0', 'u1hvrLI0RYmhcywmWy1B', 'TLKgfaCXT3mLsK2m7uvT', 'XinxENDTRSIlGPRwlEWl', '71jrDQQ8WNy2F562pQEw', '6ThZkdvCSNqqNuxZAgVx', '3CIepxfvTHGSfNQNZdbu', 'DN5G88gSQn0XedJjevvv', 'eciyL7vKQ27o4ClWY3qA', 'TweJu8KnTSOotLYYNXAd'];
+        const maleImagesArray = ['exuA6PZVSVqbcoiRqAbF', 'hZEFuMisTj6CU3hilw2G', 'NKztE2FMTyW0FzZs53o9', '6J2kbS5pOJaMotVTLQId', '6OhLA3soSDOalhdLFnaQ', 'IocBwX0ySiC8HmHzJjc6', 'rWosS4w9TleKxdvfGoHq', 'X6HDyFLnRpOhAXWrlG5x', 'moeYJBolQI6IFYMjpS4x', 'ZSofh2ABQOOV2ApZVvpm', 'QKM2gR7UTXH48N4ixSHn', 'V0QcHTW9RCWGP18cILDL', '8aygosxTRq174M4aqjUT', 'WIXjTcqiSLW9XedxucuQ', 'C1IbIFE8TySnIjDbNP6V'];
+        const name_of_tree = ['Almond', 'Apple', 'Ash', 'Aspen', 'Beech', 'Cedar', 'Cherry', 'Cypress', 'Elm', 'Fir', 'Holly', 'Linden', 'Magnolia', 'Palm', 'Tea'];
+        const users_tree_name = ['Hope', 'Prosperity', 'Happiness', 'Commonwealth', 'Giving', 'In memory of Grandma', 'For the Children', 'Future Generations', 'Giving Back', 'Sustenance', 'Dedicated to my Daughter', 'On our Wedding Day', 'Birthday', 'New School Dedication', 'Future Wealth'];
+        const treeTypeNamesArray = ['Almond', 'Apple', 'Ash', 'Aspen', 'Beech', 'Cedar', 'Cherry', 'Cypress', 'Elm', 'Fir', 'Holly', 'Linden', 'Magnolia', 'Palm', 'Tea']
         let queryURL;
         var breakFlag = false;
 
         let newUser = {};
         let newTree = {};
-        let theCount = 0;
+        let theCount = 1;
 
         function createRandomUsers() {
-            if (theCount < 10) {
+            let zeroToFourteen = 0;
+            if (theCount < 11) {
+                if (zeroToFourteen > 14) { zeroToFourteen = 0 };
                 if (theCount % 2 === 0) { // if it's an even number we'll get a random female
                     queryURL = 'https://randomuser.me/api/?gender=female'
                 } else {
@@ -40,12 +46,16 @@
                     let state = response.results[0].location.state;
                     let country = response.results[0].nat;
                     let age = Math.floor(Math.random() * (56 - 20)) + 10;
-                    let profile_image_link = response.results[0].picture.large;
+                    if (theCount % 2 === 0) {
+                        var profile_image_link = femaleImagesArray[zeroToFourteen];
+                    } else {
+                        var profile_image_link = maleImagesArray[zeroToFourteen];
+                    }
                     let email = response.results[0].email;
                     let password = response.results[0].login.password;
                     let latitude = parseFloat(response.results[0].location.coordinates.latitude);
                     let longitude = parseFloat(response.results[0].location.coordinates.longitude);
-                    let tree_image_link = treeImagesArray[theCount];
+                    let tree_image_link = treeImagesArray[zeroToFourteen];
                     let date_planted = (response.results[0].registered.date).substring(0, 10);
 
                     newUser = {
@@ -67,17 +77,19 @@
                         //TODO:
                         tree_image_link: tree_image_link,
                         date_planted: date_planted,
-                        name_of_tree: lastNameCapitalized,
-                        users_tree_name: firstNameCapitalized,
-                        UserId: theCount,
+                        name_of_tree: name_of_tree[zeroToFourteen],
+                        users_tree_name: users_tree_name[zeroToFourteen],
+                        treename: treeTypeNamesArray[zeroToFourteen],
+                        UserId: theCount, // starts at 1
                     };
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
                         if (!Object.keys(response).includes('ocean')) {
-                            console.log(`insert into usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, UserId) values ('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${lastNameCapitalized}', '${firstNameCapitalized}', ${theCount});`);
+                            console.log(`insert into usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId) values ('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${name_of_tree[zeroToFourteen]}', '${users_tree_name[zeroToFourteen]}', '${treeTypeNamesArray[zeroToFourteen]}', '', ${theCount});`);
                             console.log(`insert into users (firstName, lastName, dob, city, state, country, profile_image_link, email, password) values ('${firstName}', '${lastName}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${email}', '${password}');`);
 
                             theCount++;
+                            zeroToFourteen++;
                             usersArray.push(newUser);
                             treesArray.push(newTree);
                         }
