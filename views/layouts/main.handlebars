@@ -85,10 +85,7 @@
 					type: 'GET',
 					data: '',
 					success: function (result) {
-						console.log('got result from get usertrees');
-						console.log(JSON.stringify(result));
 						result.forEach(element => {
-							console.log('pinning user tree: ' + element.firstName);
 							let name = element.firstName + ' ' + element.lastName;
 							placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name, element.date_planted, element.users_tree_name, element.tree_image_link);
 						});
