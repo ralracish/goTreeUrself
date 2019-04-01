@@ -43,15 +43,11 @@ if (app.get('env') !== 'development') {
 }
 
 db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
-  /* if (process.env.FORCE_SYNC === 'true') {
+  if (process.env.FORCE_SYNC === 'true') {
     require('./db/seed')(db);
-  } */
+  }
 
-  /* app.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
-  }); */
-
-  app.listen(process.env.PORT || 3333, () => {
-    console.log(`Express server listening on port ${this.address().port} in ${app.settings.env} mode`);
   });
 });
