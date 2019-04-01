@@ -61,11 +61,11 @@ module.exports = (passport, db) => {
         state: req.body.state,
         country: req.body.country
       }, {
-          where: { id: req.params.id }
-        }).then(result => {
-          // console.log(result);
-          res.json(result);
-        });
+        where: { id: req.params.id }
+      }).then(result => {
+        // console.log(result);
+        res.json(result);
+      });
     },
     confirmAuth: (req, res) => {
       const email = req.body.email;
@@ -131,7 +131,6 @@ module.exports = (passport, db) => {
           usertrees.push(tr);
         }
         res.json(usertrees);
-        // res.json(usertrees);
       });
     }
   };
