@@ -69,6 +69,7 @@
 				console.log('show position: ' + userLatitude, userLongitude);
 			}
 		};
+
 		function initMap() {
 			console.log('init map: ' + userLatitude, userLongitude);
 			initMapLatLong = userLatitude, userLongitude;
@@ -83,10 +84,19 @@
 					type: 'GET',
 					data: '',
 					success: function (result) {
-						result.forEach(element => {
-							let name = element.firstName + ' ' + element.lastName;
-							placeMarker(parseFloat(element.latitude), parseFloat(element.longitude), name, element.date_planted, element.users_tree_name, element.tree_image_link);
-						});
+						let i = 0;
+						let theNumberOfPins = result.length;
+						placeThePins();
+						function placeThePins() {
+							setTimeout(function () {
+								let name = result[i].firstName + ' ' + result[i].lastName;
+								placeMarker(parseFloat(result[i].latitude), parseFloat(result[i].longitude), name, result[i].date_planted, result[i].users_tree_name, result[i].tree_image_link);
+								i++;
+								if (i < theNumberOfPins) {
+									placeThePins();
+								}
+							}, (70 - i))
+						}
 					},
 					error: function (response) {
 						console.log(response);
@@ -94,7 +104,7 @@
 				});
 			}, 1500);
 		};
-		initMap();
+		setTimeout(function () { initMap(); }, 250); //without this, upload button doesn't work
 
 		function placeMarker(latitude, longitude, name, date_planted, users_tree_name, tree_image_link) {
 			var iconBase =
@@ -137,6 +147,7 @@
 				map.setCenter(marker.getPosition());
 			});
 		};
+
 		window.addEventListener('DOMContentLoaded', function () {
 			// we will hide this key and the security.policy and
 			// security.signature in our .env file
