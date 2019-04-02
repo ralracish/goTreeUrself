@@ -69,6 +69,7 @@
 				console.log('show position: ' + userLatitude, userLongitude);
 			}
 		};
+
 		function initMap() {
 			console.log('init map: ' + userLatitude, userLongitude);
 			initMapLatLong = userLatitude, userLongitude;
@@ -94,7 +95,7 @@
 								if (i < theNumberOfPins) {
 									placeThePins();
 								}
-							}, (100 - i))
+							}, (70 - i))
 						}
 					},
 					error: function (response) {
@@ -103,7 +104,7 @@
 				});
 			}, 1500);
 		};
-		initMap();
+		setTimeout(function () { initMap(); }, 250); //without this, upload button doesn't work
 
 		function placeMarker(latitude, longitude, name, date_planted, users_tree_name, tree_image_link) {
 			var iconBase =
@@ -146,6 +147,7 @@
 				map.setCenter(marker.getPosition());
 			});
 		};
+
 		window.addEventListener('DOMContentLoaded', function () {
 			// we will hide this key and the security.policy and
 			// security.signature in our .env file

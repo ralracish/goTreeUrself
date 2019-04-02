@@ -4,45 +4,53 @@
 
     <div class="holy-grail-grid">
       <div class="holy-grail-header">
-          {{!-- This still needs centered --}}
-      <button id="upload-tree" data-id="{{userInfo.id}}" class="btn btn-primary">Upload Your Tree Pic!</button>
-      <div id='content' data-id="{{userInfo.id}}"></div>
+        {{!-- This still needs centered --}}
+        <button id="upload-tree" data-id="{{userInfo.id}}" class="btn btn-primary">Upload
+          Your Tree Pic!</button>
+        <div id='content' data-id="{{userInfo.id}}"></div>
       </div>
 
-  <div class="holy-grail-left">
-    <h3>Nav</h3>
-      <img class="thumbnail" src="https://placehold.it/300x250">
-      <div class="myinfo" id="profile-info">
+      <div class="holy-grail-left">
+        <h3>Nav</h3>
+        <img class="thumbnail" src="https://placehold.it/300x250">
+        <div class="myinfo" id="profile-info">
           <label for="exampleFileUpload" class="button" id="profile-button">Upload Your Profile Pic</label>
           <input type="file" id="exampleFileUpload" class="show-for-sr">
-            <h5>{{userInfo.firstName}} {{userInfo.lastName}}</h5>
-        <p>I am an environmental enthusiast and peach tree lover!</p>
-        <p>{{userInfo.city}}, {{userInfo.state}}, {{userInfo.country}}</p>
-  </div>
-  </div>
+          <h5>{{userInfo.firstName}} {{userInfo.lastName}}</h5>
+          <p>I am an environmental enthusiast and peach tree lover!</p>
+          <p>{{userInfo.city}}, {{userInfo.state}}, {{userInfo.country}}</p>
+        </div>
+      </div>
 
-  <div class="holy-grail-middle">
-    <p>Number of trees you contributed in you lifetime {{treeInfo.length}}</p>
-    <ul> 
-      {{#each treeInfo}}
-          <img class="thumbnail imgwidth" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
-      {{/each}}
-    </ul>
-    <h3>Content</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque, tempore.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque, tempore.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque, tempore.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque, tempore.</p>
-  </div>
+      <div class="holy-grail-middle">
+        <p>Number of trees you contributed in you lifetime {{treeInfo.length}}</p>
+        <ul>
+          {{#each treeInfo}}
+          <img class="thumbnail imgwidth"
+            src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
+            {{/each}} </ul> <h3>Content</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
+            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
+            tempore.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
+            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
+            tempore.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
+            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
+            tempore.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
+            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
+            tempore.</p>
+      </div>
 
-  <div class="holy-grail-right">
+      <div class="holy-grail-right">
 
         <div class="translucent-form-overlay" style="margin: 0 auto;">
           <form>
             <h3>Update Your Account</h3>
             <div class="row columns">
               <div class="input-group">
-              {{!-- <label for="inputFirst">First Name</label> --}}
+                {{!-- <label for="inputFirst">First Name</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-user"></i>
                 </span>
@@ -106,13 +114,13 @@
             <button type="button" id="add-user" class="primary button expanded search-button">
               Submit
             </button>
-        </form>
+          </form>
         </div>
 
 
 
-    {{!-- Marcia's stuff --}}
-    {{!-- <h3>Nav</h3>
+        {{!-- Marcia's stuff --}}
+        {{!-- <h3>Nav</h3>
      <header align="center" class="header-wrap">
     <h1>Welcome, {{userInfo.firstName}}</h1>
     <div class="userId">
@@ -184,15 +192,15 @@
       </div>
     </div>
   </div> --}}
+      </div>
+
+      <div class="holy-grail-footer">
+        <h3>Footer</h3>
+      </div>
+
+    </div>
+    {{!-- End of Holy Grail --}}
+
+
   </div>
-
-  <div class="holy-grail-footer">
-    <h3>Footer</h3>
-  </div>
-
-</div>
-{{!-- End of Holy Grail --}}
-
-  
-</div>
 </div>
