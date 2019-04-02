@@ -1,55 +1,48 @@
-<div class="hero-full-screen overlay">
+<div class="hero-full-screen-pattern overlay">
   <div class="top-content-section">
     {{> nav/nav-block user=false register=true}}
 
     <div class="holy-grail-grid">
       <div class="holy-grail-header">
-        {{!-- This still needs centered --}}
-        <button id="upload-tree" data-id="{{userInfo.id}}" class="btn btn-primary">Upload Your Tree Pic!</button>
+        <center>
+        <button id="upload-tree" data-id="{{userInfo.id}}" class="button success">Upload Your Tree Pic!</button>
         <div id='content' data-id="{{userInfo.id}}"></div>
+        </center>
       </div>
 
-      <div class="holy-grail-left">
-        <h3>Nav</h3>
-        <img class="thumbnail" src="https://placehold.it/300x250">
-        <div class="myinfo" id="profile-info">
-          <label for="exampleFileUpload" class="button" id="profile-button">Upload Your Profile Pic</label>
-          <input type="file" id="exampleFileUpload" class="show-for-sr">
-          <h5>{{userInfo.firstName}} {{userInfo.lastName}}</h5>
-          <p>I am an environmental enthusiast and peach tree lover!</p>
-          <p>{{userInfo.city}}, {{userInfo.state}}, {{userInfo.country}}</p>
-        </div>
+  <div class="holy-grail-left">
+    <div class="translucent-form-overlay" style="margin: 0 auto;">
+      <h3>Nav</h3>
+      <img class="thumbnail" src="https://placehold.it/300x250">
+      <div class="myinfo" id="profile-info">
+        <label for="exampleFileUpload" class="button success hollow" id="profile-button">Upload Your Profile Pic</label>
+        <input type="file" id="exampleFileUpload" class="show-for-sr">
+        <h5>{{userInfo.firstName}} {{userInfo.lastName}}</h5>
+        <p>I am an environmental enthusiast and peach tree lover!</p>
+        <p>{{userInfo.city}}, {{userInfo.state}}, {{userInfo.country}}</p>
       </div>
+    </div>
+  </div>
 
-      <div class="holy-grail-middle">
-        <p>Number of trees you contributed in you lifetime {{treeInfo.length}}</p>
-        <ul>
-          {{#each treeInfo}}
-          <img class="thumbnail imgwidth"
-            src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
-            {{/each}} </ul> <h3>Content</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
-            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
-            tempore.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
-            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
-            tempore.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
-            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
-            tempore.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias mollitia debitis at atque temporibus
-            ratione molestiae id eos, cupiditate numquam dolor vero totam, quisquam libero voluptas. Animi ipsa cumque,
-            tempore.</p>
-      </div>
+  <div class="holy-grail-middle">
+    <div class="translucent-form-overlay" style="margin: 0 auto;">
+    <h3>Number of trees you contributed in your lifetime {{treeInfo.length}}</h3>
+    <ul> 
+      {{#each treeInfo}}
+          <img class="thumbnail imgwidth" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
+      {{/each}}
+    </ul>
+    <h3>Images will go here</h3>
+    </div>
+  </div>
 
-      <div class="holy-grail-right">
+  <div class="holy-grail-right">
 
         <div class="translucent-form-overlay" style="margin: 0 auto;">
           <form>
             <h3>Update Your Account</h3>
             <div class="row columns">
               <div class="input-group">
-                {{!-- <label for="inputFirst">First Name</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-user"></i>
                 </span>
@@ -58,7 +51,6 @@
             </div>
             <div class="row columns">
               <div class="input-group">
-                {{!-- <label for="inputLast">Last Name</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-user"></i>
                 </span>
@@ -67,7 +59,6 @@
             </div>
             <div class="row columns">
               <div class="input-group">
-                {{!-- <label for="inputPassword">Password</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-building"></i>
                 </span>
@@ -76,7 +67,6 @@
             </div>
             <div class="row columns">
               <div class="input-group">
-                {{!-- <label for="inputPassword">Password</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-tree"></i>
                 </span>
@@ -85,7 +75,6 @@
             </div>
             <div class="row columns">
               <div class="input-group">
-                {{!-- <label for="inputPassword">Password</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-globe"></i>
                 </span>
@@ -94,7 +83,6 @@
             </div>
             <div class="row columns">
               <div class="input-group">
-                {{!-- <label for="inputEmail">Email</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-envelope"></i>
                 </span>
@@ -103,98 +91,26 @@
             </div>
             <div class="row columns">
               <div class="input-group">
-                {{!-- <label for="inputPassword">Password</label> --}}
                 <span class="input-group-label">
                   <i class="fa fa-key"></i>
                 </span>
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password">
               </div>
             </div>
-            <button type="button" id="add-user" class="primary button expanded search-button">
+            <button type="button" id="add-user" class="button hollow success expanded search-button">
               Submit
             </button>
           </form>
         </div>
-
-
-
-        {{!-- Marcia's stuff --}}
-        {{!-- <h3>Nav</h3>
-     <header align="center" class="header-wrap">
-    <h1>Welcome, {{userInfo.firstName}}</h1>
-    <div class="userId">
-      <h3>View or update your user info</h3>
-      <h5 id="user-number" data-useremail="{{userInfo.email}}">Account email: {{userInfo.email}}</h5>
-    </div>
-    <h3 id="update-err-msg"></h3>
-  </header>
-  <form id="user-form">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputFirst" class="profiletxt">First Name</label>
-        <input type="text" class="form-control" id="inputFirst" value="{{userInfo.firstName}}" placeholder="John">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputLast" class="profiletxt">Last Name</label>
-        <input type="text" class="form-control" id="inputLast" value="{{userInfo.lastName}}" placeholder="Doe">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputPassword" class="profiletxt">Email</label>
-        <input type="text" class="form-control" id="inputEmail" value="{{userInfo.email}}">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword" class="profiletxt">Password</label>
-        <input type="password" class="form-control" id="inputPassword" value="{{userInfo.password}}">
-      </div>
-    </div>
-    <div>
-      <button type="submit" id="update-user" data-id="{{userInfo.id}}" class="btn btn-primary">Update</button>
-      {{#unless userInfo.isAdmin}}
-        <button type="submit" id="delete-user" class="btn btn-primary">Delete</button>
-      {{/unless}}
-      <button type="submit" id="view-user" data-id="{{userInfo.id}}" class="btn btn-primary">Refresh</button>
-    </div>
-  </form>
-  <div class="modal" id="delete-user-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Re-Enter Credentials to delete user</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h3 id="err-msg"></h3>
-          <form>
-            <div class="form-group">
-              <label for="userEmail">Email:</label>
-              <input type="text" class="form-control" id="userEmail">
-            </div>
-            <div class="form-group">
-              <label for="userPassword">Password:</label>
-              <input type="password" class="form-control" id="userPassword">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button id="confirm-delete" type="button" data-id="{{userInfo.id}}" class="btn btn-primary">Confirm Delete</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nah I'll stay</button>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-      </div>
-
-      <div class="holy-grail-footer">
-        <h3>Footer</h3>
-      </div>
-
-    </div>
-    {{!-- End of Holy Grail --}}
-
-
   </div>
+
+  {{!-- <div class="holy-grail-footer">
+    <h3>Footer</h3>
+  </div> --}}
+
 </div>
+{{!-- End of Holy Grail --}}
+  
+</div>
+</div>
+
