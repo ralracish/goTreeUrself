@@ -10,12 +10,13 @@
 .banner:hover img {
 	transform: scale(.5);
 }
+
 .banner img {
 	transition: transform .25s ease;
 } */
 
 #map {
-	height: 75vh;
+	height: 80vh;
 	width: 95vw;
 }
 
