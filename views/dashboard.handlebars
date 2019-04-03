@@ -1,22 +1,19 @@
 <div class="hero-full-screen overlay">
-  <div class="top-content-section">
-    {{> nav/nav-block}}
-    {{!-- <div class="layer"></div> --}}
-  </div>
-
+  <!-- the following used to be "top-content-section" but
+  DM changed it to middle-content-section because he wanted
+  to make changes without touching CSS. You may want to change it back to
+  "top-content-section" and adjust CSS so it doesn't lose the left margin. -->
   <div class="middle-content-section">
-    {{!-- <div class="layer-none"></div> --}}
-
-    {{!-- https://desmondmullen.com/many-pins/   Removed this during testing --}}
-    <!--<iframe width="1000" height="350" src="https://picsum.photos/1000/350/?random" 
-          frameborder="0" allowfullscreen></iframe>-->
+    {{> nav/nav-block}}
+    <!-- </div>
+the lines above and below this were commented out by DM
+  <div class="middle-content-section"> -->
     <div id='map'></div>
   </div>
 
-  <div class="bottom-content-section" data-magellan data-threshold="0">
-    <!-- <a href="#main-content-section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"/></svg></a> -->
-  </div>
-  <div class="textcolor">
+  <!-- <div class="bottom-content-section" data-magellan data-threshold="0">
+  </div> -->
+  <!-- <div class="textcolor">
     {{#if isloggedin}}
     You are logged in as {{user.firstName}}
     <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
@@ -24,8 +21,9 @@
     <p>You need to log in to use this app.</p>
     {{/if}}
     <h5 id="login-err-msg"></h5>
-  </div>
+  </div>-->
+  <div id="carbon-notice">The users of this site have planted X trees, offsetting over Y tons of carbon!</div>
+  <br>
 </div>
-
 
 {{> modal/login-block}}
