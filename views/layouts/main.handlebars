@@ -45,12 +45,28 @@
 	<div class="modal" id="user-location" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">We could not obtain the geo-location from the picture So please enter the
-						following info about where the tree was planted</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+      
+			<div class="modal-header">
+				<h5 class="modal-title">We could not obtain the geo-location from the picture So please enter the 
+				  following info about where the tree was planted</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				<form>
+				<div class="form-group">
+					<label for="inputAccount">Street Address(Optional)</label>
+					<input type="text" class="form-control" id="street">
+				</div>
+				<div class="form-group">
+					<label for="inputAccount">City(Required)</label>
+					<input type="text" class="form-control" id="city">
+				</div>
+				<div class="form-group">
+					<label for="inputAccount">State(Required)</label>
+					<input type="text" class="form-control" id="state">
 				</div>
 
 				<div class="modal-body">
@@ -207,7 +223,6 @@
 			var userLatLong = { lat: latitude, lng: longitude };
 
 			var theImageString = `<img src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/${tree_image_link}' alt='' class='infowindow-picture' onclick='popUpWindow("${tree_image_link}", "${users_tree_name}")'>`
-
 			var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
 
 			switch (users_tree_name) {
@@ -446,6 +461,41 @@
 			};
 
 			document.getElementById('upload-tree').onclick = function () { client.picker(options).open(); };
+
+			//for profile pic
+			const profileimg = {
+				cleanupImageExif: false,
+				maxFiles: 1,
+				uploadInBackground: false,
+				// imageMax resizes image to a maximum size
+				imageMax: [800, 600],
+				imageMin: [40, 30],
+				// maxSize is in bytes, it is set to limit the file upload to 10.5MB
+				maxSize: 10500000,
+				// onOpen could be used if we want to know that the modal is opened
+				// onOpen: () => console.log('opened!'),
+				onUploadDone: (res) => {
+					let theHandle = res.filesUploaded[0].handle;
+					let theUrl = res.filesUploaded[0].url;
+					console.log('image handle: ' + theHandle);
+					console.log('image url: ' + res.filesUploaded[0].url);
+					var subid = $('#upload-tree').attr('data-id');
+					const profileimg =
+					{
+						profile_image_link: theHandle
+					};
+					console.log(profileimg);
+					$.ajax({
+						type: 'PUT',
+						url: `/api/user/${subid}`,
+						data: profileimg
+					}).then((result) => {
+						location.reload();
+						
+					});
+				}
+			};
+			document.getElementById('profile-button').onclick = function () { client.picker(profileimg).open(); };
 		});
 	</script>
 </body>

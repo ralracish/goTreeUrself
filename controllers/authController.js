@@ -53,17 +53,10 @@ module.exports = (passport, db) => {
     },
     updateUser: (req, res) => {
       db.User.update({
-        email: req.body.email,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        password: req.body.password,
-        city: req.body.city,
-        state: req.body.state,
-        country: req.body.country
+        profile_image_link: req.body.profile_image_link
       }, {
-        where: { id: req.params.id }
+        where: { id: parseInt(req.params.id) }
       }).then(result => {
-        // console.log(result);
         res.json(result);
       });
     },
