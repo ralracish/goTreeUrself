@@ -91,7 +91,9 @@ module.exports = (passport, db) => {
           UserId: req.body.UserId,
           tree_image_link: req.body.tree_image_link,
           longitude: req.body.longitude,
-          latitude: req.body.latitude
+          latitude: req.body.latitude,
+          users_tree_name: req.body.users_tree_name,
+          treetype: req.body.treetype
         };
 
         return db.Usertrees.create(newUsertrees).then(() => {
