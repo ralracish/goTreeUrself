@@ -93,6 +93,53 @@
 	font-weight: bold;
 }
 
+
+.hero-full-screen-pattern .middle-content-section {
+	text-align: center;
+	color: #fefefe;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-full-screen-pattern .top-content-section {
+	width: 100%;
+}
+
+.hero-full-screen-pattern .bottom-content-section {
+	padding: 1rem;
+}
+
+.hero-full-screen-pattern .bottom-content-section svg {
+	height: 3.75rem;
+	width: 3.75rem;
+	fill: #fefefe;
+}
+
+.hero-full-screen-pattern .top-bar {
+	background: transparent;
+}
+
+.hero-full-screen-pattern .top-bar .menu {
+	background: transparent;
+}
+
+.hero-full-screen-pattern .top-bar .menu-text {
+	color: #fefefe;
+}
+
+.hero-full-screen-pattern .top-bar .menu li {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.hero-full-screen-pattern .top-bar .menu a {
+	color: #fefefe;
+	font-weight: bold;
+}
+
 /* Begin top bar nav */
 
 .topbar-responsive {
@@ -255,7 +302,7 @@
 
 /* Begin CSS for Login form */
 .translucent-form-overlay {
-	max-width: 500px;
+	/* max-width: 500px; */
 	width: 100%;
 	background-color: rgba(54, 54, 54, 0.8);
 	padding: 20px;
@@ -370,14 +417,14 @@
 
 /* For testing REgistration form */
 
-.translucent-form-overlay {
+/* .translucent-form-overlay {
 	max-width: 500px;
 	width: 100%;
 	background-color: rgba(54, 54, 54, 0.8);
 	padding: 20px;
 	color: #fefefe;
-}
-
+} */
+/* 
 .translucent-form-overlay .columns.row {
 	display: block;
 }
@@ -400,7 +447,7 @@
 
 .translucent-form-overlay input::placeholder {
 	color: #8a8a8a;
-}
+} */
 
 form .form-icons {
 	text-align: center;
@@ -485,13 +532,12 @@ profiletxt {
 	color: white;
 }
 
-/* For testing the profile page*/
-
+/* For Holy Grail Grid on Profile page*/
 .holy-grail-grid {
 	display: -ms-grid;
 	display: grid;
-	-ms-grid-columns: 1fr 3fr 1fr;
-	grid-template-columns: 1fr 3fr 1fr;
+	-ms-grid-columns: 1fr 5fr 2fr;
+	grid-template-columns: 1fr 5fr 2fr;
 	-ms-grid-rows: 1fr 8fr 1fr;
 	grid-template-rows: 1fr 8fr 1fr;
 	grid-gap: 20px;
@@ -582,10 +628,11 @@ profiletxt {
 	background-repeat: repeat;
 }
 
-.top-content-section {
+/* Commented out because it's messing up the profile page background */
+/* .top-content-section {
 	height:100px;
 	background: rgba(0,0,0,0.25);
-}
+} */
 .medium-horizontal {
 	margin-bottom:10px;
 }
