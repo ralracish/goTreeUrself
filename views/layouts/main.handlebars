@@ -45,7 +45,6 @@
 	<div class="modal" id="user-location" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-
 				<div class="modal-header">
 					<h5 class="modal-title">We could not obtain the geo-location from the picture So please enter the
 						following info about where the tree was planted</h5>
@@ -68,35 +67,20 @@
 							<label for="inputAccount">State(Required)</label>
 							<input type="text" class="form-control" id="state">
 						</div>
-
-						<div class="modal-body">
-							<form>
-								<div class="form-group">
-									<label for="inputAccount">Street Address(Optional)</label>
-									<input type="text" class="form-control" id="street">
-								</div>
-								<div class="form-group">
-									<label for="inputAccount">City(Required)</label>
-									<input type="text" class="form-control" id="city">
-								</div>
-								<div class="form-group">
-									<label for="inputAccount">State(Required)</label>
-									<input type="text" class="form-control" id="state">
-								</div>
-								<div class="form-group">
-									<label for="inputAccount">Country(Required)</label>
-									<input type="text" class="form-control" id="country">
-								</div>
-							</form>
+						<div class="form-group">
+							<label for="inputAccount">Country(Required)</label>
+							<input type="text" class="form-control" id="country">
 						</div>
+					</form>
+				</div>
 
-						<div class="modal-footer">
-							<button id="treeloc" type="button" class="btn btn-primary">submit</button>
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
+				<div class="modal-footer">
+					<button id="treeloc" type="button" class="btn btn-primary">submit</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
+	</div>
 
 		{{!-- This modal is if user does not enter required location info and clicks submit --}}
 		<div class="modal" id="msg" tabindex="-1" role="dialog">
