@@ -3,40 +3,39 @@
     {{> nav/nav-block user=false register=true}}
 
     <div class="holy-grail-grid">
-      <div class="holy-grail-header">
-        <center>
-        <button id="upload-tree" data-id="{{userInfo.id}}" class="button success">Upload Your Tree Pic!</button>
-        <div id='content' data-id="{{userInfo.id}}"></div>
-        </center>
+
+      <div class="holy-grail-left">
+        <div class="translucent-form-overlay" style="margin: 0 auto;">
+          <h4>{{userInfo.firstName}} {{userInfo.lastName}}</h4>
+          <img class="thumbnail" src="https://placehold.it/300x250">
+          <div class="myinfo" id="profile-info">
+            <label for="exampleFileUpload" class="button success hollow" id="profile-button">Upload Your Profile Pic</label>
+            <input type="file" id="exampleFileUpload" class="show-for-sr">
+            <hr>
+            <p>I am an environmental enthusiast and peach tree lover!</p>
+            <p>{{userInfo.city}}, {{userInfo.state}}, {{userInfo.country}}</p>
+          </div>
+        </div>
       </div>
 
-  <div class="holy-grail-left">
-    <div class="translucent-form-overlay" style="margin: 0 auto;">
-      <h4>{{userInfo.firstName}} {{userInfo.lastName}}</h4>
-      <img class="thumbnail" src="https://placehold.it/300x250">
-      <div class="myinfo" id="profile-info">
-        <label for="exampleFileUpload" class="button success hollow" id="profile-button">Upload Your Profile Pic</label>
-        <input type="file" id="exampleFileUpload" class="show-for-sr">
-        <hr>
-        <p>I am an environmental enthusiast and peach tree lover!</p>
-        <p>{{userInfo.city}}, {{userInfo.state}}, {{userInfo.country}}</p>
+      <div class="holy-grail-middle">
+        <div class="translucent-form-overlay" style="margin: 0 auto;">
+          <h3>Total trees planted: {{treeInfo.length}}</h3>
+          <hr>
+          <center>
+            <button id="upload-tree" data-id="{{userInfo.id}}" class="button hollow success">Upload Your Tree Pic!</button>
+            <div id='content' data-id="{{userInfo.id}}"></div>
+          </center>
+
+        <ul> 
+          {{#each treeInfo}}
+              <img class="imgwidth" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
+          {{/each}}
+        </ul>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="holy-grail-middle">
-    <div class="translucent-form-overlay" style="margin: 0 auto;">
-    <h3>Number of trees you contributed in your lifetime {{treeInfo.length}}</h3>
-    <hr>
-    <ul> 
-      {{#each treeInfo}}
-          <img class="imgwidth" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
-      {{/each}}
-    </ul>
-    </div>
-  </div>
-
-  <div class="holy-grail-right">
+      <div class="holy-grail-right">
         <div class="translucent-form-overlay" style="margin: 0 auto;">
           <form>
             <h3>Update Your Account</h3>
@@ -101,12 +100,7 @@
             </button>
           </form>
         </div>
-  </div>
-
-  {{!-- <div class="holy-grail-footer">
-    <h3>Footer</h3>
-  </div> --}}
-
+      </div>
 </div>
 {{!-- End of Holy Grail --}}
   
