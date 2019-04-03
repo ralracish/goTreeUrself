@@ -25,6 +25,13 @@
         let newUser = {};
         let newTree = {};
         let theCount = 1;
+        /* substitute these lines in mySQL when modifying the deployed database:
+drop database if exists `mp1wuwmz3yjsrqmz`;
+create database `mp1wuwmz3yjsrqmz`;
+USE `mp1wuwmz3yjsrqmz`;
+
+and then capitalize Usertrees and Users in the create table commands
+        */
         let theSchema = `
 drop database if exists project2_dev;<br>
 create database project2_dev;<br>
@@ -72,7 +79,45 @@ CREATE TABLE users<br>
 
         function createRandomUsers() {
             if (theCount > 300) {
-                $('#output').html(theSchema + theUsers.substring(0, theUsers.length - 5) + ';' + theUserTrees.substring(0, theUserTrees.length - 5) + ';');
+                /* the following assumes two users exist as follows:
+('Santa', 'Claus', '1900-01-01', 'North Pole', 'AK', 'US', '', 'santa@claus.com', 'vivian'),
+('Famous', 'Trees', '2019-01-01', 'Earth', 'NC', 'US', '', 'famous@trees.com', 'vivian')
+,
+                and that they have userIds 306 and 307, respectively. Edit the code below as needed if userIds are different. */
+                $('#output').html(theSchema + theUsers.substring(0, theUsers.length - 5) + ';' + theUserTrees.substring(0, theUserTrees.length - 5) + ';') + `,<br>
+    ('85.00000', '-135.00000', '6HXfXc1US6ChLBfVUHGL', '2018-12-25', 'Fir', 'Tannenbaum', 'Fir', '', 306
+),
+    ('50.9843157', '-3.3526172', '61jKrebS0ehOSHl0u3oa', '2000-01-01', 'Yew', 'Ashbrittle Yew', 'Yew', '', 307
+),
+    ('36.5816862', '-118.7536228', 'Bb9bxKJQgqpdhH3l4Zng', '2000-01-01', 'Sequoia', 'General Sherman', 'Sequoia', '', 307
+),
+    ('17.7500051', '10.0644783', 'vIm1HsCTwqNoLzFtEKcr', '2000-01-01', 'Acacia', 'Tree of Tenere', 'Acacia', '', 307
+),
+    ('8.3448159', '80.3950504', 'VT8YWhpDRlKmx3MfpcR3', '2000-01-01', 'Fig', 'Jaya Sri Maha Bodhi', 'Fig', '', 307
+),
+    ('53.204293', '-1.0733424', 'BcfYTcCnQ3eRYOzFdpc1', '2000-01-01', 'English Oak', 'Major Oak', 'English Oak', '', 307
+),
+    ('52.3753181', '4.8828929', '5xJ2oQSSVwi7GaQNuRAU', '2000-01-01', 'Horse-Chestnut', 'Anne Frank', 'Horse-Chestnut', '', 307
+),
+    ('-23.6210574', '30.1958778', 'pL1aNqmeRTiuRCrZpz9w', '2000-01-01', 'Baobab', 'Sunland Baobab', 'Baobab', '', 307
+),
+    ('41.226940', '-124.033738', 'U9h8og5tTQSSnhpO08Ul', '2000-01-01', 'Coast Redwood', 'Hyperion', 'Coast Redwood', '', 307
+),
+    ('40.711295', '-74.013731', '8eetTyQ8Qay3GamChQHv', '2001-09-11', 'Callery Pear', '9/11 Survivor', 'Callery Pear', '', 307
+),
+    ('40.7319596', '-74.0008018', 'PS8spf9mS4GYBrKDoluJ', '2000-01-01', 'Elm', 'Hangmans Elm', 'Elm', '', 307
+),
+    ('37.3856762', '-118.1810527', 'u4unw3KpQSeb38maDp9A', '2000-01-01', 'Great Basin Bristlecone Pine', 'Methuselah', 'Great Basin Bristlecone Pine', '', 307
+),
+    ('61.6394994', '12.6688259', 'JxgLc3bSSieKAxuAYTa1', '2000-01-01', 'Norway Spruce', 'Old Tjikko', 'Norway Spruce', '', 307
+),
+    ('17.046512', '-96.6383857', '0bgZfms6TSibQhBhKFAN', '2000-01-01', 'Montezuma Cypress', 'El Arbol del Tule', 'Montezuma Cypress', '', 307
+),
+    ('14.0280251', '78.3228922', '10okkWJQDCn1r0Urt56V', '2000-01-01', 'Banyan', 'Thimmamma Marrimanu', 'Banyan', '', 307
+),
+    ('51.5354017', '-0.1320251', 'rnA2YHRpuzsSEPY4zgWI', '2000-01-01', 'Ash', 'Hardy Tree', 'Ash', '', 307
+);
+                `;
             } else {
                 console.log(theCount);
                 if (zeroToFourteen > 14) { zeroToFourteen = 0 };
@@ -93,14 +138,14 @@ CREATE TABLE users<br>
                 UserId = theCount;
                 zeroToFourteen++;
                 $.get(queryURL, function (response, status) {
-                    let firstName = response.results[0].name.first.replace(`'`,``);;
+                    let firstName = response.results[0].name.first.replace(`'`, ``);;
                     let firstNameCapitalized = firstName.charAt(0).toUpperCase() + firstName.substring(1);
-                    let lastName = response.results[0].name.last.replace(`'`,``);;
+                    let lastName = response.results[0].name.last.replace(`'`, ``);;
                     let lastNameCapitalized = lastName.charAt(0).toUpperCase() + lastName.substring(1);
                     let dob = (response.results[0].dob.date).substring(0, 10);
-                    let street = response.results[0].location.street.replace(`'`,``);;
-                    let city = response.results[0].location.city.replace(`'`,``);;
-                    let state = response.results[0].location.state.replace(`'`,``);;
+                    let street = response.results[0].location.street.replace(`'`, ``);;
+                    let city = response.results[0].location.city.replace(`'`, ``);;
+                    let state = response.results[0].location.state.replace(`'`, ``);;
                     let country = response.results[0].nat;
                     let age = Math.floor(Math.random() * (56 - 20)) + 10;
                     let email = response.results[0].email;
