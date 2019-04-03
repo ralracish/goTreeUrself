@@ -8,6 +8,10 @@
 	width: 95vw;
 }
 
+.form-pad {
+	padding: 0 10px;
+}
+
 .infoWindow {
 	color: black;
 	font-weight: bold;
@@ -415,39 +419,38 @@
 	}
 }
 
-/* For testing REgistration form */
-
-/* .translucent-form-overlay {
+/* For testing Registration form */
+.translucent-form-overlay-registration {
 	max-width: 500px;
 	width: 100%;
 	background-color: rgba(54, 54, 54, 0.8);
 	padding: 20px;
 	color: #fefefe;
-} */
-/* 
-.translucent-form-overlay .columns.row {
+}
+
+.translucent-form-overlay-registration .columns.row {
 	display: block;
 }
 
-.translucent-form-overlay h3, .translucent-form-overlay label {
+.translucent-form-overlay-registration h3, .translucent-form-overlay label {
 	color: #fefefe;
 }
 
-.translucent-form-overlay input, .translucent-form-overlay select {
+.translucent-form-overlay-registration input, .translucent-form-overlay select {
 	color: #8a8a8a;
 }
 
-.translucent-form-overlay input::-webkit-input-placeholder {
+.translucent-form-overlay-registration input::-webkit-input-placeholder {
 	color: #8a8a8a;
 }
 
-.translucent-form-overlay input:-ms-input-placeholder {
+.translucent-form-overlay-registration input:-ms-input-placeholder {
 	color: #8a8a8a;
 }
 
-.translucent-form-overlay input::placeholder {
+.translucent-form-overlay-registration input::placeholder {
 	color: #8a8a8a;
-} */
+}
 
 form .form-icons {
 	text-align: center;
