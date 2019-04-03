@@ -124,6 +124,14 @@
 		var userLongitude = -78.8256;
 		var initMapLatLong = userLatitude, userLongitude;
 		var map;
+
+		function popUpWindow(url, title) {
+			url = 'https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/' + url;
+			var left = (screen.width / 2) - 400; // half of 800 max width of picture
+			var top = (screen.height / 2) - 300; // half of 600 max height of picture
+			return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=800, height=600, top=' + top + ', left=' + left);
+		};
+
 		function getLocation() {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(showPosition);
@@ -139,7 +147,7 @@
 				console.log('changing position: ' + initMapLatLong + ' / ' + userLatitude, userLongitude);
 				initMapLatLong = userLatitude, userLongitude;
 				map.setCenter(initMapLatLong);
-				placeMarker(userLatitude, userLongitude, 'You are here');
+				placeMarker(userLatitude, userLongitude, '', '', 'You are here');
 			} else {
 				console.log('show position: ' + userLatitude, userLongitude);
 			}
@@ -198,29 +206,37 @@
 			};
 			var userLatLong = { lat: latitude, lng: longitude };
 
-			var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br><img src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/${tree_image_link}' alt='' class='infowindow-picture'><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+			var theImageString = `<img src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/${tree_image_link}' alt='' class='infowindow-picture' onclick='popUpWindow("${tree_image_link}", "${users_tree_name}")'>`
 
-			switch (name) {
+			var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+
+			switch (users_tree_name) {
 				case 'You are here':
 					var contentString = `<div class='infoWindow'>You are here.<br><br>Double-click the red pointer icon to re-center the map and zoom in!</div>`;
 					icon = '';
 					break;
-				case 'Santa Claus':
+				case 'Tannenbaum':
+					var contentString = `<div class='infoWindow'><em>Tannenbaum</em><br>This decorated tree has been spotted in the ice and snow at the North Pole.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
 					icon = icons.christmas_tree.icon;
 					break;
 				case 'Ashbrittle Yew':
+					var contentString = `<div class='infoWindow'><em>The Ashbrittle Yew</em><br>"Thought to be Britain's oldest living thing, this tree is 3500 to 4000 years old—meaning it was already mature when Stonehenge was built." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Ashbrittle' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
 					icon = icons.arrow.icon;
 					break;
 				case 'General Sherman':
+					var contentString = `<div class='infoWindow'><em>General Sherman</em><br>"The General Sherman Tree in California's Sequoia National Park is the largest tree, by volume, anywhere in the world." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/General_Sherman_(tree)' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
 					icon = icons.arrow.icon;
 					break;
 				case 'Tree of Tenere':
+					var contentString = `<div class='infoWindow'><em>Tree of Ténéré</em><br>"Located 250 miles from any other tree, the Tree of Ténéré is thought to have been the world’s most isolated tree for much of the 20th century." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Tree_of_T%C3%A9n%C3%A9r%C3%A9' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
 					icon = icons.arrow.icon;
 					break;
 				case 'Jaya Sri Maha Bodhi':
+					var contentString = `<div class='infoWindow'><em>Jaya Sri Maha Bodhi</em><br>"Said to be a branch of the sacred fig tree under which the Buddha gained enlightenment, the Jaya Sri Maha Bodhi was brought to Sri Lanka in the 3rd century BCE." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Jaya_Sri_Maha_Bodhi' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
 					icon = icons.arrow.icon;
 					break;
 				case 'Major Oak':
+					var contentString = `<div class='infoWindow'><em>Major Oak</em><br>"Robin Hood is said to have taken shelter inside the hollow trunk of the massive Major Oak, which stands in the heart of Sherwood Forest." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Major_Oak' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
 					icon = icons.arrow.icon;
 					break;
 				case 'Anne Frank':
@@ -229,7 +245,7 @@
 				case 'Sunland Baobab':
 					icon = icons.arrow.icon;
 					break;
-				case 'Hyperion Tree':
+				case 'Hyperion':
 					icon = icons.arrow.icon;
 					break;
 				case '9/11 Survivor':
@@ -238,7 +254,7 @@
 				case 'Hangmans Elm':
 					icon = icons.arrow.icon;
 					break;
-				case 'Methuselah Tree':
+				case 'Methuselah':
 					icon = icons.arrow.icon;
 					break;
 				case 'Old Tjikka':
@@ -428,6 +444,7 @@
 				} // Don't do anything for N or E
 				return dd;
 			};
+
 			document.getElementById('upload-tree').onclick = function () { client.picker(options).open(); };
 		});
 	</script>
