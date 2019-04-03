@@ -1,15 +1,27 @@
 .imgwidth {
-	width: 200px;
+	width: 190px;
 	border-radius: 6px;
 	padding: 5px;
 }
+
+/* .banner img:hover {
+	transform: scale(1.25);
+}
+.banner:hover img {
+	transform: scale(.5);
+}
+
+.banner img {
+	transition: transform .25s ease;
+} */
+
 #map {
 	height: 75vh;
 	width: 95vw;
 }
 
 .form-pad {
-	padding: 0 10px;
+	padding: 0 15px;
 }
 
 .infoWindow {
@@ -308,7 +320,7 @@
 .translucent-form-overlay {
 	/* max-width: 500px; */
 	width: 100%;
-	background-color: rgba(54, 54, 54, 0.8);
+	background-color: rgba(54, 54, 54, 0.5);
 	padding: 20px;
 	color: #fefefe;
 }
@@ -475,21 +487,6 @@ form .form-icons .fa {
 }
 
 /* Profile Page CSS */
-
-.profile-container {
-	margin-left: 75px;
-}
-
-#my-info {
-	margin-top: 120px;
-}
-
-#profile-info {
-	margin-left: 30px;
-	padding: 5px, 5px, 5px, 5px;
-	margin-bottom: 30px;
-	color: rgb(0, 153, 51);
-}
 
 .large-up-4 .column p {
 	color: white;
