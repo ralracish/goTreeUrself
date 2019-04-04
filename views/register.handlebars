@@ -2,88 +2,74 @@
   <div class="top-content-section">
     {{> nav/nav-block user=false register=true}}
     {{!-- For XY grid row becomes grid-x and columns become cells --}}
-    <div class="grid-x grid-margin-x">
-      <div class="cell" style="position: fixed">
-        <div class="translucent-form-overlay-registration" style="margin: 0 auto;">
-          <form>
-            <div class="form-icons">
-              <h3>Create Your Account</h3>
-              <div class="row columns form-pad">
-                <div class="input-group">
-                  {{!-- <label for="inputFirst">First Name</label> --}}
-                  <span class="input-group-label">
-                    <i class="fa fa-user"></i>
-                  </span>
-                  <input type="text" class="form-control input-group-field" id="inputFirst" placeholder="First Name">
-                </div>
-              </div>
-              <div class="row columns form-pad">
-                <div class="input-group">
-                  {{!-- <label for="inputLast">Last Name</label> --}}
-                  <span class="input-group-label">
-                    <i class="fa fa-user"></i>
-                  </span>
-                  <input type="text" class="form-control input-group-field" id="inputLast" placeholder="Last Name">
-                </div>
-              </div>
-              <div class="row columns form-pad">
-                <div class="input-group">
-                  {{!-- <label for="inputPassword">Password</label> --}}
-                  <span class="input-group-label">
-                    <i class="fa fa-building"></i>
-                  </span>
-                  <input type="text" class="form-control" id="inputCity" placeholder="City">
-                </div>
-              </div>
-              <div class="row columns form-pad">
-                <div class="input-group">
-                  {{!-- <label for="inputPassword">Password</label> --}}
-                  <span class="input-group-label">
-                    <i class="fa fa-tree"></i>
-                  </span>
-                  <input type="text" class="form-control" id="inputState" placeholder="State">
-                </div>
-              </div>
-              <div class="row columns form-pad">
-                <div class="input-group">
-                  {{!-- <label for="inputPassword">Password</label> --}}
-                  <span class="input-group-label">
-                    <i class="fa fa-globe"></i>
-                  </span>
-                  <input type="text" class="form-control" id="inputCountry" placeholder="Country">
-                </div>
-              </div>
-              <div class="row columns form-pad">
-                <div class="input-group">
-                  {{!-- <label for="inputEmail">Email</label> --}}
-                  <span class="input-group-label">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                </div>
-              </div>
-              <div class="row columns form-pad">
-                <div class="input-group">
-                  {{!-- <label for="inputPassword">Password</label> --}}
-                  <span class="input-group-label">
-                    <i class="fa fa-key"></i>
-                  </span>
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                </div>
-              </div>
-              <button type="button" id="add-user" class="button success hollow expanded search-button">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
   </div>
-
+    <div class="translucent-form-overlay-registration" style="margin: 0 auto;">
+      <form>
+        <div class="form-icons">
+          <h3>Create Your Account</h3>
+          <div class="row columns form-pad">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-user"></i>
+              </span>
+              <input type="text" class="form-control input-group-field" id="inputFirst" placeholder="First Name">
+            </div>
+          </div>
+          <div class="row columns form-pad">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-user"></i>
+              </span>
+              <input type="text" class="form-control input-group-field" id="inputLast" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="row columns form-pad">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-building"></i>
+              </span>
+              <input type="text" class="form-control" id="inputCity" placeholder="City">
+            </div>
+          </div>
+          <div class="row columns form-pad">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-tree"></i>
+              </span>
+              <input type="text" class="form-control" id="inputState" placeholder="State">
+            </div>
+          </div>
+          <div class="row columns form-pad">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-globe"></i>
+              </span>
+              <input type="text" class="form-control" id="inputCountry" placeholder="Country">
+            </div>
+          </div>
+          <div class="row columns form-pad">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-envelope"></i>
+              </span>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="row columns form-pad">
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-key"></i>
+              </span>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+          <button type="button" id="add-user" class="button success hollow expanded search-button">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
   <div class="bottom-content-section" data-magellan data-threshold="0">
-    <!-- <a href="#main-content-section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"/></svg></a> -->
   </div>
 </div>
 
