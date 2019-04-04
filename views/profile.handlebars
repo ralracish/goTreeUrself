@@ -13,15 +13,36 @@
           <img class="thumbnail" src="https://placehold.it/300x250">
         {{/if}}
         <div class="myinfo" id="profile-info">
-          <button id="profile-button" data-id="{{userInfo.id}}" class="button hollow success expanded">Upload Profile Picture</button>
+          <button id="profile-button" data-id="{{userInfo.id}}" class="button hollow success expanded">Upload Pic</button>
           <button type="button" id="add-user" class="button hollow success expanded search-button">Update Profile</button>
-          <p>I am an environmental enthusiast and peach tree lover!</p>
-          <h4 class="text-shadow">{{userInfo.city}}, {{userInfo.state}}</h4>
-          <h4 class="text-shadow">{{userInfo.country}}</h4>
+
+        {{#if userInfo.profile_text}}
+          <div class='aboutuser'>
+            <p>{{userInfo.profile_text}}</p>
+          </div>
+          {{else}}
+          <div class='aboutuser'>
+            <input type="text" id="profile_text" data-id="{{userInfo.id}}" placeholder="About You(max 35 words)">
+            <button type="button" id="add-profiletext"  data-id="{{userInfo.id}}" class="button success hollow expanded search-button">
+                Submit
+            </button>
+          </div>
+        {{/if}}
+        {{#if userInfo.city}}
+            {{#if userInfo.state}}
+            <p>{{userInfo.city}}, {{userInfo.state}}</p>
+            {{else}}
+              <p>{{userInfo.city}}</p>
+          {{/if}}
+          {{else}}
+            <p>{{userInfo.state}}</p>
+        {{/if}}
+        {{#if userInfo.country}}
+        <p>{{userInfo.country}}</p>
+        {{/if}} 
         </div>
       </div>
     </div>
-
 
     <div class="holy-grail-middle translucent-form-overlay">
       <div class="" style="margin: 0 auto;">

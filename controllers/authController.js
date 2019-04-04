@@ -53,7 +53,8 @@ module.exports = (passport, db) => {
     },
     updateUser: (req, res) => {
       db.User.update({
-        profile_image_link: req.body.profile_image_link
+        profile_image_link: req.body.profile_image_link,
+        profile_text: req.body.profile_text
       }, {
         where: { id: parseInt(req.params.id) }
       }).then(result => {

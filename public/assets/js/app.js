@@ -136,3 +136,20 @@ $('#login').on('click', function (event) {
     }
   });
 });
+
+$('#add-profiletext').on('click', function (event) {
+  event.preventDefault();
+  const id = $(this).data('id');
+  const usertxt = {
+    profile_text: $('#profile_text').val().trim()
+  };
+  $.ajax({
+    type: 'PUT',
+    url: `/api/user/${id}`,
+    data: usertxt
+  }).then((result) => {
+    // Reload the page to get the updated list
+    // eslint-disable-next-line no-undef
+    location.reload();
+  });
+});

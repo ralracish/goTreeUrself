@@ -24,11 +24,10 @@ module.exports = (db) => {
         ]
       }).then(result => {
         const user = {
-          userInfo: { ...req.session.passport.user, profile_image_link: result[0].profile_image_link },
+          userInfo: { ...req.session.passport.user, profile_image_link: result[0].profile_image_link, profile_text: result[0].profile_text },
           isloggedin: req.isAuthenticated(),
           treeInfo: result[0].Usertrees
         };
-
         res.render('profile', user);
       });
     } else {
