@@ -2,42 +2,115 @@
 <html>
 
 <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+    <meta name='viewport' content='initial-scale=1.0, user-scalable=no'>
+    <meta charset='utf-8'>
     <title>goTreeUrself sample data generator</title>
     <script src='https://code.jquery.com/jquery.js'></script>
+    <style>
+        button {
+            background-color: green;
+            color: white;
+            padding: 15px 25px;
+            font-size: x-large;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-    <div id='output'></div>
+    <div id='output'>
+        <button onclick='askTheWhichDatabaseQuestion()'>Generate Sample Data</button>
+        <br><br><br>
+        <strong>When you click the button above, this page will ask if you want data for 'localhost' or 'heroku', then
+            how many records
+            you would like. With those answers it will start generating your data.<br><br>Open the console to monitor
+            progress of this
+            function. A number repeating in the console indicates that a random
+            latitude/longitude is not on land. When a new random record is created, it is tested to be sure it is on
+            land before being accepted. Earth is 71% water so you will see a number of retries.</strong><br><br>
+        <h1>Once the data
+            generation is done, this page will fill with raw text that you can simply copy-and-paste into a SQL
+            query to
+            create your database, tables, and records.</h1>
+    </div>
     <script>
-        const googleSearchAPI = 'AIzaSyAj5ERWlVlw7l8uxhZ-HKjws9kmFJz0bh4';
-        const usersArray = [];
-        const treesArray = [];
-        const treeImagesArray = ['oxtXNfamTiyTIfkfqj3L', 'njzaDu11QwivwUO7CDmm', 'C5Tn3psQV6LA90D8j2S0', 'ejHDgqcBT2u5b1EVBtmZ', 'QWpkx20JT7S4gjmAFd1D', 'Rgy81DcYS7KpBmePpKBZ', 'uEZsxP4TNed8qvZSHHIr', 'PZNFWs0mS9WUhP3K7JOt', '5lC3awBtSUS7OsYiTh7h', 'VOuToVfQaCP30IxTDMmw', 'Qym55AknSAS6cWkNUGSS', 'frxFzEzlSMuRgrFlHV9Q', 'yx97LvuT5ewpqfeCORGh', 'sauZBfSWT4qvHvhvrrON', 'edDzlpSQhKN8I7p8iodt'];
-        const femaleImagesArray = ['ZVlSGdjIQZqxs3cAAF1R', 'p6UijAZmSNScEB9B0NFD', 'hDr5x3SMRvmFL7xhG6JE', 'VA035lASdqZr7iaZqIUw', 'QlQewMGvSRmBdQJnmSOx', 'dFELuocqT06mIdFYDvN0', 'u1hvrLI0RYmhcywmWy1B', 'TLKgfaCXT3mLsK2m7uvT', 'XinxENDTRSIlGPRwlEWl', '71jrDQQ8WNy2F562pQEw', '6ThZkdvCSNqqNuxZAgVx', '3CIepxfvTHGSfNQNZdbu', 'DN5G88gSQn0XedJjevvv', 'eciyL7vKQ27o4ClWY3qA', 'TweJu8KnTSOotLYYNXAd'];
-        const maleImagesArray = ['exuA6PZVSVqbcoiRqAbF', 'hZEFuMisTj6CU3hilw2G', 'NKztE2FMTyW0FzZs53o9', '6J2kbS5pOJaMotVTLQId', '6OhLA3soSDOalhdLFnaQ', 'IocBwX0ySiC8HmHzJjc6', 'rWosS4w9TleKxdvfGoHq', 'X6HDyFLnRpOhAXWrlG5x', 'moeYJBolQI6IFYMjpS4x', 'ZSofh2ABQOOV2ApZVvpm', 'QKM2gR7UTXH48N4ixSHn', 'V0QcHTW9RCWGP18cILDL', '8aygosxTRq174M4aqjUT', 'WIXjTcqiSLW9XedxucuQ', 'C1IbIFE8TySnIjDbNP6V'];
-        const name_of_treeArray = ['Almond', 'Apple', 'Ash', 'Aspen', 'Beech', 'Cedar', 'Cherry', 'Cypress', 'Elm', 'Fir', 'Holly', 'Linden', 'Magnolia', 'Palm', 'Tea'];
-        const users_tree_nameArray = ['Hope', 'Prosperity', 'Happiness', 'Commonwealth', 'Giving', 'In memory of Grandma', 'For the Children', 'Future Generations', 'Giving Back', 'Sustenance', 'Dedicated to my Daughter', 'On our Wedding Day', 'Birthday', 'New School Dedication', 'Future Wealth'];
-        let queryURL;
-        var breakFlag = false;
+        let theDatabase = '';
+        let theUsertreesTable = '';
+        let theUsersTable = '';
 
-        let newUser = {};
-        let newTree = {};
-        let theCount = 1;
-        /* substitute these lines in mySQL when modifying the deployed database:
-drop database if exists `mp1wuwmz3yjsrqmz`;
-create database `mp1wuwmz3yjsrqmz`;
-USE `mp1wuwmz3yjsrqmz`;
+        function askTheWhichDatabaseQuestion() {
+            let whichDatabase = prompt(`Please enter 'localhost' or 'heroku' to indicate which database you want to generate sample data for:`, `localhost`);
 
-and then capitalize Usertrees and Users in the create table commands
-        */
-        let theSchema = `
-drop database if exists project2_dev;<br>
-create database project2_dev;<br>
-USE project2_dev;<br>
+            if (whichDatabase !== null) {
+                if (whichDatabase === 'localhost') {
+                    theDatabase = 'project2_dev';
+                    theUsertreesTable = 'usertrees';
+                    theUsersTable = 'users';
+                    askTheHowManyQuestion();
+                } else {
+                    if (whichDatabase === 'heroku') {
+                        theDatabase = 'mp1wuwmz3yjsrqmz';
+                        theUsertreesTable = 'Usertrees';
+                        theUsersTable = 'Users';
+                        askTheHowManyQuestion();
+                    } else {
+                        alert(`Please try again. You must enter either 'localhost' or 'heroku'.`);
+                    }
+                }
+            }
+        };
 
-CREATE TABLE usertrees<br>
+        function askTheHowManyQuestion() {
+            let howMany = prompt(`Please enter a number between 1 and 210 to indicate how many records you want:`, 10);
+
+            if (typeof (howMany === 'number')) {
+                if (howMany > 0 && howMany < 211) {
+                    // we limit this to 210 because google maps has an odd quirk
+                    // where it refreshes all the markers you've placed the moment
+                    // you place your 251st marker. It makes for an unsightly blip
+                    // on the screen. By keeping our data to 210 records we have
+                    // room for some more user trees before we hit the 250 blip limit.
+                    console.log(`creating ${howMany} records`);
+                    doTheCreationFunction();
+                } else {
+                    alert(`Please try again. Your number was less than 1 or more than 210.`);
+                }
+            } else {
+                alert(`Please try again. The number of records you want must be entered as a number between (and including) 1 and 210.`);
+            }
+        };
+
+        function doTheCreationFunction() {
+            const googleSearchAPI = 'AIzaSyAj5ERWlVlw7l8uxhZ-HKjws9kmFJz0bh4';
+            const usersArray = [];
+            const treesArray = [];
+            const treeImagesArray = ['oxtXNfamTiyTIfkfqj3L', 'njzaDu11QwivwUO7CDmm', 'C5Tn3psQV6LA90D8j2S0', 'ejHDgqcBT2u5b1EVBtmZ', 'QWpkx20JT7S4gjmAFd1D', 'Rgy81DcYS7KpBmePpKBZ', 'uEZsxP4TNed8qvZSHHIr', 'PZNFWs0mS9WUhP3K7JOt', '5lC3awBtSUS7OsYiTh7h', 'VOuToVfQaCP30IxTDMmw', 'Qym55AknSAS6cWkNUGSS', 'frxFzEzlSMuRgrFlHV9Q', 'yx97LvuT5ewpqfeCORGh', 'sauZBfSWT4qvHvhvrrON', 'edDzlpSQhKN8I7p8iodt'];
+            const femaleImagesArray = ['ZVlSGdjIQZqxs3cAAF1R', 'p6UijAZmSNScEB9B0NFD', 'hDr5x3SMRvmFL7xhG6JE', 'VA035lASdqZr7iaZqIUw', 'QlQewMGvSRmBdQJnmSOx', 'dFELuocqT06mIdFYDvN0', 'u1hvrLI0RYmhcywmWy1B', 'TLKgfaCXT3mLsK2m7uvT', 'XinxENDTRSIlGPRwlEWl', '71jrDQQ8WNy2F562pQEw', '6ThZkdvCSNqqNuxZAgVx', '3CIepxfvTHGSfNQNZdbu', 'DN5G88gSQn0XedJjevvv', 'eciyL7vKQ27o4ClWY3qA', 'TweJu8KnTSOotLYYNXAd'];
+            const maleImagesArray = ['exuA6PZVSVqbcoiRqAbF', 'hZEFuMisTj6CU3hilw2G', 'NKztE2FMTyW0FzZs53o9', '6J2kbS5pOJaMotVTLQId', '6OhLA3soSDOalhdLFnaQ', 'IocBwX0ySiC8HmHzJjc6', 'rWosS4w9TleKxdvfGoHq', 'X6HDyFLnRpOhAXWrlG5x', 'moeYJBolQI6IFYMjpS4x', 'ZSofh2ABQOOV2ApZVvpm', 'QKM2gR7UTXH48N4ixSHn', 'V0QcHTW9RCWGP18cILDL', '8aygosxTRq174M4aqjUT', 'WIXjTcqiSLW9XedxucuQ', 'C1IbIFE8TySnIjDbNP6V'];
+            const name_of_treeArray = ['Almond', 'Apple', 'Ash', 'Aspen', 'Beech', 'Cedar', 'Cherry', 'Cypress', 'Elm', 'Fir', 'Holly', 'Linden', 'Magnolia', 'Palm', 'Tea'];
+            const users_tree_nameArray = ['Hope', 'Prosperity', 'Happiness', 'Commonwealth', 'Giving', 'In memory of Grandma', 'For the Children', 'Future Generations', 'Giving Back', 'Sustenance', 'Dedicated to my Daughter', 'On our Wedding Day', 'Birthday', 'New School Dedication', 'Future Wealth'];
+            // TODO: this variable needs to be added in to the routines below.
+            const users_profile_textArray = ['Like the Lorax, I speak for the trees!', 'I want my children to have clean air to breathe', 'Trees are awesome!', 'I love gardening and helping things grow is wonderful.', 'We did this as a group project.', 'My family planted a tree on Arbor Day', 'Our gradeschool class planted this outside our classroom.', 'I try to plant a new tree in my yard every year.', 'We love the shade and the green of our new trees.', 'I love how it attracts the birds.', 'I love to call myself a tree-hugger!', 'Trees are our future.', 'We will build a treehouse in this once it gets big enough.', 'These trees brighten the view out my kitchen window', 'I love the sound of the leaves in the wind!'];
+            let queryURL;
+            var breakFlag = false;
+
+            let newUser = {};
+            let newTree = {};
+            let theCount = 1;
+
+            let theSchema = `
+drop database if exists ${theDatabase};<br>
+create database ${theDatabase};<br><br>
+USE ${theDatabase};<br><br>
+
+CREATE TABLE ${theUsertreesTable}<br>
 (<br>
 &nbsp;&nbsp;&nbsp;&nbsp;id int not null auto_increment,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;latitude varchar (255),<br>
@@ -54,7 +127,7 @@ CREATE TABLE usertrees<br>
 &nbsp;&nbsp;&nbsp;&nbsp;primary key (id)<br>
 );<br>
 <br>
-CREATE TABLE users<br>
+CREATE TABLE ${theUsersTable}<br>
 (<br>
 &nbsp;&nbsp;&nbsp;&nbsp;id int not null auto_increment,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;firstName varchar (255),<br>
@@ -64,6 +137,7 @@ CREATE TABLE users<br>
 &nbsp;&nbsp;&nbsp;&nbsp;state varchar (255),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;country varchar (255),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;profile_image_link varchar (255),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;profile_text varchar (255),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;email varchar (255),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;password varchar (255),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;isAdmin boolean default 0,<br>
@@ -73,127 +147,137 @@ CREATE TABLE users<br>
 );<br>
 <br>
         `
-        let theUsers = `<br><br>insert into Users (firstName, lastName, dob, city, state, country, profile_image_link, email, password) values<br>`;
-        let theUserTrees = `<br><br>insert into Usertrees (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId) values<br>`;
-        let zeroToFourteen = 0;
+            let theUsers = '';
+            let theUserTrees = '';
+            let zeroToFourteen = 0;
 
-        function createRandomUsers() {
-            if (theCount > 300) {
-                /* the following assumes two users exist as follows:
-('Santa', 'Claus', '1900-01-01', 'North Pole', 'AK', 'US', '', 'santa@claus.com', 'vivian'),
-('Famous', 'Trees', '2019-01-01', 'Earth', 'NC', 'US', '', 'famous@trees.com', 'vivian')
-,
-                and that they have userIds 306 and 307, respectively. Edit the code below as needed if userIds are different. */
-                $('#output').html(theSchema + theUsers.substring(0, theUsers.length - 5) + ';' + theUserTrees.substring(0, theUserTrees.length - 5) + ';') + `,<br>
-    ('85.00000', '-135.00000', '6HXfXc1US6ChLBfVUHGL', '2018-12-25', 'Fir', 'Tannenbaum', 'Fir', '', 306
-),
-    ('50.9843157', '-3.3526172', '61jKrebS0ehOSHl0u3oa', '2000-01-01', 'Yew', 'Ashbrittle Yew', 'Yew', '', 307
-),
-    ('36.5816862', '-118.7536228', 'Bb9bxKJQgqpdhH3l4Zng', '2000-01-01', 'Sequoia', 'General Sherman', 'Sequoia', '', 307
-),
-    ('17.7500051', '10.0644783', 'vIm1HsCTwqNoLzFtEKcr', '2000-01-01', 'Acacia', 'Tree of Tenere', 'Acacia', '', 307
-),
-    ('8.3448159', '80.3950504', 'VT8YWhpDRlKmx3MfpcR3', '2000-01-01', 'Fig', 'Jaya Sri Maha Bodhi', 'Fig', '', 307
-),
-    ('53.204293', '-1.0733424', 'BcfYTcCnQ3eRYOzFdpc1', '2000-01-01', 'English Oak', 'Major Oak', 'English Oak', '', 307
-),
-    ('52.3753181', '4.8828929', '5xJ2oQSSVwi7GaQNuRAU', '2000-01-01', 'Horse-Chestnut', 'Anne Frank', 'Horse-Chestnut', '', 307
-),
-    ('-23.6210574', '30.1958778', 'pL1aNqmeRTiuRCrZpz9w', '2000-01-01', 'Baobab', 'Sunland Baobab', 'Baobab', '', 307
-),
-    ('41.226940', '-124.033738', 'U9h8og5tTQSSnhpO08Ul', '2000-01-01', 'Coast Redwood', 'Hyperion', 'Coast Redwood', '', 307
-),
-    ('40.711295', '-74.013731', '8eetTyQ8Qay3GamChQHv', '2001-09-11', 'Callery Pear', '9/11 Survivor', 'Callery Pear', '', 307
-),
-    ('40.7319596', '-74.0008018', 'PS8spf9mS4GYBrKDoluJ', '2000-01-01', 'Elm', 'Hangmans Elm', 'Elm', '', 307
-),
-    ('37.3856762', '-118.1810527', 'u4unw3KpQSeb38maDp9A', '2000-01-01', 'Great Basin Bristlecone Pine', 'Methuselah', 'Great Basin Bristlecone Pine', '', 307
-),
-    ('61.6394994', '12.6688259', 'JxgLc3bSSieKAxuAYTa1', '2000-01-01', 'Norway Spruce', 'Old Tjikko', 'Norway Spruce', '', 307
-),
-    ('17.046512', '-96.6383857', '0bgZfms6TSibQhBhKFAN', '2000-01-01', 'Montezuma Cypress', 'El Arbol del Tule', 'Montezuma Cypress', '', 307
-),
-    ('14.0280251', '78.3228922', '10okkWJQDCn1r0Urt56V', '2000-01-01', 'Banyan', 'Thimmamma Marrimanu', 'Banyan', '', 307
-),
-    ('51.5354017', '-0.1320251', 'rnA2YHRpuzsSEPY4zgWI', '2000-01-01', 'Ash', 'Hardy Tree', 'Ash', '', 307
-);
-                `;
-            } else {
-                console.log(theCount);
-                if (zeroToFourteen > 14) { zeroToFourteen = 0 };
-                if (theCount % 2 === 0) { // if it's an even number we'll get a random female
-                    queryURL = 'https://randomuser.me/api/?gender=female'
+            function createRandomData() {
+                if (theCount > 3) {
+                    /* the following assumes the above two users exist
+                    and that they have userIds 1 and 2, respectively.
+                    Edit the code below as needed if userIds are different. */
+
+                    let theSpecialUsers = `insert into ${theUsersTable} (firstName, lastName, dob, city, state, country, profile_image_link, profile_text, email, password) values<br>
+('Santa', 'Claus', '1900-01-01', 'North Pole', 'AK', 'US', '', '', 'santa@claus.com', 'vivian'),<br>
+('Famous', 'Trees', '2019-01-01', 'Earth', 'NC', 'US', '', '', 'famous@trees.com', 'vivian'),<br>
+`;
+                    let theSpecialTrees = `
+<br>insert into ${theUsertreesTable} (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId) values<br>
+    ('85.00000', '-135.00000', '6HXfXc1US6ChLBfVUHGL', '2018-12-25', 'Fir', 'Tannenbaum', 'Fir', '', 1
+),<br>
+    ('50.9843157', '-3.3526172', '61jKrebS0ehOSHl0u3oa', '2000-01-01', 'Yew', 'Ashbrittle Yew', 'Yew', '', 2
+),<br>
+    ('36.5816862', '-118.7536228', 'Bb9bxKJQgqpdhH3l4Zng', '2000-01-01', 'Sequoia', 'General Sherman', 'Sequoia', '', 2
+),<br>
+    ('17.7500051', '10.0644783', 'vIm1HsCTwqNoLzFtEKcr', '2000-01-01', 'Acacia', 'Tree of Tenere', 'Acacia', '', 2
+),<br>
+    ('8.3448159', '80.3950504', 'VT8YWhpDRlKmx3MfpcR3', '2000-01-01', 'Fig', 'Jaya Sri Maha Bodhi', 'Fig', '', 2
+),<br>
+    ('53.204293', '-1.0733424', 'BcfYTcCnQ3eRYOzFdpc1', '2000-01-01', 'English Oak', 'Major Oak', 'English Oak', '', 2
+),<br>
+    ('52.3753181', '4.8828929', '5xJ2oQSSVwi7GaQNuRAU', '2000-01-01', 'Horse-Chestnut', 'Anne Frank', 'Horse-Chestnut', '', 2
+),<br>
+    ('-23.6210574', '30.1958778', 'pL1aNqmeRTiuRCrZpz9w', '2000-01-01', 'Baobab', 'Sunland Baobab', 'Baobab', '', 2
+),<br>
+    ('41.226940', '-124.033738', 'U9h8og5tTQSSnhpO08Ul', '2000-01-01', 'Coast Redwood', 'Hyperion', 'Coast Redwood', '', 2
+),<br>
+    ('40.711295', '-74.013731', '8eetTyQ8Qay3GamChQHv', '2001-09-11', 'Callery Pear', '9/11 Survivor', 'Callery Pear', '', 2
+),<br>
+    ('40.7319596', '-74.0008018', 'PS8spf9mS4GYBrKDoluJ', '2000-01-01', 'Elm', 'Hangmans Elm', 'Elm', '', 2
+),<br>
+    ('37.3856762', '-118.1810527', 'u4unw3KpQSeb38maDp9A', '2000-01-01', 'Great Basin Bristlecone Pine', 'Methuselah', 'Great Basin Bristlecone Pine', '', 2
+),<br>
+    ('61.6394994', '12.6688259', 'JxgLc3bSSieKAxuAYTa1', '2000-01-01', 'Norway Spruce', 'Old Tjikko', 'Norway Spruce', '', 2
+),<br>
+    ('17.046512', '-96.6383857', '0bgZfms6TSibQhBhKFAN', '2000-01-01', 'Montezuma Cypress', 'El Arbol del Tule', 'Montezuma Cypress', '', 2
+),<br>
+    ('14.0280251', '78.3228922', '10okkWJQDCn1r0Urt56V', '2000-01-01', 'Banyan', 'Thimmamma Marrimanu', 'Banyan', '', 2
+),<br>
+    ('51.5354017', '-0.1320251', 'rnA2YHRpuzsSEPY4zgWI', '2000-01-01', 'Ash', 'Hardy Tree', 'Ash', '', 2
+),<br>
+`;
+                    $('#output').html(theSchema + theSpecialUsers + theUsers.substring(0, theUsers.length - 5) + ';<br>' + theSpecialTrees + theUserTrees.substring(0, theUserTrees.length - 5) + ';<br>');
                 } else {
-                    queryURL = 'https://randomuser.me/api/?gender=male'
+                    console.log(theCount);
+                    if (zeroToFourteen > 14) { zeroToFourteen = 0 };
+                    if (theCount % 2 === 0) { // if it's an even number we'll get a random female
+                        queryURL = 'https://randomuser.me/api/?gender=female'
+                    } else {
+                        queryURL = 'https://randomuser.me/api/?gender=male'
+                    };
+                    if (theCount % 4 === 0) { // makes sure 25% are in US.
+                        queryURL = queryURL + '&nat=us'
+                    }
+                    let tree_image_link = treeImagesArray[zeroToFourteen];
+                    let name_of_tree = name_of_treeArray[zeroToFourteen];
+                    let users_tree_name = users_tree_nameArray[zeroToFourteen];
+                    let treename = name_of_tree;
+                    if (theCount % 2 === 0) {
+                        var profile_image_link = femaleImagesArray[zeroToFourteen];
+                    } else {
+                        var profile_image_link = maleImagesArray[zeroToFourteen];
+                    }
+                    let profile_text = users_profile_textArray[zeroToFourteen];
+                    UserId = theCount + 2; // offset accounts for two special users above
+                    zeroToFourteen++;
+                    $.get(queryURL, function (response, status) {
+                        let firstName = response.results[0].name.first.replace(`'`, ``);;
+                        let firstNameCapitalized = firstName.charAt(0).toUpperCase() + firstName.substring(1);
+                        let lastName = response.results[0].name.last.replace(`'`, ``);;
+                        let lastNameCapitalized = lastName.charAt(0).toUpperCase() + lastName.substring(1);
+                        let dob = (response.results[0].dob.date).substring(0, 10);
+                        let street = response.results[0].location.street.replace(`'`, ``);;
+                        let city = response.results[0].location.city.replace(`'`, ``);;
+                        let state = response.results[0].location.state.replace(`'`, ``);;
+                        let country = response.results[0].nat;
+                        let age = Math.floor(Math.random() * (56 - 20)) + 10;
+                        let email = response.results[0].email;
+                        let password = response.results[0].login.password;
+                        let latitude = parseFloat(response.results[0].location.coordinates.latitude);
+                        let longitude = parseFloat(response.results[0].location.coordinates.longitude);
+                        let date_planted = (response.results[0].registered.date).substring(0, 10);
+
+                        newUser = {
+                            firstName: firstNameCapitalized,
+                            lastName: lastNameCapitalized,
+                            dob: dob,
+                            street: street,
+                            city: city,
+                            state: state,
+                            country: country,
+                            age: age,
+                            profile_image_link: profile_image_link,
+                            profile_text: profile_text,
+                            email: email,
+                            password: password
+                        };
+                        newTree = {
+                            latitude: latitude,
+                            longitude: longitude,
+                            tree_image_link: tree_image_link,
+                            date_planted: date_planted,
+                            name_of_tree: name_of_tree,
+                            users_tree_name: users_tree_name,
+                            treename: treename,
+                            UserId: UserId,
+                        };
+                        let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`; // alternate username: desmondmullen
+                        $.get(oceanCheckUrl, function (response, status) {
+                            if (!Object.keys(response).includes('ocean')) {
+                                theUsers += `('${firstNameCapitalized}', '${lastNameCapitalized}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${profile_text}', '${email}', '${password}'),<br>`;
+
+                                theUserTrees += `('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${name_of_tree}', '${users_tree_name}', '${treename}', '', ${UserId}),<br>`;
+
+                                theCount++;
+                            }
+                            createRandomData();
+                        });
+                    })
                 };
-                let tree_image_link = treeImagesArray[zeroToFourteen];
-                let name_of_tree = name_of_treeArray[zeroToFourteen];
-                let users_tree_name = users_tree_nameArray[zeroToFourteen];
-                let treename = name_of_tree;
-                if (theCount % 2 === 0) {
-                    var profile_image_link = femaleImagesArray[zeroToFourteen];
-                } else {
-                    var profile_image_link = maleImagesArray[zeroToFourteen];
-                }
-                UserId = theCount;
-                zeroToFourteen++;
-                $.get(queryURL, function (response, status) {
-                    let firstName = response.results[0].name.first.replace(`'`, ``);;
-                    let firstNameCapitalized = firstName.charAt(0).toUpperCase() + firstName.substring(1);
-                    let lastName = response.results[0].name.last.replace(`'`, ``);;
-                    let lastNameCapitalized = lastName.charAt(0).toUpperCase() + lastName.substring(1);
-                    let dob = (response.results[0].dob.date).substring(0, 10);
-                    let street = response.results[0].location.street.replace(`'`, ``);;
-                    let city = response.results[0].location.city.replace(`'`, ``);;
-                    let state = response.results[0].location.state.replace(`'`, ``);;
-                    let country = response.results[0].nat;
-                    let age = Math.floor(Math.random() * (56 - 20)) + 10;
-                    let email = response.results[0].email;
-                    let password = response.results[0].login.password;
-                    let latitude = parseFloat(response.results[0].location.coordinates.latitude);
-                    let longitude = parseFloat(response.results[0].location.coordinates.longitude);
-                    let date_planted = (response.results[0].registered.date).substring(0, 10);
-
-                    newUser = {
-                        firstName: firstNameCapitalized,
-                        lastName: lastNameCapitalized,
-                        dob: dob,
-                        street: street,
-                        city: city,
-                        state: state,
-                        country: country,
-                        age: age,
-                        profile_image_link: profile_image_link,
-                        email: email,
-                        password: password
-                    };
-                    newTree = {
-                        latitude: latitude,
-                        longitude: longitude,
-                        //TODO:
-                        tree_image_link: tree_image_link,
-                        date_planted: date_planted,
-                        name_of_tree: name_of_tree,
-                        users_tree_name: users_tree_name,
-                        treename: treename,
-                        UserId: UserId,
-                    };
-                    let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
-                    $.get(oceanCheckUrl, function (response, status) {
-                        if (!Object.keys(response).includes('ocean')) {
-                            theUsers += `('${firstNameCapitalized}', '${lastNameCapitalized}', '${dob}', '${city}', '${state}', '${country}', '${profile_image_link}', '${email}', '${password}'),<br>`;
-
-                            theUserTrees += `('${latitude}', '${longitude}', '${tree_image_link}', '${date_planted}', '${name_of_tree}', '${users_tree_name}', '${treename}', '', ${theCount}),<br>`;
-
-                            theCount++;
-                        }
-                        createRandomUsers();
-                    });
-                })
             };
-        };
 
-        createRandomUsers();
+            createRandomData();
+        };
     </script>
 </body>
 

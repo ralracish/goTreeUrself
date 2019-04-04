@@ -41,509 +41,533 @@
 <body>
 	{{{ body }}}
 
-		{{!-- This modal is for situation where we cannot extract location from image --}}
-		<div class="modal" id="user-location" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">We could not obtain the geo-location from the picture So please enter the
-							following info about where the tree was planted</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-
-					<div class="modal-body">
-						<form>
-							<div class="form-group">
-								<label for="inputAccount">Street Address(Optional)</label>
-								<input type="text" class="form-control" id="street">
-							</div>
-							<div class="form-group">
-								<label for="inputAccount">City(Required)</label>
-								<input type="text" class="form-control" id="city">
-							</div>
-							<div class="form-group">
-								<label for="inputAccount">State(Required)</label>
-								<input type="text" class="form-control" id="state">
-							</div>
-							<div class="form-group">
-								<label for="inputAccount">Country(Required)</label>
-								<input type="text" class="form-control" id="country">
-							</div>
-							<div class="form-group">
-								<label for="inputAccount">Name your tree(Optional)</label>
-								<input type="text" class="form-control" id="noexiftreename">
-							</div>
-							<div class="form-group">
-								<label for="inputAccount">Type of Tree(Optional)</label>
-								<input type="text" class="form-control" id="noexiftreetype">
-							</div>
-						</form>
-					</div>
-
-					<div class="modal-footer">
-						<button id="treeloc" type="button" class="btn btn-primary">submit</button>
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		{{!-- This modal is if user does not enter required location info and clicks submit --}}
-		<div class="modal" id="msg" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">'Cannot accept tree without required location info. please try again!'
-						</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		{{!-- This modal is if user enters nonexistent location info and clicks submit --}}
-		<div class="modal" id="invalidloc" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">'City, State and Country could not be found, please try again!'</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		{{!-- This modal is for tree type --}}
-		<div class="modal" id="tree-type" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Please enter some more info about the awesome tree you planted</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	{{!-- This modal is for situation where we cannot extract location from image --}}
+	<div class="modal" id="user-location" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">We could not obtain the geo-location from the picture So please enter the
+						following info about where the tree was planted</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form>
-							<div class="form-group">
-								<label for="inputAccount">Name your tree</label>
-								<input type="text" class="form-control" id="treename">
-							</div>
-							<div class="form-group">
-								<label for="inputAccount">Type of Tree</label>
-								<input type="text" class="form-control" id="treetype">
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button id="treetypeinfo" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-					</div>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="inputAccount">Street Address(Optional)</label>
+							<input type="text" class="form-control" id="street">
+						</div>
+						<div class="form-group">
+							<label for="inputAccount">City(Required)</label>
+							<input type="text" class="form-control" id="city">
+						</div>
+						<div class="form-group">
+							<label for="inputAccount">State(Required)</label>
+							<input type="text" class="form-control" id="state">
+						</div>
+						<div class="form-group">
+							<label for="inputAccount">Country(Required)</label>
+							<input type="text" class="form-control" id="country">
+						</div>
+						<div class="form-group">
+							<label for="inputAccount">Name your tree(Optional)</label>
+							<input type="text" class="form-control" id="noexiftreename">
+						</div>
+						<div class="form-group">
+							<label for="inputAccount">Type of Tree(Optional)</label>
+							<input type="text" class="form-control" id="noexiftreetype">
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<button id="treeloc" type="button" class="btn btn-primary">submit</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<script src='/assets/js/app.js'></script>
-		<script
-			src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBPchfMQ9Do2TWSFQTKjKJlitT5y_Fdrdc&libraries=places'></script>
-		<script>
-			var userLatitude = 35.8235;
-			var userLongitude = -78.8256;
-			var initMapLatLong = userLatitude, userLongitude;
-			var map;
+	{{!-- This modal is if user does not enter required location info and clicks submit --}}
+	<div class="modal" id="msg" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">'Cannot accept tree without required location info. please try again!'
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-			function popUpWindow(url, title) {
-				url = 'https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/' + url;
-				var left = (screen.width / 2) - 400; // half of 800 max width of picture
-				var top = (screen.height / 2) - 300; // half of 600 max height of picture
-				return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=800, height=600, top=' + top + ', left=' + left);
-			};
+	{{!-- This modal is if user enters nonexistent location info and clicks submit --}}
+	<div class="modal" id="invalidloc" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">'City, State and Country could not be found, please try again!'</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-			function getLocation() {
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(showPosition);
-				} else {
-					console.log('Geolocation is not supported by this browser');
-				}
-			};
-			getLocation();
-			function showPosition(position) {
-				userLatitude = parseFloat(position.coords.latitude);
-				userLongitude = parseFloat(position.coords.longitude);
-				if (initMapLatLong != userLatitude, userLongitude) {
-					console.log('changing position: ' + initMapLatLong + ' / ' + userLatitude, userLongitude);
-					initMapLatLong = userLatitude, userLongitude;
-					map.setCenter(initMapLatLong);
-					placeMarker(userLatitude, userLongitude, '', '', 'You are here');
-				} else {
-					console.log('show position: ' + userLatitude, userLongitude);
-				}
-			};
-			function initMap() {
-				console.log('init map: ' + userLatitude, userLongitude);
+	{{!-- This modal is for tree type --}}
+	<div class="modal" id="tree-type" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Please enter some more info about the awesome tree you planted</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="inputAccount">Name your tree</label>
+							<input type="text" class="form-control" id="treename">
+						</div>
+						<div class="form-group">
+							<label for="inputAccount">Type of Tree</label>
+							<input type="text" class="form-control" id="treetype">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="treetypeinfo" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src='/assets/js/app.js'></script>
+	<script
+		src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBPchfMQ9Do2TWSFQTKjKJlitT5y_Fdrdc&libraries=places'></script>
+	<script>
+		var userLatitude = 35.8235;
+		var userLongitude = -78.8256;
+		var initMapLatLong = userLatitude, userLongitude;
+		var map;
+
+		function popUpWindow(url, title) {
+			url = 'https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/' + url;
+			var left = (screen.width / 2) - 400; // half of 800 max width of picture
+			var top = (screen.height / 2) - 300; // half of 600 max height of picture
+			return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=800, height=600, top=' + top + ', left=' + left);
+		};
+
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				console.log('Geolocation is not supported by this browser');
+			}
+		};
+		getLocation();
+		function showPosition(position) {
+			userLatitude = parseFloat(position.coords.latitude);
+			userLongitude = parseFloat(position.coords.longitude);
+			if (initMapLatLong != userLatitude, userLongitude) {
+				console.log('changing position: ' + initMapLatLong + ' / ' + userLatitude, userLongitude);
 				initMapLatLong = userLatitude, userLongitude;
-				var userLatLong = { lat: userLatitude, lng: userLongitude };
-				map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 2,
-					center: userLatLong
-				});
-				setTimeout(function () {
-					$.ajax({
-						url: '/api/userTrees',
-						type: 'GET',
-						data: '',
-						success: function (result) {
-							let i = 0;
-							let theNumberOfPins = result.length;
-							placeThePins();
-							function placeThePins() {
-								setTimeout(function () {
-									let name = result[i].firstName + ' ' + result[i].lastName;
-									placeMarker(parseFloat(result[i].latitude), parseFloat(result[i].longitude), name, result[i].date_planted, result[i].users_tree_name, result[i].tree_image_link);
-									i++;
-									if (i < theNumberOfPins) {
-										placeThePins();
-									}
-								}, (40 - i))
-							}
-						},
-						error: function (response) {
-							console.log(response);
-						}
-					});
-				}, 1500);
-			};
-			setTimeout(function () { initMap(); }, 250); //without this, upload button doesn't work
-			function placeMarker(latitude, longitude, name, date_planted, users_tree_name, tree_image_link) {
-				var iconBase =
-					'http://maps.google.com/mapfiles/';
-				var icons = {
-					tree: {
-						icon: '/assets/images/parks_small.png'
-					},
-					christmas_tree: {
-						icon: '/assets/images/xmas_tree.png'
-					},
-					arrow: {
-						icon: '/assets/images/arrow.png'
-					},
-					caution: { // this is an example of another icon we could place
-						icon: iconBase + 'kml/shapes/caution.png'
-					}
-				};
-				var userLatLong = { lat: latitude, lng: longitude };
-
-				var theImageString = `<img src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/${tree_image_link}' alt='' class='infowindow-picture' onclick='popUpWindow("${tree_image_link}", "${users_tree_name}")'>`
-				var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-
-				switch (users_tree_name) {
-					case 'You are here':
-						var contentString = `<div class='infoWindow'>You are here.<br><br>Double-click the red pointer icon to re-center the map and zoom in!</div>`;
-						icon = '';
-						break;
-					case 'Tannenbaum':
-						var contentString = `<div class='infoWindow'><em>Tannenbaum</em><br>This decorated tree has been spotted in the ice and snow at the North Pole.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.christmas_tree.icon;
-						break;
-					case 'Ashbrittle Yew':
-						var contentString = `<div class='infoWindow'><em>The Ashbrittle Yew</em><br>"Thought to be Britain's oldest living thing, this tree is 3500 to 4000 years old—meaning it was already mature when Stonehenge was built." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Ashbrittle' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'General Sherman':
-						var contentString = `<div class='infoWindow'><em>General Sherman</em><br>"The General Sherman Tree in California's Sequoia National Park is the largest tree, by volume, anywhere in the world." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/General_Sherman_(tree)' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Tree of Tenere':
-						var contentString = `<div class='infoWindow'><em>Tree of Ténéré</em><br>"Located 250 miles from any other tree, the Tree of Ténéré is thought to have been the world’s most isolated tree for much of the 20th century." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Tree_of_T%C3%A9n%C3%A9r%C3%A9' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Jaya Sri Maha Bodhi':
-						var contentString = `<div class='infoWindow'><em>Jaya Sri Maha Bodhi</em><br>"Said to be a branch of the sacred fig tree under which the Buddha gained enlightenment, the Jaya Sri Maha Bodhi was brought to Sri Lanka in the 3rd century BCE." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Jaya_Sri_Maha_Bodhi' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Major Oak':
-						var contentString = `<div class='infoWindow'><em>Major Oak</em><br>"Robin Hood is said to have taken shelter inside the hollow trunk of the massive Major Oak, which stands in the heart of Sherwood Forest." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Major_Oak' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Anne Frank':
-						var contentString = `<div class='infoWindow'><em>Anne Frank's Tree</em><br>"In the two years Anne Frank spent hiding during World War II, the white horse chestnut outside her window—one of the oldest in Amsterdam—became a focus of her longing for freedom." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Anne_Frank_tree' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Sunland Baobab':
-						var contentString = `<div class='infoWindow'><em>Sunland Baobab</em><br>"The Sunland Baobab is ancient and huge. At about 72 feet high and 155 wide, it’s reportedly the widest in South Africa, and perhaps the widest of its species in the world." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Sunland_Baobab' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Hyperion':
-						var contentString = `<div class='infoWindow'><em>Hyperion</em><br>"Hyperion is the world’s tallest known living tree, towering almost 380 feet above Redwood National and State Parks. Its precise location is kept a secret to protect the tree." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Hyperion_(tree)' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case '9/11 Survivor':
-						var contentString = `<div class='infoWindow'><em>9/11 Survivor Tree</em><br>"When this callery pear tree was pulled from the rubble after 9/11, it looked dead, its trunk charred and its upper branches shattered. Only one of its branches was alive. After lots of dedicated care, it recovered." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/National_September_11_Memorial_%26_Museum#The_Survivor_Tree' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Hangmans Elm':
-						var contentString = `<div class='infoWindow'><em>Hangman's Elm</em><br>"This elm tree in Washington Square Park is thought to be the oldest living tree in Manhattan. Traitors were supposedly hung from its branches during and after the Revolutionary War." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href="https://en.wikipedia.org/wiki/Hangman's_Elm" target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Methuselah':
-						var contentString = `<div class='infoWindow'><em>Methuselah</em><br>"The almost 5000-year-old Methuselah, a bristlecone pine growing in California’s White Mountains, is one of the oldest trees in the world. As with other very old trees, its location is kept a secret to protect it. " (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Methuselah_(tree)' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Old Tjikko':
-						var contentString = `<div class='infoWindow'><em>Old Tjikko</em><br>"The world’s oldest tree of any kind, and also the planet’s oldest plant, is a Norway spruce found, perhaps confusingly, in Sweden in 2004. Its root system has been growing for 9550 years, although the visible part of the tree is far younger. Unlike Methuselah and other bristlecone pines, the Norway spruce has the ability to clone itself—meaning that after one stem dies, another one springs from the same root system. The researcher who found it, Leif Kullman, named it for his dog." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Old_Tjikko' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'El Arbol del Tule':
-						var contentString = `<div class='infoWindow'><em>El Árbol del Tule</em><br>"Thought to be the stoutest tree in the world, this Montezuma bald cypress is about 120 feet around. It reportedly takes 17 people holding hands with arms outstretched to encompass its girth." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/%C3%81rbol_del_Tule' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Thimmamma Marrimanu':
-						var contentString = `<div class='infoWindow'><em>Thimmamma Marrimanu</em><br>"This 200-year-old Banyan tree in Andhra Pradesh, India, has branches that extend over five acres, and has been mentioned in some sources as the world’s biggest tree. According to a local legend, childless couples who worship at its base will conceive the following year." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Thimmamma_Marrimanu' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					case 'Hardy Tree':
-						var contentString = `<div class='infoWindow'><em>Hardy Tree</em><br>"This tree is named for Victorian novelist and poet Thomas Hardy, who worked as an apprentice architect before becoming a full-time writer. In the 1860s, one of Hardy’s duties included rearranging the St. Pancras churchyard burials ahead of a railway expansion that was set to cut right through the graves. Hardy moved the tombstones to the base of a nearby ash tree, whose roots have now grown in among them." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/St_Pancras_Old_Church#Churchyard' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
-						icon = icons.arrow.icon;
-						break;
-					default:
-						icon = icons.tree.icon;
-				}
-
-				var infowindow = new google.maps.InfoWindow({
-					content: contentString,
-					maxWidth: 200
-				});
-				var marker = new google.maps.Marker({
-					position: userLatLong,
-					map: map,
-					title: name,
-					icon: icon,
-					animation: google.maps.Animation.DROP,
-				});
-				marker.addListener('click', function () {
-					infowindow.open(map, marker);
-					//map.setZoom(map.getZoom() + 4);
-					//map.setCenter(marker.getPosition());
-				});
-				marker.addListener('dblclick', function () {
-					infowindow.close(map, marker);
-					map.setZoom(map.getZoom() + 4);
-					map.setCenter(marker.getPosition());
-				});
-			};
-			window.addEventListener('DOMContentLoaded', function () {
-				// we will hide this key and the security.policy and
-				// security.signature in our .env file
-				const apikey = 'ALu7LkiIIR3moIv9EV6sRz';
-				const clientOptions = {
-					security: {
-						policy: 'eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==',
-						signature: '4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac'
-					}
-				};
-				const client = filestack.init(apikey, clientOptions);
-				const options = {
-					cleanupImageExif: false,
-					maxFiles: 1,
-					uploadInBackground: false,
-					// imageMax resizes image to a maximum size
-					imageMax: [800, 600],
-					imageMin: [40, 30],
-					// maxSize is in bytes, it is set to limit the file upload to 10.5MB
-					maxSize: 10500000,
-					// onOpen could be used if we want to know that the modal is opened
-					// onOpen: () => console.log('opened!'),
-					onUploadDone: (res) => {
-						let theHandle = res.filesUploaded[0].handle;
-						let theUrl = res.filesUploaded[0].url;
-						console.log('image handle: ' + theHandle);
-						console.log('image url: ' + res.filesUploaded[0].url);
-						// put theHandle into our database, that's the image
-						// the user uploaded
-						// the following block returns exif data which may include GPS
-						// if we don't get GPS data out of this then we can geolocate
-						// the device or ask the user to enter an address
-						client.metadata(theHandle, { exif: true })
-							.then((res) => {
-								//this module is to extract tree location if image exif data is unavailable
-								if (res.exif['GPS GPSLatitude'] === undefined) {
-									$('#user-location').modal('show');
-									$('#treeloc').on('click', function (event) {
-										event.preventDefault();
-										if ($('#city').val().trim() === '' || $('#state').val().trim() === '' || $('#country').val().trim() === '') {
-											$('#msg').modal('show');
-										} else {
-											var address = (($('#street').val().trim() + '+' + $('#city').val().trim() + '+' + $('#state').val().trim() + '+' + $('#country').val().trim()).split(' ')).join('+');
-											var url = `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAj5ERWlVlw7l8uxhZ-HKjws9kmFJz0bh4&address=${address}&sensor=true`;
-											console.log("url " + url);
-											$.ajax({
-												url: url,
-												type: 'GET',
-												data: '',
-												success: function (result) {
-													if (result.results.length === 0) {
-														$('#invalidloc').modal('show');
-													}
-													let latitude = result.results[0].geometry.location.lat;
-													let longitude = result.results[0].geometry.location.lng;
-													// put longitude into database
-													var subid = $('#upload-tree').attr('data-id');
-													const treeData =
-													{
-														UserId: subid,
-														tree_image_link: theHandle,
-														latitude: latitude,
-														longitude: longitude,
-														users_tree_name: $('#noexiftreename').val().trim(),
-														treetype: $('#noexiftreetype').val().trim()
-													};
-													$('#noexiftreename').val('');
-													$('#noexiftreetype').val('');
-													// put theHandle into our database, that's the image
-													// the user uploaded
-													// put longitude into database
-													console.log('right before ajax where exif data was missing');
-													$.ajax({
-														type: 'POST',
-														url: '/api/usertrees',
-														data: treeData
-													}).then((result) => {
-														window.location.href = '/';
-													});
-
-												},
-												error: function (response) {
-													console.log(response);
-												}
-											});
-										}
-									});
-									
-								}
-
-								else if (res.exif['GPS GPSLatitude'] !== undefined) {
-									$('#tree-type').modal('show');
-									var users_tree_name, treetype;
-									$('#treetypeinfo').on('click', function (treeevent) {
-										event.preventDefault();
-										// extract and parse the geotag data
-										let latitudeRef = res.exif['GPS GPSLatitudeRef'];
-										let latitudeArray = res.exif['GPS GPSLatitude'].substring(1);
-										latitudeArray = (latitudeArray.slice(0, -1)).split(', ');
-										let longitudeRef = res.exif['GPS GPSLongitudeRef'];
-										let longitudeArray = res.exif['GPS GPSLongitude'].substring(1);
-										longitudeArray = (longitudeArray.slice(0, -1)).split(', ');
-										// convert degrees, minutes, seconds into decimal
-										let latitude = convertDMSToDD(latitudeArray[0], latitudeArray[1], (latitudeArray[2].split('/')[0] / latitudeArray[2].split('/')[1]), latitudeRef);
-										console.log('latitude: ' + latitude);
-										// put latitude into database
-										let longitude = convertDMSToDD(longitudeArray[0], longitudeArray[1], (longitudeArray[2].split('/')[0] / longitudeArray[2].split('/')[1]), longitudeRef);
-										console.log('longitude: ' + longitude);
-										// put longitude into database
-										var subid = $('#upload-tree').attr('data-id');
-										const treeData =
-										{
-											UserId: subid,
-											tree_image_link: theHandle,
-											latitude: latitude,
-											longitude: longitude,
-											users_tree_name: $('#treename').val().trim(),
-											treetype: $('#treetype').val().trim()
-										};
-										$('#treename').val('');
-										$('#treetype').val('');
-
-										// put theHandle into our database, that's the image
-										// the user uploaded
-										// put longitude into database
-										console.log('right before ajax where exif data is present');
-										$.ajax({
-											type: 'POST',
-											url: '/api/usertrees',
-											data: treeData
-										}).then((result) => {
-											window.location.href = '/';
-										});
-									});
-								}
-								// grab all the tree data from db
-								placeMarker(latitude, longitude);
-							})
-							.catch((err) => {
-								console.log(err);
-							});
-						// the following block retrieves the image
-						client.retrieve(theHandle).then((blob) => {
-							const urlCreator = window.URL || window.webkitURL;
-							const img = document.createElement('img');
-							// we set the width *or* height as we wish for different contexts
-							img.width = 200;
-							//img.height = 10;
-							img.src = urlCreator.createObjectURL(blob);
-							document.getElementById('content').appendChild(img)
-						}).catch((error) => {
-							console.error(error);
-						});
-					}
-				};
-
-				function convertDMSToDD(degrees, minutes, seconds, direction) {
-					var dd = parseInt(degrees) + minutes / 60 + seconds / 3600;
-					if (direction == 'S' || direction == 'W') {
-						dd = dd * -1;
-					} // Don't do anything for N or E
-					return dd;
-				};
-
-				document.getElementById('upload-tree').onclick = function () { client.picker(options).open(); };
-
-				//for profile pic
-				const profileimg = {
-					cleanupImageExif: false,
-					maxFiles: 1,
-					uploadInBackground: false,
-					// imageMax resizes image to a maximum size
-					imageMax: [800, 600],
-					imageMin: [40, 30],
-					// maxSize is in bytes, it is set to limit the file upload to 10.5MB
-					maxSize: 10500000,
-					// onOpen could be used if we want to know that the modal is opened
-					// onOpen: () => console.log('opened!'),
-					onUploadDone: (res) => {
-						let theHandle = res.filesUploaded[0].handle;
-						let theUrl = res.filesUploaded[0].url;
-						console.log('image handle: ' + theHandle);
-						console.log('image url: ' + res.filesUploaded[0].url);
-						var subid = $('#upload-tree').attr('data-id');
-						const profileimg =
-						{
-							profile_image_link: theHandle
-						};
-						console.log(profileimg);
-						$.ajax({
-							type: 'PUT',
-							url: `/api/user/${subid}`,
-							data: profileimg
-						}).then((result) => {
-							location.reload();
-
-						});
-					}
-				};
-				document.getElementById('profile-button').onclick = function () { client.picker(profileimg).open(); };
+				map.setCenter(initMapLatLong);
+				placeMarker(userLatitude, userLongitude, '', '', 'You are here');
+			} else {
+				console.log('show position: ' + userLatitude, userLongitude);
+			}
+		};
+		function initMap() {
+			console.log('init map: ' + userLatitude, userLongitude);
+			initMapLatLong = userLatitude, userLongitude;
+			var userLatLong = { lat: userLatitude, lng: userLongitude };
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 2.5,
+				center: userLatLong
 			});
-		</script>
+			setTimeout(function () {
+				$.ajax({
+					url: '/api/userTrees',
+					type: 'GET',
+					data: '',
+					success: function (result) {
+						let i = 0;
+						let theNumberOfPins = result.length;
+						placeThePins();
+						function placeThePins() {
+							setTimeout(function () {
+								let name = result[i].firstName + ' ' + result[i].lastName;
+								placeMarker(parseFloat(result[i].latitude), parseFloat(result[i].longitude), name, result[i].date_planted, result[i].users_tree_name, result[i].tree_image_link);
+								i++;
+								if (i < 180) {
+									//if (i < theNumberOfPins) {
+									placeThePins();
+								} else {
+									if (i < theNumberOfPins) { // let the remaining ones trickle down.
+										setTimeout(function () {
+											placeThePins();
+										}, (i - 180) * 2);
+									}
+								}
+							}, (10 - i));
+						};
+					},
+					error: function (response) {
+						console.log(response);
+					}
+				});
+			}, 1500);
+		};
+		setTimeout(function () { initMap(); }, 250); //without this, upload button doesn't work
+		function placeMarker(latitude, longitude, name, date_planted, users_tree_name, tree_image_link) {
+			var iconBase =
+				'http://maps.google.com/mapfiles/';
+			var icons = {
+				tree: {
+					icon: '/assets/images/parks_small.png'
+				},
+				christmas_tree: {
+					icon: '/assets/images/xmas_tree.png'
+				},
+				arrow: {
+					icon: '/assets/images/arrow.png'
+				},
+				caution: { // this is an example of another icon we could place
+					icon: iconBase + 'kml/shapes/caution.png'
+				}
+			};
+			var userLatLong = { lat: latitude, lng: longitude };
+
+			var theImageString = `<img src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/${tree_image_link}' alt='' class='infowindow-picture' onclick='popUpWindow("${tree_image_link}", "${users_tree_name}")'>`
+			var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+
+			switch (users_tree_name) {
+				case 'You are here':
+					var contentString = `<div class='infoWindow'>You are here.<br><br>Double-click the red pointer icon to re-center the map and zoom in!</div>`;
+					icon = '';
+					zIndex = 0;
+					break;
+				case 'Tannenbaum':
+					var contentString = `<div class='infoWindow'><em>Tannenbaum</em><br>This decorated tree has been spotted in the ice and snow at the North Pole.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.christmas_tree.icon;
+					zIndex = 999;
+					break;
+				case 'Ashbrittle Yew':
+					var contentString = `<div class='infoWindow'><em>The Ashbrittle Yew</em><br>"Thought to be Britain's oldest living thing, this tree is 3500 to 4000 years old—meaning it was already mature when Stonehenge was built." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Ashbrittle' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'General Sherman':
+					var contentString = `<div class='infoWindow'><em>General Sherman</em><br>"The General Sherman Tree in California's Sequoia National Park is the largest tree, by volume, anywhere in the world." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/General_Sherman_(tree)' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Tree of Tenere':
+					var contentString = `<div class='infoWindow'><em>Tree of Ténéré</em><br>"Located 250 miles from any other tree, the Tree of Ténéré is thought to have been the world’s most isolated tree for much of the 20th century." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Tree_of_T%C3%A9n%C3%A9r%C3%A9' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Jaya Sri Maha Bodhi':
+					var contentString = `<div class='infoWindow'><em>Jaya Sri Maha Bodhi</em><br>"Said to be a branch of the sacred fig tree under which the Buddha gained enlightenment, the Jaya Sri Maha Bodhi was brought to Sri Lanka in the 3rd century BCE." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Jaya_Sri_Maha_Bodhi' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Major Oak':
+					var contentString = `<div class='infoWindow'><em>Major Oak</em><br>"Robin Hood is said to have taken shelter inside the hollow trunk of the massive Major Oak, which stands in the heart of Sherwood Forest." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Major_Oak' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Anne Frank':
+					var contentString = `<div class='infoWindow'><em>Anne Frank's Tree</em><br>"In the two years Anne Frank spent hiding during World War II, the white horse chestnut outside her window—one of the oldest in Amsterdam—became a focus of her longing for freedom." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Anne_Frank_tree' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Sunland Baobab':
+					var contentString = `<div class='infoWindow'><em>Sunland Baobab</em><br>"The Sunland Baobab is ancient and huge. At about 72 feet high and 155 wide, it’s reportedly the widest in South Africa, and perhaps the widest of its species in the world." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Sunland_Baobab' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Hyperion':
+					var contentString = `<div class='infoWindow'><em>Hyperion</em><br>"Hyperion is the world’s tallest known living tree, towering almost 380 feet above Redwood National and State Parks. Its precise location is kept a secret to protect the tree." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Hyperion_(tree)' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case '9/11 Survivor':
+					var contentString = `<div class='infoWindow'><em>9/11 Survivor Tree</em><br>"When this callery pear tree was pulled from the rubble after 9/11, it looked dead, its trunk charred and its upper branches shattered. Only one of its branches was alive. After lots of dedicated care, it recovered." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/National_September_11_Memorial_%26_Museum#The_Survivor_Tree' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Hangmans Elm':
+					var contentString = `<div class='infoWindow'><em>Hangman's Elm</em><br>"This elm tree in Washington Square Park is thought to be the oldest living tree in Manhattan. Traitors were supposedly hung from its branches during and after the Revolutionary War." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href="https://en.wikipedia.org/wiki/Hangman's_Elm" target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Methuselah':
+					var contentString = `<div class='infoWindow'><em>Methuselah</em><br>"The almost 5000-year-old Methuselah, a bristlecone pine growing in California’s White Mountains, is one of the oldest trees in the world. As with other very old trees, its location is kept a secret to protect it. " (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Methuselah_(tree)' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Old Tjikko':
+					var contentString = `<div class='infoWindow'><em>Old Tjikko</em><br>"The world’s oldest tree of any kind, and also the planet’s oldest plant, is a Norway spruce found, perhaps confusingly, in Sweden in 2004. Its root system has been growing for 9550 years, although the visible part of the tree is far younger. Unlike Methuselah and other bristlecone pines, the Norway spruce has the ability to clone itself—meaning that after one stem dies, another one springs from the same root system. The researcher who found it, Leif Kullman, named it for his dog." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Old_Tjikko' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'El Arbol del Tule':
+					var contentString = `<div class='infoWindow'><em>El Árbol del Tule</em><br>"Thought to be the stoutest tree in the world, this Montezuma bald cypress is about 120 feet around. It reportedly takes 17 people holding hands with arms outstretched to encompass its girth." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/%C3%81rbol_del_Tule' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Thimmamma Marrimanu':
+					var contentString = `<div class='infoWindow'><em>Thimmamma Marrimanu</em><br>"This 200-year-old Banyan tree in Andhra Pradesh, India, has branches that extend over five acres, and has been mentioned in some sources as the world’s biggest tree. According to a local legend, childless couples who worship at its base will conceive the following year." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/Thimmamma_Marrimanu' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				case 'Hardy Tree':
+					var contentString = `<div class='infoWindow'><em>Hardy Tree</em><br>"This tree is named for Victorian novelist and poet Thomas Hardy, who worked as an apprentice architect before becoming a full-time writer. In the 1860s, one of Hardy’s duties included rearranging the St. Pancras churchyard burials ahead of a railway expansion that was set to cut right through the graves. Hardy moved the tombstones to the base of a nearby ash tree, whose roots have now grown in among them." (excerpted from mentalfloss.com)<br><br>${theImageString}<br><a href='https://en.wikipedia.org/wiki/St_Pancras_Old_Church#Churchyard' target='_blank'>click here to read more on Wikipedia</a><br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+					icon = icons.arrow.icon;
+					zIndex = 999;
+					break;
+				default:
+					icon = icons.tree.icon;
+					zIndex = 0;
+			}
+
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString,
+				maxWidth: 200
+			});
+			var marker = new google.maps.Marker({
+				position: userLatLong,
+				map: map,
+				title: name,
+				icon: icon,
+				animation: google.maps.Animation.DROP,
+
+			});
+			marker.addListener('click', function () {
+				infowindow.open(map, marker);
+			});
+			marker.addListener('dblclick', function () {
+				infowindow.close(map, marker);
+				map.setZoom(map.getZoom() + 4);
+				map.setCenter(marker.getPosition());
+			});
+		};
+		window.addEventListener('DOMContentLoaded', function () {
+			// we will hide this key and the security.policy and
+			// security.signature in our .env file
+			const apikey = 'ALu7LkiIIR3moIv9EV6sRz';
+			const clientOptions = {
+				security: {
+					policy: 'eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==',
+					signature: '4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac'
+				}
+			};
+			const client = filestack.init(apikey, clientOptions);
+			const options = {
+				cleanupImageExif: false,
+				maxFiles: 1,
+				uploadInBackground: false,
+				// imageMax resizes image to a maximum size
+				imageMax: [800, 600],
+				imageMin: [40, 30],
+				// maxSize is in bytes, it is set to limit the file upload to 10.5MB
+				maxSize: 10500000,
+				// onOpen could be used if we want to know that the modal is opened
+				// onOpen: () => console.log('opened!'),
+				onUploadDone: (res) => {
+					let theHandle = res.filesUploaded[0].handle;
+					let theUrl = res.filesUploaded[0].url;
+					console.log('image handle: ' + theHandle);
+					console.log('image url: ' + res.filesUploaded[0].url);
+					// put theHandle into our database, that's the image
+					// the user uploaded
+					// the following block returns exif data which may include GPS
+					// if we don't get GPS data out of this then we can geolocate
+					// the device or ask the user to enter an address
+					client.metadata(theHandle, { exif: true })
+						.then((res) => {
+							//this module is to extract tree location if image exif data is unavailable
+							if (res.exif['GPS GPSLatitude'] === undefined) {
+								$('#user-location').modal('show');
+								$('#treeloc').on('click', function (event) {
+									event.preventDefault();
+									if ($('#city').val().trim() === '' || $('#state').val().trim() === '' || $('#country').val().trim() === '') {
+										$('#msg').modal('show');
+									} else {
+										var address = (($('#street').val().trim() + '+' + $('#city').val().trim() + '+' + $('#state').val().trim() + '+' + $('#country').val().trim()).split(' ')).join('+');
+										var url = `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAj5ERWlVlw7l8uxhZ-HKjws9kmFJz0bh4&address=${address}&sensor=true`;
+										console.log("url " + url);
+										$.ajax({
+											url: url,
+											type: 'GET',
+											data: '',
+											success: function (result) {
+												if (result.results.length === 0) {
+													$('#invalidloc').modal('show');
+												}
+												let latitude = result.results[0].geometry.location.lat;
+												let longitude = result.results[0].geometry.location.lng;
+												// put longitude into database
+												var subid = $('#upload-tree').attr('data-id');
+												const treeData =
+												{
+													UserId: subid,
+													tree_image_link: theHandle,
+													latitude: latitude,
+													longitude: longitude,
+													users_tree_name: $('#noexiftreename').val().trim(),
+													treetype: $('#noexiftreetype').val().trim()
+												};
+												$('#noexiftreename').val('');
+												$('#noexiftreetype').val('');
+												// put theHandle into our database, that's the image
+												// the user uploaded
+												// put longitude into database
+												console.log('right before ajax where exif data was missing');
+												$.ajax({
+													type: 'POST',
+													url: '/api/usertrees',
+													data: treeData
+												}).then((result) => {
+													window.location.href = '/';
+												});
+
+											},
+											error: function (response) {
+												console.log(response);
+											}
+										});
+									}
+								});
+
+							}
+
+							else if (res.exif['GPS GPSLatitude'] !== undefined) {
+								$('#tree-type').modal('show');
+								var users_tree_name, treetype;
+								$('#treetypeinfo').on('click', function (treeevent) {
+									event.preventDefault();
+									// extract and parse the geotag data
+									let latitudeRef = res.exif['GPS GPSLatitudeRef'];
+									let latitudeArray = res.exif['GPS GPSLatitude'].substring(1);
+									latitudeArray = (latitudeArray.slice(0, -1)).split(', ');
+									let longitudeRef = res.exif['GPS GPSLongitudeRef'];
+									let longitudeArray = res.exif['GPS GPSLongitude'].substring(1);
+									longitudeArray = (longitudeArray.slice(0, -1)).split(', ');
+									// convert degrees, minutes, seconds into decimal
+									let latitude = convertDMSToDD(latitudeArray[0], latitudeArray[1], (latitudeArray[2].split('/')[0] / latitudeArray[2].split('/')[1]), latitudeRef);
+									console.log('latitude: ' + latitude);
+									// put latitude into database
+									let longitude = convertDMSToDD(longitudeArray[0], longitudeArray[1], (longitudeArray[2].split('/')[0] / longitudeArray[2].split('/')[1]), longitudeRef);
+									console.log('longitude: ' + longitude);
+									// put longitude into database
+									var subid = $('#upload-tree').attr('data-id');
+									const treeData =
+									{
+										UserId: subid,
+										tree_image_link: theHandle,
+										latitude: latitude,
+										longitude: longitude,
+										users_tree_name: $('#treename').val().trim(),
+										treetype: $('#treetype').val().trim()
+									};
+									$('#treename').val('');
+									$('#treetype').val('');
+
+									// put theHandle into our database, that's the image
+									// the user uploaded
+									// put longitude into database
+									console.log('right before ajax where exif data is present');
+									$.ajax({
+										type: 'POST',
+										url: '/api/usertrees',
+										data: treeData
+									}).then((result) => {
+										window.location.href = '/';
+									});
+								});
+							}
+							// grab all the tree data from db
+							placeMarker(latitude, longitude);
+						})
+						.catch((err) => {
+							console.log(err);
+						});
+					// the following block retrieves the image
+					client.retrieve(theHandle).then((blob) => {
+						const urlCreator = window.URL || window.webkitURL;
+						const img = document.createElement('img');
+						// we set the width *or* height as we wish for different contexts
+						img.width = 200;
+						//img.height = 10;
+						img.src = urlCreator.createObjectURL(blob);
+						document.getElementById('content').appendChild(img)
+					}).catch((error) => {
+						console.error(error);
+					});
+				}
+			};
+
+			function convertDMSToDD(degrees, minutes, seconds, direction) {
+				var dd = parseInt(degrees) + minutes / 60 + seconds / 3600;
+				if (direction == 'S' || direction == 'W') {
+					dd = dd * -1;
+				} // Don't do anything for N or E
+				return dd;
+			};
+
+			document.getElementById('upload-tree').onclick = function () { client.picker(options).open(); };
+
+			//for profile pic
+			const profileimg = {
+				cleanupImageExif: false,
+				maxFiles: 1,
+				uploadInBackground: false,
+				// imageMax resizes image to a maximum size
+				imageMax: [800, 600],
+				imageMin: [40, 30],
+				// maxSize is in bytes, it is set to limit the file upload to 10.5MB
+				maxSize: 10500000,
+				// onOpen could be used if we want to know that the modal is opened
+				// onOpen: () => console.log('opened!'),
+				onUploadDone: (res) => {
+					let theHandle = res.filesUploaded[0].handle;
+					let theUrl = res.filesUploaded[0].url;
+					console.log('image handle: ' + theHandle);
+					console.log('image url: ' + res.filesUploaded[0].url);
+					var subid = $('#upload-tree').attr('data-id');
+					const profileimg =
+					{
+						profile_image_link: theHandle
+					};
+					console.log(profileimg);
+					$.ajax({
+						type: 'PUT',
+						url: `/api/user/${subid}`,
+						data: profileimg
+					}).then((result) => {
+						location.reload();
+
+					});
+				}
+			};
+			document.getElementById('profile-button').onclick = function () { client.picker(profileimg).open(); };
+		});
+	</script>
 </body>
 
 </html>
