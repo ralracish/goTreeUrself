@@ -1,7 +1,7 @@
-drop database if exists mp1wuwmz3yjsrqmz;
-create database mp1wuwmz3yjsrqmz;
+drop database if exists project2_dev;
+create database project2_dev;
 
-USE mp1wuwmz3yjsrqmz;
+USE project2_dev;
 
 CREATE TABLE Sessions
 (
@@ -14,7 +14,7 @@ CREATE TABLE Sessions
     primary key (sid)
 );
 
-CREATE TABLE Usertrees
+CREATE TABLE usertrees
 (
     id int not null
     auto_increment,
@@ -40,7 +40,7 @@ CREATE TABLE Usertrees
     (id)
 );
 
-    CREATE TABLE Users
+    CREATE TABLE users
     (
         id int not null
         auto_increment,
@@ -70,7 +70,7 @@ CREATE TABLE Usertrees
         (id)
 );
 
-        insert into Users
+        insert into users
             (firstName, lastName, dob, city, state, country, profile_image_link, profile_text, email, password)
         values
             ('Santa', 'Claus', '1900-01-01', 'North Pole', 'AK', 'US', '', '', 'santa@claus.com', 'vivian'),
@@ -286,7 +286,7 @@ CREATE TABLE Usertrees
             ('Patrick', 'Turner', '1969-01-02', 'tauranga', 'waikato', 'NZ', '8aygosxTRq174M4aqjUT', 'We will build a treehouse in this once it gets big enough.', 'patrick.turner@example.com', 'gary'),
             ('Iina', 'Linna', '1986-12-08', 'hamina', 'pirkanmaa', 'FI', 'eciyL7vKQ27o4ClWY3qA', 'These trees brighten the view out my kitchen window', 'iina.linna@example.com', 'aurora');
 
-        insert into Usertrees
+        insert into usertrees
             (latitude, longitude, tree_image_link, date_planted, name_of_tree, users_tree_name, treename, treetype, UserId)
         values
             ('85.00000', '-135.00000', '6HXfXc1US6ChLBfVUHGL', '2018-12-25', 'Fir', 'Tannenbaum', 'Fir', '', 1 ),
