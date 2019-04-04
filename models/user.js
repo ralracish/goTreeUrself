@@ -28,6 +28,9 @@ module.exports = function (sequelize, DataTypes) {
     profile_image_link: {
       type: DataTypes.STRING
     },
+    profile_text: {
+      type: DataTypes.STRING
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
