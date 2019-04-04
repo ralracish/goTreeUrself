@@ -619,7 +619,7 @@ profiletxt {
 	-ms-grid-rows: 1fr 8fr 1fr;
 	grid-template-rows: 1fr 8fr 1fr;
 	grid-gap: 20px;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 @media screen and (max-width: 60em) {
