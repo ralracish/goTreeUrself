@@ -1,45 +1,48 @@
 <div class="hero-full-screen-pattern">
-  <div class="top-content-section translucent-form-overlay">
-    {{> nav/nav-block user=false register=true}}
-
-    <div class="holy-grail-grid">
+  {{!-- <div class="top-content-section"> --}}
+  {{> nav/nav-block user=false register=true}}
+  {{!-- </div> --}}
+  <div class="holy-grail-grid">
 
     <div class="holy-grail-left translucent-form-overlay">
       <div class="imgwidth" style="margin: 0 auto;">
         <h4 class="text-shadow">{{userInfo.firstName}} {{userInfo.lastName}}</h4>
         {{#if userInfo.profile_image_link}}
-          <img class="thumbnail" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{userInfo.profile_image_link}}>
-        {{else}}
-          <img class="thumbnail" src="https://placehold.it/300x250">
+        <img class="thumbnail"
+          src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{userInfo.profile_image_link}}'>
+        {{else}} <img class="thumbnail" src="https://placehold.it/300x250">
         {{/if}}
         <div class="myinfo" id="profile-info">
-          <button id="profile-button" data-id="{{userInfo.id}}" class="button hollow success expanded">Upload Pic</button>
-          <button type="button" id="add-user" class="button hollow success expanded search-button">Update Profile</button>
+          <button id="profile-button" data-id="{{userInfo.id}}" class="button hollow success expanded">Upload
+            Pic</button>
+          <button type="button" id="add-user" class="button hollow success expanded search-button">Update
+            Profile</button>
 
-        {{#if userInfo.profile_text}}
+          {{#if userInfo.profile_text}}
           <div class='aboutuser'>
             <p>{{userInfo.profile_text}}</p>
           </div>
           {{else}}
           <div class='aboutuser'>
             <input type="text" id="profile_text" data-id="{{userInfo.id}}" placeholder="About You(max 35 words)">
-            <button type="button" id="add-profiletext"  data-id="{{userInfo.id}}" class="button success hollow expanded search-button">
-                Submit
+            <button type="button" id="add-profiletext" data-id="{{userInfo.id}}"
+              class="button success hollow expanded search-button">
+              Submit
             </button>
           </div>
-        {{/if}}
-        {{#if userInfo.city}}
-            {{#if userInfo.state}}
-            <p>{{userInfo.city}}, {{userInfo.state}}</p>
-            {{else}}
-              <p>{{userInfo.city}}</p>
+          {{/if}}
+          {{#if userInfo.city}}
+          {{#if userInfo.state}}
+          <p>{{userInfo.city}}, {{userInfo.state}}</p>
+          {{else}}
+          <p>{{userInfo.city}}</p>
           {{/if}}
           {{else}}
-            <p>{{userInfo.state}}</p>
-        {{/if}}
-        {{#if userInfo.country}}
-        <p>{{userInfo.country}}</p>
-        {{/if}} 
+          <p>{{userInfo.state}}</p>
+          {{/if}}
+          {{#if userInfo.country}}
+          <p>{{userInfo.country}}</p>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -51,16 +54,15 @@
         <div class="profile-right">
           <button id="upload-tree" data-id="{{userInfo.id}}" class="button hollow success">Upload Tree Picture</button>
           <div id='content' data-id="{{userInfo.id}}"></div>
-          </div>
-        <ul> 
+        </div>
+        <ul>
           {{#each treeInfo}}
-              <img class="imgwidth" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
+          <img class="imgwidth"
+            src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}'>
           {{/each}}
         </ul>
       </div>
-    </div>
-
-  {{!-- <div class="holy-grail-right">
+    </div> {{!-- <div class="holy-grail-right">
         <div class="translucent-form-overlay" style="margin: 0 auto;">
           <form>
             <h3>Update Your Account</h3>
@@ -125,9 +127,5 @@
             </button>
           </form>
         </div>
-  </div> --}} 
-  
-  </div> {{!-- End of Holy Grail --}} 
-  
-  </div> 
+  </div> --}}
   </div>
