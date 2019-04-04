@@ -1,27 +1,6 @@
 <div class="hero-full-screen overlay">
-  <!-- the following used to be "top-content-section" but
-  DM changed it to middle-content-section because he wanted
-  to make changes without touching CSS. You may want to change it back to
-  "top-content-section" and adjust CSS so it doesn't lose the left margin. -->
-  <div class="middle-content-section">
-    {{> nav/nav-block}}
-    <!-- </div>
-the lines above and below this were commented out by DM
-  <div class="middle-content-section"> -->
-    <div id='map'></div>
-  </div>
-
-  <!-- <div class="bottom-content-section" data-magellan data-threshold="0">
-  </div> -->
-  <!-- <div class="textcolor">
-    {{#if isloggedin}}
-    You are logged in as {{user.firstName}}
-    <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
-    {{else}}
-    <p>You need to log in to use this app.</p>
-    {{/if}}
-    <h5 id="login-err-msg"></h5>
-  </div>-->
+  {{> nav/nav-block}}
+  <div id='map'></div>
   <div id="carbon-notice">The users of this site have planted X trees, offsetting over Y tons of carbon!</div>
   <br>
 </div>
