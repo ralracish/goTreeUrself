@@ -94,7 +94,8 @@ module.exports = (passport, db) => {
           longitude: req.body.longitude,
           latitude: req.body.latitude,
           users_tree_name: req.body.users_tree_name,
-          treetype: req.body.treetype
+          treetype: req.body.treetype,
+          date_planted: req.body.date_planted
         };
 
         return db.Usertrees.create(newUsertrees).then(() => {
