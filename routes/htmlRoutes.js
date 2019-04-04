@@ -39,7 +39,7 @@ module.exports = (db) => {
   router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
       const user = {
-        user: req.session.passport.user,
+        userInfo: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('dashboard', user);
@@ -51,7 +51,7 @@ module.exports = (db) => {
   router.get('/dashboard', (req, res) => {
     if (req.isAuthenticated()) {
       const user = {
-        user: req.session.passport.user,
+        userInfo: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('dashboard', user);
@@ -75,7 +75,7 @@ module.exports = (db) => {
   router.get('/about', (req, res) => {
     if (req.isAuthenticated()) {
       const user = {
-        user: req.session.passport.user,
+        userInfo: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('about', user);
@@ -87,7 +87,7 @@ module.exports = (db) => {
   router.get('/howitworks', (req, res) => {
     if (req.isAuthenticated()) {
       const user = {
-        user: req.session.passport.user,
+        userInfo: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('howitworks', user);
@@ -99,7 +99,7 @@ module.exports = (db) => {
   router.get('/portfolio', (req, res) => {
     if (req.isAuthenticated()) {
       const user = {
-        user: req.session.passport.user,
+        userInfo: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('portfolio', user);
