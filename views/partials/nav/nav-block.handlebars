@@ -1,53 +1,27 @@
-<div class="top-content-section">
-  <nav class="top-bar topbar-responsive">
-    <!-- Brand/logo -->
-    <div class="top-bar-left">
-      <div class="top-bar-title">
-        <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
-          <!-- <button class="menu-icon" type="button" data-toggle></button> -->
-        </span>
-        <span></span>
-        <p class="imageclass"><img src="assets/images/tree-earth.png" alt="Tree menu-icon" height="60" width="60">&nbsp;
-          <ul class="menu simple vertical medium-horizontal" id="main-title">
-            <li>&nbsp;&nbsp;<a href="/">goTreeUrself</a></li>
-          </ul>
-        </p>
-      </div>
-    </div>
+<nav class="top-bar">
+  <span id="logo-items"><img id="logo-img" src="assets/images/tree-earth.png" alt="Tree menu-icon"><a id="logo-text"
+      href="/">goTreeUrself</a></span>
 
-    <!-- Links -->
-    {{#if isloggedin}}
-    <div id="topbar-responsive" class="topbar-responsive-links">
-      <div class="top-bar-right">
-        <ul class="menu simple vertical medium-horizontal">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/howitworks">How It Works</a></li>
-          <li><a href="/profile">My Profile</a></li>
-          <li class="menu-text">Logged in as {{userInfo.firstName}} / <a href="/logout">Logout</a></li>
-          <li>
-            <!-- Could use this button for a drop down of check boxes to change the user view to see only their trees, 
-                        all trees, certain types of trees, etc. -->
-            {{!-- <button type="button" class="button hollow topbar-responsive-button">Categories</button> --}}
-          </li>
-        </ul>
-      </div>
-    </div>
-    {{else}}
-    <div id="topbar-responsive" class="topbar-responsive-links">
-      <div class="top-bar-right">
-        <ul class="menu simple vertical medium-horizontal">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/howitworks">How It Works</a></li>
-          <li><a href="/login" id="login-modal">Login</a></li>
-          <li><a href="/register" data-register={{register}}>Register</a></li>
-        </ul>
-      </div>
-    </div>
-    {{/if}}
+  <!-- Links -->
+  {{#if isloggedin}}
+  <span id="menu-items">
+    <a href="/" class="left-marg">Home</a><a href="/about" class="left-marg">About</a><a href="/howitworks"
+      class="left-marg">How It
+      Works</a><a href="/profile" class="left-marg">My
+      Profile</a>
+    <span class="left-marg zero-right-marg">Logged in as {{userInfo.firstName}}</span> / <a href="/logout"
+      class="zero-left-marg zero-right-marg">Logout</a>
+  </span>
+  {{else}}
+  <span id="menu-items">
+    <a href="/" class="left-marg">Home</a><a href="/about" class="left-marg">About</a><a href="/howitworks"
+      class="left-marg">How It
+      Works</a>
+    <a href="/login" id="login-modal" class="left-marg">Login</a><a href="/register" data-register={{register}}
+      class="left-marg">Register</a>
+  </span>
+  {{/if}}
 
-  </nav>
-</div>
+</nav>
 
 {{!-- {{> modal/login-block}} --}}
