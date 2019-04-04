@@ -1,24 +1,26 @@
-<nav class="top-bar">
-  <span id="logo-items"><img id="logo-img" src="assets/images/tree-earth.png" alt="Tree menu-icon"><a id="logo-text"
-      href="/">goTreeUrself</a></span>
+<nav class="top-bar text-shadow">
+  <div id="background-mask">
+    <div id="logo-items"><img id="logo-img" src="assets/images/tree-earth.png" alt="Tree menu-icon"><a id="logo-text"
+        href="/">goTreeUrself</a></div>
 
-  <!-- Links -->
-  {{#if isloggedin}}
-  <span id="menu-items">
-    <a href="/" class="left-marg">Home</a><a href="/about" class="left-marg">About</a><a href="/howitworks"
-      class="left-marg">How It
-      Works</a><a href="/profile" class="left-marg">My
-      Profile</a>
-    <span class="left-marg zero-right-marg">Logged in as {{userInfo.firstName}}</span> / <a href="/logout"
-      class="zero-left-marg zero-right-marg">Logout</a>
-  </span>
-  {{else}}
-  <span id="menu-items">
-    <a href="/" class="left-marg">Home</a><a href="/about" class="left-marg">About</a><a href="/howitworks"
-      class="left-marg">How It
-      Works</a>
-    <a href="/login" id="login-modal" class="left-marg">Login</a><a href="/register" data-register={{register}}
-      class="left-marg">Register</a>
-  </span>
-  {{/if}}
+    <!-- Links -->
+    {{#if isloggedin}}
+    <div id="menu-items">
+      <a href="/" class="left-marg">Home</a><a href="/about" class="left-marg">About</a><a href="/howitworks"
+        class="left-marg">How It
+        Works</a><a href="/profile" class="left-marg">My
+        Profile</a>
+      <span class="left-marg zero-right-marg">Logged in as {{userInfo.firstName}}</span> / <a href="/logout"
+        class="zero-left-marg zero-right-marg">Logout</a>
+    </div>
+    {{else}}
+    <div id="menu-items">
+      <a href="/" class="left-marg">Home</a><a href="/about" class="left-marg">About</a><a href="/howitworks"
+        class="left-marg">How It
+        Works</a>
+      <a href="/login" id="login-modal" class="left-marg">Login</a><a href="/register" data-register={{register}}
+        class="left-marg">Register</a>
+    </div>
+    {{/if}}
+  </div>
 </nav>
