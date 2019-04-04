@@ -2,28 +2,38 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Credentials</h5>
+        <h5 class="modal-title">Enter Login Credentials</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="inputAccount">Email</label>
-            <input type="text" class="form-control" id="email">
-          </div>
-          <div class="form-group">
-            <label for="inputAccount">Password</label>
-            <input type="password" class="form-control" id="user_password">
-          </div>
+                  <form>
+            <div class="form-icons">
+            <div class="row columns form-pad">
+              <div class="input-group">
+                <span class="input-group-label">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <input type="email" class="form-control" id="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="row columns form-pad">
+              <div class="input-group">
+                <span class="input-group-label">
+                  <i class="fa fa-key"></i>
+                </span>
+                <input type="password" class="form-control" id="user_password" placeholder="Password">
+              </div>
+            </div>
+            </div>
         </form>
       </div>
 
       <div class="modal-footer">
-        <button id="login" type="button" class="btn btn-primary">Login</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="login" type="button" class="button success">Login</button>
+        <button type="button" class="button secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
