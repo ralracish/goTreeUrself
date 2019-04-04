@@ -1,19 +1,13 @@
 .imgwidth {
-	/* width: 250px; */
-	height: 200px;
+	width: 250px;
 	border-radius: 6px;
 	padding: 10px;
-	float: right;
 }
 
 .profile-right {
 	margin-left:auto; 
 	margin-right:0;
 	text-align: right;
-}
-
-.text-shadow {
-	text-shadow: 0 1px 2px rgba(0,0,0,0.80);
 }
 
 /* .banner img:hover {
@@ -332,10 +326,9 @@
 .translucent-form-overlay {
 	/* max-width: 500px; */
 	width: 100%;
-	background-color: rgba(54, 54, 54, 0.45);
+	background-color: rgba(54, 54, 54, 0.5);
 	padding: 20px;
 	color: #fefefe;
-	border-radius: 6px;
 }
 
 .translucent-form-overlay .columns.row {

@@ -6,7 +6,7 @@
 
     <div class="holy-grail-left translucent-form-overlay">
       <div class="imgwidth" style="margin: 0 auto;">
-        <h4 class="text-shadow">{{userInfo.firstName}} {{userInfo.lastName}}</h4>
+        <h4>{{userInfo.firstName}} {{userInfo.lastName}}</h4>
         {{#if userInfo.profile_image_link}}
           <img class="thumbnail" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{userInfo.profile_image_link}}>
         {{else}}
@@ -16,15 +16,15 @@
           <button id="profile-button" data-id="{{userInfo.id}}" class="button hollow success expanded">Upload Profile Picture</button>
           <button type="button" id="add-user" class="button hollow success expanded search-button">Update Profile</button>
           <p>I am an environmental enthusiast and peach tree lover!</p>
-          <h4 class="text-shadow">{{userInfo.city}}, {{userInfo.state}}</h4>
-          <h4 class="text-shadow">{{userInfo.country}}</h4>
+          <p>{{userInfo.city}}, {{userInfo.state}}</p>
+          <p>{{userInfo.country}}</p>
         </div>
       </div>
 
 
-    <div class="holy-grail-middle translucent-form-overlay">
+    <div class="holy-grail-middle">
       <div class="" style="margin: 0 auto;">
-        <h3 class="profile-right text-shadow">Total trees planted: {{treeInfo.length}}</h3>
+        <h3 class="profile-right">Total trees planted: {{treeInfo.length}}</h3>
         <hr>
         <div class="profile-right">
           <button id="upload-tree" data-id="{{userInfo.id}}" class="button hollow success">Upload Tree Picture</button>
@@ -32,9 +32,7 @@
           </div>
         <ul> 
           {{#each treeInfo}}
-            {{!-- <div class="rows columns profile-rows"> --}}
               <img class="imgwidth" src=https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}>
-            {{!-- </div> --}}
           {{/each}}
         </ul>
       </div>
