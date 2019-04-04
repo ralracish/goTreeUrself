@@ -252,7 +252,20 @@
 			var userLatLong = { lat: latitude, lng: longitude };
 
 			var theImageString = `<img src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/${tree_image_link}' alt='' class='infowindow-picture' onclick='popUpWindow("${tree_image_link}", "${users_tree_name}")'>`
-			var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;
+			if (users_tree_name) {
+				var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted `;
+			} else {
+				var contentString = `<div class='infoWindow'>This tree was planted`;
+			}
+			if (date_planted) {
+				contentString += ` on ${date_planted}`
+			}
+			if (name) {
+				contentString += ` by ${name}`
+			}
+			contentString += `.<br><br>${theImageString}<br>(click to enlarge)<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`
+
+			/*var contentString = `<div class='infoWindow'>This tree is called ${users_tree_name} and was planted on ${date_planted} by ${name}.<br><br>${theImageString}<br><br>Double-click the tree icon to re-center the map and zoom in!</div>`;*/
 
 			switch (users_tree_name) {
 				case 'You are here':
