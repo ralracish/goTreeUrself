@@ -13,7 +13,8 @@
           <div class="myinfo" id="profile-info">
             <button id="profile-button" data-id="{{userInfo.id}}" class="button hollow success expanded">Upload
               Pic</button>
-            <button type="button" id="update-user" data-id="{{userInfo.id}}" class="button hollow success expanded search-button">Update
+            <button type="button" id="update-user" data-id="{{userInfo.id}}"
+              class="button hollow success expanded search-button">Update
               Profile</button>
 
             {{#if userInfo.profile_text}}
@@ -129,7 +130,13 @@
   </div> --}}
     </div>
   </div>
-  <div id="carbon-notice-profile">The trees you have planted have offset <strong>${number of trees in db * 4.3}
-      tons</strong> of carbon!</div>
+  {{#if carbonCount}}
+  <div id="carbon-notice-profile">The trees you have planted have offset <strong>{{carbonCount}} tons</strong> of
+    carbon!</div>
+  {{else}}
+  <div id="carbon-notice-profile">According to <a href='https://treesatlanta.org/resources/carbon-offset-calculator/'
+      target='_blank'>Trees Atlanta</a>,
+    planting just <em>one</em> tree offsets <strong>4.3 tons</strong> of carbon.</div>
+  {{/if}}
 
   {{> modal/update-info}}
