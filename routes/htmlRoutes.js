@@ -18,7 +18,8 @@ module.exports = (db) => {
           id: req.session.passport.user.id
         },
         include: [
-          { model: db.Usertrees,
+          {
+            model: db.Usertrees,
             required: false
           }
         ]
@@ -65,7 +66,8 @@ module.exports = (db) => {
           pt = result[0].profile_text;
         }
         const user = {
-          userInfo: { ...req.session.passport.user,
+          userInfo: {
+            ...req.session.passport.user,
             profile_image_link: result[0].profile_image_link,
             profile_text: pt,
             firstName: fn,
@@ -74,9 +76,11 @@ module.exports = (db) => {
             state: st,
             country: cy,
             email: em,
-            password: pw },
+            password: pw
+          },
           isloggedin: req.isAuthenticated(),
-          treeInfo: result[0].Usertrees
+          treeInfo: result[0].Usertrees,
+          carbonCount: result[0].Usertrees.length * 4.3
         };
         res.render('profile', user);
       });
