@@ -47,15 +47,18 @@ $('#update-user').on('click', function (event) {
       password: $('#updatepd').val().trim()
     };
     $('#updateform').find(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
-    $.ajax({
-      type: 'PUT',
-      url: `/api/user/${id}`,
-      data: changeUser
-    }).then((result) => {
-      console.log('Updated user:', result);
-      // Reload the page to get the updated list
-      window.location.href = '/profile';
-    });
+    if (changeUser.password.length > 0 && changeUser.email.length > 0) {
+      $.ajax({
+        type: 'PUT',
+        url: `/api/user/${id}`,
+        data: changeUser
+      }).then((result) => {
+        console.log('Updated user:', result);
+        // Reload the page to get the updated list
+        window.location.href = '/logout';
+      // window.location.href = '/profile';
+      });
+    }
   });
 });
 
