@@ -45,22 +45,23 @@
         </div>
       </div>
 
-    <div class="holy-grail-middle translucent-form-overlay">
-      <div class="" style="margin: 0 auto;">
-        <h3 class="profile-right text-shadow">Total trees planted: {{treeInfo.length}}</h3>
-        <hr>
-        <div class="profile-right">
-          <button id="upload-tree" data-id="{{userInfo.id}}" class="button hollow success">Upload Tree Picture</button>
-          <div id='content' data-id="{{userInfo.id}}"></div>
+      <div class="holy-grail-middle translucent-form-overlay">
+        <div class="" style="margin: 0 auto;">
+          <h3 class="profile-right text-shadow">Total trees planted: {{treeInfo.length}}</h3>
+          <hr>
+          <div class="profile-right">
+            <button id="upload-tree" data-id="{{userInfo.id}}" class="button hollow success">Upload Tree
+              Picture</button>
+            <div id='content' data-id="{{userInfo.id}}"></div>
+          </div>
+          <ul>
+            {{#each treeInfo}}
+            <img class="imgwidth"
+              src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}'>
+            {{/each}}
+          </ul>
         </div>
-        <ul>
-          {{#each treeInfo}}
-          <img class="imgwidth"
-            src='https://cdn.filestackcontent.com/cache=false/output=secure:true/security=policy:eyJleHBpcnkiOjI1MjQ2MjYwMDAsImNhbGwiOlsicGljayIsInJlYWQiLCJzdGF0Iiwid3JpdGUiLCJ3cml0ZVVybCIsInN0b3JlIiwiY29udmVydCIsInJlbW92ZSIsImV4aWYiLCJydW5Xb3JrZmxvdyJdfQ==,signature:4b764be43ffa32d14c20d96fe343a777d3e241b8dde4bd78d8820dbb696a6eac/{{tree_image_link}}'>
-          {{/each}}
-        </ul>
-      </div>
-    </div> {{!-- <div class="holy-grail-right">
+      </div> {{!-- <div class="holy-grail-right">
         <div class="translucent-form-overlay" style="margin: 0 auto;">
           <form>
             <h3>Update Your Account</h3>
@@ -128,3 +129,5 @@
   </div> --}}
     </div>
   </div>
+  <div id="carbon-notice-profile">The trees you have planted have offset <strong>${number of trees in db * 4.3}
+      tons</strong> of carbon!</div>
