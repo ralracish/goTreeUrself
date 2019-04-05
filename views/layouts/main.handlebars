@@ -265,7 +265,7 @@
 			} else {
 				var contentString = `<div class='infoWindow'>This tree was planted`;
 			}
-			if (date_planted) {
+			if (date_planted && date_planted !== '0000-00-00') {
 				contentString += ` on ${date_planted}`
 			}
 			if (name) {
