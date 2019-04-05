@@ -176,6 +176,7 @@
 }
 
 #carbon-notice {
+	font-size: 1.2em;
 	text-align: center;
 	color: white;
 	font-weight: bold;
@@ -185,9 +186,14 @@
 	width: 100vw;
 }
 
+#carbon-notice-profile a {
+	color: white;
+}
+
 #carbon-notice-profile {
 	position: fixed;
 	bottom: 0;
+	font-size: 1.2em;
 	text-align: center;
 	color: white;
 	font-weight: bold;
