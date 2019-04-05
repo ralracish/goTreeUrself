@@ -52,13 +52,65 @@ module.exports = (passport, db) => {
       });
     },
     updateUser: (req, res) => {
-      db.User.update({
-        profile_image_link: req.body.profile_image_link,
-        profile_text: req.body.profile_text
-      }, {
+      db.User.findOne({
         where: { id: parseInt(req.params.id) }
-      }).then(result => {
-        res.json(result);
+      }).then((user) => {
+        let fn, ln, ci, st, cy, em, pw, pt;
+        if (req.body.firstName === '' || req.body.firstName === undefined) {
+          fn = user.firstName;
+        } else {
+          fn = req.body.firstName;
+        }
+        if (req.body.lastName === '' || req.body.lastName === undefined) {
+          ln = user.lastName;
+        } else {
+          ln = req.body.lastName;
+        }
+        if (req.body.city === '' || req.body.city === undefined) {
+          ci = user.city;
+        } else {
+          ci = req.body.city;
+        }
+        if (req.body.state === '' || req.body.state === undefined) {
+          st = user.state;
+        } else {
+          st = req.body.state;
+        }
+        if (req.body.country === '' || req.body.country === undefined) {
+          cy = user.country;
+        } else {
+          cy = req.body.country;
+        }
+        if (req.body.email === '' || req.body.email === undefined) {
+          em = user.email;
+        } else {
+          em = req.body.email;
+        }
+        if (req.body.password === '' || req.body.password === undefined) {
+          pw = user.password;
+        } else {
+          pw = req.body.password;
+        }
+        if (req.body.profile_text === '' || req.body.profile_text === undefined) {
+          pt = user.profile_text;
+        } else {
+          pt = req.body.profile_text;
+        }
+        db.User.update({
+          profile_image_link: req.body.profile_image_link,
+          profile_text: pt,
+          firstName: fn,
+          lastName: ln,
+          city: ci,
+          state: st,
+          country: cy,
+          email: em,
+          password: pw
+        }, {
+          where: { id: parseInt(req.params.id) }
+        }).then(result => {
+          res.json(result);
+        });
       });
     },
     confirmAuth: (req, res) => {

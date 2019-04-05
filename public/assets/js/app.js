@@ -30,23 +30,23 @@ $('#add-user').on('click', function (event) {
 $('#update-user').on('click', function (event) {
   event.preventDefault();
 
+  $('#user-update').modal('show');
+
   const id = $(this).data('id');
 
-  // capture All changes
-  const changeUser = {
-    firstName: $('#inputFirst').val().trim(),
-    lastName: $('#inputLast').val().trim(),
-    email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim(),
-    city: $('#inputCity').val().trim(),
-    state: $('#inputState').val().trim(),
-    country: $('#inputCountry').val().trim()
-  };
-  $('#err-msg').empty('');
-  // $('#change-user-modal').modal('show');
-  console.log(changeUser);
-
-  if (changeUser.password.length > 0 && changeUser.email.length > 0 && changeUser.lastName.length > 0 && changeUser.firstName.length > 0) {
+  $('#updateinfo').on('click', function (event) {
+    // capture All changes
+    const changeUser = {
+      firstName: $('#updatefn').val().trim(),
+      lastName: $('#updateln').val().trim(),
+      city: $('#updateci').val().trim(),
+      state: $('#updatest').val().trim(),
+      country: $('#updatecy').val().trim(),
+      profile_text: $('#updateay').val().trim(),
+      email: $('#updateem').val().trim(),
+      password: $('#updatepd').val().trim()
+    };
+    $('#updateform').find(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
     $.ajax({
       type: 'PUT',
       url: `/api/user/${id}`,
@@ -54,12 +54,9 @@ $('#update-user').on('click', function (event) {
     }).then((result) => {
       console.log('Updated user:', result);
       // Reload the page to get the updated list
-      window.location.href = '/logout';
+      window.location.href = '/profile';
     });
-  } else {
-    console.log('**Please fill out entire form**');
-    $('#update-err-msg').empty('').text('**Please fill out entire form**');
-  }
+  });
 });
 
 // DELETE   ***************************************************
