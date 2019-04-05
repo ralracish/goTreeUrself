@@ -23,8 +23,58 @@ module.exports = (db) => {
           }
         ]
       }).then(result => {
+        let fn, ln, ci, st, cy, em, pw, pt;
+        if (result[0].firstName === '') {
+          fn = req.session.passport.user.firstName;
+        } else {
+          fn = result[0].firstName;
+        }
+        if (result[0].lastName === '') {
+          ln = req.session.passport.user.lastName;
+        } else {
+          ln = result[0].lastName;
+        }
+        if (result[0].city === '') {
+          ci = req.session.passport.user.city;
+        } else {
+          ci = result[0].city;
+        }
+        if (result[0].state === '') {
+          st = req.session.passport.user.state;
+        } else {
+          st = result[0].state;
+        }
+        if (result[0].country === '') {
+          cy = req.session.passport.user.country;
+        } else {
+          cy = result[0].country;
+        }
+        if (result[0].email === '') {
+          em = req.session.passport.user.email;
+        } else {
+          em = result[0].email;
+        }
+        if (result[0].password === '') {
+          pw = req.session.passport.user.password;
+        } else {
+          pw = result[0].password;
+        }
+        if (result[0].profile_text === '') {
+          pt = req.session.passport.user.profile_text;
+        } else {
+          pt = result[0].profile_text;
+        }
         const user = {
-          userInfo: { ...req.session.passport.user, profile_image_link: result[0].profile_image_link, profile_text: result[0].profile_text },
+          userInfo: { ...req.session.passport.user,
+            profile_image_link: result[0].profile_image_link,
+            profile_text: pt,
+            firstName: fn,
+            lastName: ln,
+            city: ci,
+            state: st,
+            country: cy,
+            email: em,
+            password: pw },
           isloggedin: req.isAuthenticated(),
           treeInfo: result[0].Usertrees
         };

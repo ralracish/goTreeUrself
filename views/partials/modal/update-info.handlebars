@@ -1,0 +1,55 @@
+{{!-- This modal is for update user info --}}
+<div class="modal" id="user-update" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Please enter the info you want to update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="updateform">
+                    <div class="form-group">
+                        <label for="inputAccount">First Name</label>
+                        <input type="text" class="form-control" id="updatefn">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAccount">Last Name</label>
+                        <input type="text" class="form-control" id="updateln">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAccount">City</label>
+                        <input type="text" class="form-control" id="updateci">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAccount">State</label>
+                        <input type="text" class="form-control" id="updatest">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAccount">Country</label>
+                        <input type="text" class="form-control" id="updatecy">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAccount">Update About You</label>
+                        <input type="text" class="form-control" id="updateay">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAccount">email</label>
+                        <input type="text" class="form-control" id="updateem">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAccount">Password</label>
+                        <input type="text" class="form-control" id="updatepd">
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button id="updateinfo" type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

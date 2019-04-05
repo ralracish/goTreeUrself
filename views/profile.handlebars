@@ -13,7 +13,7 @@
           <div class="myinfo" id="profile-info">
             <button id="profile-button" data-id="{{userInfo.id}}" class="button hollow success expanded">Upload
               Pic</button>
-            <button type="button" id="add-user" class="button hollow success expanded search-button">Update
+            <button type="button" id="update-user" data-id="{{userInfo.id}}" class="button hollow success expanded search-button">Update
               Profile</button>
 
             {{#if userInfo.profile_text}}
@@ -131,3 +131,5 @@
   </div>
   <div id="carbon-notice-profile">The trees you have planted have offset <strong>${number of trees in db * 4.3}
       tons</strong> of carbon!</div>
+
+  {{> modal/update-info}}
