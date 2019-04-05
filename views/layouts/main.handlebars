@@ -219,6 +219,8 @@
 							setTimeout(function () {
 								let name = result[i].firstName + ' ' + result[i].lastName;
 								placeMarker(parseFloat(result[i].latitude), parseFloat(result[i].longitude), name, result[i].date_planted, result[i].users_tree_name, result[i].tree_image_link);
+								$('#number-trees').html(i);
+								$('#number-tons').html((i * 4.3).toFixed(2));
 								i++;
 								if (i < 180) {
 									//if (i < theNumberOfPins) {

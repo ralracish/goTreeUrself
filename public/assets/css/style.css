@@ -203,6 +203,10 @@
 	width: 100vw;
 }
 
+#number-trees, #number-tons {
+	display: inline-block;
+}
+
 .medium-horizontal {
 	margin-bottom: 10px;
 }
