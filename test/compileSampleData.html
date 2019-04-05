@@ -262,6 +262,7 @@ CREATE TABLE ${theUsersTable}<br>
                             treename: treename,
                             UserId: UserId,
                         };
+                        console.log(latitude);
                         let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`; // alternate username: desmondmullen
                         $.get(oceanCheckUrl, function (response, status) {
                             if (!Object.keys(response).includes('ocean')) {
