@@ -80,7 +80,7 @@ module.exports = (db) => {
           },
           isloggedin: req.isAuthenticated(),
           treeInfo: result[0].Usertrees,
-          carbonCount: result[0].Usertrees.length * 4.3
+          carbonCount: (result[0].Usertrees.length * 4.3).toFixed(2)
         };
         res.render('profile', user);
       });
